@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_7"
+        android:summary="@string/pref_description_key_7"
+        android:title="@string/pref_title_key_7" />
+    <!-- Zodiacal constellations -->
+    <PreferenceCategory
+        android:title="@string/pref_title_key_7_constellations_zodiac"
+        android:key="pref_title_key_7_constellations_zodiac">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_aries"
+            android:summary="@string/pref_description_key_7_aries"
+            android:title="@string/pref_title_key_7_aries" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_taurus"
+            android:summary="@string/pref_description_key_7_taurus"
+            android:title="@string/pref_title_key_7_taurus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_gemini"
+            android:summary="@string/pref_description_key_7_gemini"
+            android:title="@string/pref_title_key_7_gemini" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_cancer"
+            android:summary="@string/pref_description_key_7_cancer"
+            android:title="@string/pref_title_key_7_cancer" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_leo"
+            android:summary="@string/pref_description_key_7_leo"
+            android:title="@string/pref_title_key_7_leo" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_virgo"
+            android:summary="@string/pref_description_key_7_virgo"
+            android:title="@string/pref_title_key_7_virgo" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_libra"
+            android:summary="@string/pref_description_key_7_libra"
+            android:title="@string/pref_title_key_7_libra" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_scorpius"
+            android:summary="@string/pref_description_key_7_scorpius"
+            android:title="@string/pref_title_key_7_scorpius" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_sagittarius"
+            android:summary="@string/pref_description_key_7_sagittarius"
+            android:title="@string/pref_title_key_7_sagittarius" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_capricornus"
+            android:summary="@string/pref_description_key_7_capricornus"
+            android:title="@string/pref_title_key_7_capricornus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_aquarius"
+            android:summary="@string/pref_description_key_7_aquarius"
+            android:title="@string/pref_title_key_7_aquarius" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_pisces"
+            android:summary="@string/pref_description_key_7_pisces"
+            android:title="@string/pref_title_key_7_pisces" />
+    </PreferenceCategory>
+
+    <!-- Northern constellations - 30 degrees and north -->
+    <PreferenceCategory
+        android:title="@string/pref_title_key_7_constellations_north"
+        android:key="pref_title_key_7_constellations_north">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_ursa_minor"
+            android:summary="@string/pref_description_key_7_ursa_minor"
+            android:title="@string/pref_title_key_7_ursa_minor" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Cepheus"
+            android:summary="@string/pref_description_key_7_cepheus"
+            android:title="@string/pref_title_key_7_cepheus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Camelopardus"
+            android:summary="@string/pref_description_key_7_camelopardus"
+            android:title="@string/pref_title_key_7_camelopardus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Draco"
+            android:summary="@string/pref_description_key_7_draco"
+            android:title="@string/pref_title_key_7_draco" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Cassiopeia"
+            android:summary="@string/pref_description_key_7_cassiopeia"
+            android:title="@string/pref_title_key_7_cassiopeia" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_ursa_major"
+            android:summary="@string/pref_description_key_7_ursa_major"
+            android:title="@string/pref_title_key_7_ursa_major" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_leo_minor"
+            android:summary="@string/pref_description_key_7_leo_minor"
+            android:title="@string/pref_title_key_7_leo_minor" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_canes_venatici"
+            android:summary="@string/pref_description_key_7_canes_venatici"
+            android:title="@string/pref_title_key_7_canes_venatici" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_bootes"
+            android:summary="@string/pref_description_key_7_bootes"
+            android:title="@string/pref_title_key_7_bootes" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_corona_borealis"
+            android:summary="@string/pref_description_key_7_corona_borealis"
+            android:title="@string/pref_title_key_7_corona_borealis" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Hercules"
+            android:summary="@string/pref_description_key_7_hercules"
+            android:title="@string/pref_title_key_7_hercules" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Lyra"
+            android:summary="@string/pref_description_key_7_lyra"
+            android:title="@string/pref_title_key_7_lyra" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Cygnus"
+            android:summary="@string/pref_description_key_7_cygnus"
+            android:title="@string/pref_title_key_7_cygnus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Lacerta"
+            android:summary="@string/pref_description_key_7_lacerta"
+            android:title="@string/pref_title_key_7_lacerta" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Andromeda"
+            android:summary="@string/pref_description_key_7_andromeda"
+            android:title="@string/pref_title_key_7_andromeda" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Triangulum"
+            android:summary="@string/pref_description_key_7_triangulum"
+            android:title="@string/pref_title_key_7_triangulum" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Perseus"
+            android:summary="@string/pref_description_key_7_perseus"
+            android:title="@string/pref_title_key_7_perseus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Auriga"
+            android:summary="@string/pref_description_key_7_auriga"
+            android:title="@string/pref_title_key_7_auriga" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Lynx"
+            android:summary="@string/pref_description_key_7_lynx"
+            android:title="@string/pref_title_key_7_lynx" />
+    </PreferenceCategory>
+
+    <!-- Mid-latitude constellations - 30 degrees north to 30 degrees south -->
+    <PreferenceCategory
+        android:title="@string/pref_title_key_7_constellations_equatorial"
+        android:summary="@string/pref_description_key_7_constellations_equatorial"
+        android:key="pref_title_key_7_constellations_equatorial">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_coma_berenices"
+            android:summary="@string/pref_description_key_7_coma_berenices"
+            android:title="@string/pref_title_key_7_coma_berenices" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Sagitta"
+            android:summary="@string/pref_description_key_7_sagitta"
+            android:title="@string/pref_title_key_7_sagitta" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Vulpecula"
+            android:summary="@string/pref_description_key_7_vulpecula"
+            android:title="@string/pref_title_key_7_vulpecula" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Pegasus"
+            android:summary="@string/pref_description_key_7_pegasus"
+            android:title="@string/pref_title_key_7_pegasus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Equuleus"
+            android:summary="@string/pref_description_key_7_equuleus"
+            android:title="@string/pref_title_key_7_equuleus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Cetus"
+            android:summary="@string/pref_description_key_7_cetus"
+            android:title="@string/pref_title_key_7_cetus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Orion"
+            android:summary="@string/pref_description_key_7_orion"
+            android:title="@string/pref_title_key_7_orion" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Monoceros"
+            android:summary="@string/pref_description_key_7_monoceros"
+            android:title="@string/pref_title_key_7_monoceros" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_canis_minor"
+            android:summary="@string/pref_description_key_7_canis_minor"
+            android:title="@string/pref_title_key_7_canis_minor" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_canis_major"
+            android:summary="@string/pref_description_key_7_canis_major"
+            android:title="@string/pref_title_key_7_canis_major" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Sextans"
+            android:summary="@string/pref_description_key_7_sextans"
+            android:title="@string/pref_title_key_7_sextans" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Eridanus"
+            android:summary="@string/pref_description_key_7_eridanus"
+            android:title="@string/pref_title_key_7_eridanus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Lepus"
+            android:summary="@string/pref_description_key_7_lepus"
+            android:title="@string/pref_title_key_7_lepus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Hydra"
+            android:summary="@string/pref_description_key_7_hydra"
+            android:title="@string/pref_title_key_7_hydra" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Crater"
+            android:summary="@string/pref_description_key_7_crater"
+            android:title="@string/pref_title_key_7_crater" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Corvus"
+            android:summary="@string/pref_description_key_7_corvus"
+            android:title="@string/pref_title_key_7_corvus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_serpens_caput"
+            android:summary="@string/pref_description_key_7_serpens_caput"
+            android:title="@string/pref_title_key_7_serpens_caput" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Ophiuchus"
+            android:summary="@string/pref_description_key_7_ophiuchus"
+            android:title="@string/pref_title_key_7_ophiuchus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_serpens_cauda"
+            android:summary="@string/pref_description_key_7_serpens_cauda"
+            android:title="@string/pref_title_key_7_serpens_cauda" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Scutum"
+            android:summary="@string/pref_description_key_7_scutum"
+            android:title="@string/pref_title_key_7_scutum" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Aquila"
+            android:summary="@string/pref_description_key_7_aquila"
+            android:title="@string/pref_title_key_7_aquila" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Delphinus"
+            android:summary="@string/pref_description_key_7_delphinus"
+            android:title="@string/pref_title_key_7_delphinus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Fornax"
+            android:summary="@string/pref_description_key_7_fornax"
+            android:title="@string/pref_title_key_7_fornax" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Pyxis"
+            android:summary="@string/pref_description_key_7_pyxis"
+            android:title="@string/pref_title_key_7_pyxis" />
+    </PreferenceCategory>
+
+
+    <!-- Southern constellations - 30 degrees and south -->
+    <PreferenceCategory
+        android:title="@string/pref_title_key_7_constellations_south"
+        android:summary="@string/pref_description_key_7_constellations_south"
+        android:key="pref_title_key_7_constellations_south">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Carina"
+            android:summary="@string/pref_description_key_7_carina"
+            android:title="@string/pref_title_key_7_carina" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Puppis"
+            android:summary="@string/pref_description_key_7_puppis"
+            android:title="@string/pref_title_key_7_puppis" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Vela"
+            android:summary="@string/pref_description_key_7_vela"
+            android:title="@string/pref_title_key_7_vela" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Antlia"
+            android:summary="@string/pref_description_key_7_antlia"
+            android:title="@string/pref_title_key_7_antlia" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Centaurus"
+            android:summary="@string/pref_description_key_7_centaurus"
+            android:title="@string/pref_title_key_7_centaurus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Lupus"
+            android:summary="@string/pref_description_key_7_lupus"
+            android:title="@string/pref_title_key_7_lupus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_corona_australis"
+            android:summary="@string/pref_description_key_7_corona_australis"
+            android:title="@string/pref_title_key_7_corona_australis" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Microscopium"
+            android:summary="@string/pref_description_key_7_microscopium"
+            android:title="@string/pref_title_key_7_microscopium" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_piscis_austrinus"
+            android:summary="@string/pref_description_key_7_piscis_austrinus"
+            android:title="@string/pref_title_key_7_piscis_austrinus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Grus"
+            android:summary="@string/pref_description_key_7_grus"
+            android:title="@string/pref_title_key_7_grus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Musca"
+            android:summary="@string/pref_description_key_7_musca"
+            android:title="@string/pref_title_key_7_musca" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Crux"
+            android:summary="@string/pref_description_key_7_crux"
+            android:title="@string/pref_title_key_7_crux" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Circinus"
+            android:summary="@string/pref_description_key_7_circinus"
+            android:title="@string/pref_title_key_7_circinus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Norma"
+            android:summary="@string/pref_description_key_7_norma"
+            android:title="@string/pref_title_key_7_norma" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_triangulum_australe"
+            android:summary="@string/pref_description_key_7_triangulum_australe"
+            android:title="@string/pref_title_key_7_triangulum_australe" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Ara"
+            android:summary="@string/pref_description_key_7_ara"
+            android:title="@string/pref_title_key_7_ara" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Pavo"
+            android:summary="@string/pref_description_key_7_pavo"
+            android:title="@string/pref_title_key_7_pavo" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Telescopium"
+            android:summary="@string/pref_description_key_7_telescopium"
+            android:title="@string/pref_title_key_7_telescopium" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Indus"
+            android:summary="@string/pref_description_key_7_indus"
+            android:title="@string/pref_title_key_7_indus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Tucana"
+            android:summary="@string/pref_description_key_7_tucana"
+            android:title="@string/pref_title_key_7_tucana" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Phoenix"
+            android:summary="@string/pref_description_key_7_phoenix"
+            android:title="@string/pref_title_key_7_phoenix" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Sculptor"
+            android:summary="@string/pref_description_key_7_sculptor"
+            android:title="@string/pref_title_key_7_sculptor" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Horologium"
+            android:summary="@string/pref_description_key_7_horologium"
+            android:title="@string/pref_title_key_7_horologium" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Reticulum"
+            android:summary="@string/pref_description_key_7_reticulum"
+            android:title="@string/pref_title_key_7_reticulum" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Caelum"
+            android:summary="@string/pref_description_key_7_caelum"
+            android:title="@string/pref_title_key_7_caelum" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Dorado"
+            android:summary="@string/pref_description_key_7_dorado"
+            android:title="@string/pref_title_key_7_dorado" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Pictor"
+            android:summary="@string/pref_description_key_7_pictor"
+            android:title="@string/pref_title_key_7_pictor" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Columba"
+            android:summary="@string/pref_description_key_7_columba"
+            android:title="@string/pref_title_key_7_columba" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Volans"
+            android:summary="@string/pref_description_key_7_volans"
+            android:title="@string/pref_title_key_7_volans" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Mensa"
+            android:summary="@string/pref_description_key_7_mensa"
+            android:title="@string/pref_title_key_7_mensa" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Hydrus"
+            android:summary="@string/pref_description_key_7_hydrus"
+            android:title="@string/pref_title_key_7_hydrus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Apus"
+            android:summary="@string/pref_description_key_7_apus"
+            android:title="@string/pref_title_key_7_apus" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Chamaeleon"
+            android:summary="@string/pref_description_key_7_chamaeleon"
+            android:title="@string/pref_title_key_7_chamaeleon" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:dependency="notifications_key_7"
+            android:key="constellations_key_Octans"
+            android:summary="@string/pref_description_key_7_octans"
+            android:title="@string/pref_title_key_7_octans" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

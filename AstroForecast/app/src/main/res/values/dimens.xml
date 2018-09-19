@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="page_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <!-- pop up layout dimensions -->
+    <dimen name="pop_up_dialog_width">325dp</dimen>
+    <dimen name="pop_up_dialog_height">325dp</dimen>
+    <dimen name="pop_up_dialog_title_textsize">24sp</dimen>
+    <dimen name="pop_up_dialog_message_textsize">24sp</dimen>
+    <!-- fraction name="pop_up_dialog_message_text_size">24.0f</fraction -->
+    <dimen name="pop_up_dialog_button_textsize">18sp</dimen>
+
+    <!-- pop up layout dimensions scroll -->
+    <dimen name="pop_up_scroll_height">350dp</dimen>
+
+</resources>

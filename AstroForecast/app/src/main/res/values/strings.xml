@@ -1,0 +1,1097 @@
+<resources>
+    <string name="app_name">Star Gazer Forecast</string>
+    <string name="title_activity_main">Star Gazer - Keep Looking Up</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="app_name_menu">Star Gazer Forecast</string>
+    <string name="app_menu_email">phil@philipyoung.ca</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="search_title">Search</string>
+
+    <string name="splash_title_description">Star Gazer Forecast</string>
+    <string name="toast_initializing_screen">Initialize screen</string>
+    <string name="toast_launching_app">Launching Star Gazer Forecast</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_send">Contact</string>
+    <string name="nav_share">Share</string>
+    <string name="nav_manage">Tools</string>
+    <string name="nav_calendar">Calendar</string>
+    <string name="nav_sync">Download and Sync</string>
+    <string name="nav_gallery">Gallery</string>
+    <string name="nav_location">Location Library</string>
+    <string name="nav_group_communicate">Communicate</string>
+    <string name="nav_exit">Exit</string>
+
+    <string name="text_blank">……</string>
+    <string name="blank_space" />
+
+    <string name="db_toast_updating">Database Updating …</string>
+    <string name="db_toast_initializing_database">Initialize database</string>
+
+    <string name="gps_toast_initializing_location">Checking GPS for location</string>
+    <string name="gps_location_name">Your Location</string>
+    <string name="gps_dialog_first_run_location_title">First Run GPS</string>
+    <string name="gps_dialog_first_run_location_message">Views of satellites are drastically different as you move from town to town.
+        \nYou can turn on GPS tracking to follow Your Location from neighbourhood to neighbourhood
+        \nOR you can keep GPS off to save on battery life.
+        \n
+        \nIf you decide to change this Setting, tap on the GPS button
+        \nor go to the General tab and change Track GPS.</string>
+    <string name="gps_dialog_first_run_location_positive">Track GPS</string>
+    <string name="gps_dialog_first_run_location_negative">No GPS</string>
+
+    <string name="gps_dialog_update_location_title">Location Updated</string>
+    <string name="gps_dialog_update_location_message">You have updated your location.
+        \nWould you like to download the forecast, now?</string>
+    <string name="gps_dialog_update_location_positive">Download</string>
+    <string name="gps_dialog_update_location_negative">Not yet</string>
+
+    <string name="gps_dialog_updating_location_title">Location Updating</string>
+    <string name="gps_dialog_updating_location_message">I am trying to update your location.
+        \nCancel that and continue with app, now?</string>
+    <string name="gps_dialog_updating_location_neutral">Okay</string>
+
+    <string name="ws_no_internet">Lost Internet Connection</string>
+    <string name="ws_toast_initializing_internet">Checking Internet for connection</string>
+    <string name="ws_toast_initialized_internet">Internet connection successful</string>
+    <string name="ws_downloading_updates">Downloading updates</string>
+    <string name="ws_downloading_cancelled">Download cancelled</string>
+
+    <string name="loclib_dialog_empty_library_title">Empty Library</string>
+    <string name="loclib_dialog_empty_library_message">You have no locations in your library.
+        \nYou still need to download the forecast.</string>
+    <string name="loclib_dialog_empty_library_positive">Download</string>
+    <string name="loclib_dialog_new_library_title">New Library</string>
+    <string name="loclib_dialog_new_library_message">You have no locations in your library.
+        \nGo to Settings, and in the General tab, change the name of the Observatory location name to something other than Your Location.
+        \nThen, download the forecast.</string>
+    <string name="loclib_dialog_new_library_positive">Okay</string>
+
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Share the forecast on social media</string>
+
+    <string name="pref_title_location_name">Observatory location name</string>
+    <string name="pref_default_location_name">Your Location</string>
+    <string name="pref_title_location_coordinates">Observatory location</string>
+    <string name="pref_default_display_location">43.3N 79.8W</string>
+    <string-array name="pref_location_example_list_titles">
+        <item>Your Location</item>
+    </string-array>
+    <string-array name="pref_location_example_list_values">
+        <item>-1</item>
+    </string-array>
+    <string-array name="pref_location_example_list_coordinates">
+        <item>43.3N 79.8W</item>
+    </string-array>
+
+    <string name="pref_title_location_gps">Track GPS</string>
+    <string name="pref_description_location_gps">When you update weather and events, use GPS to find Your Location.
+        \nTo keep track of your favourite observation points, update the Observatory Location Name.</string>
+
+    <string name="pref_title_location_gps_snap">Snap GPS</string>
+    <string name="pref_description_location_gps_snap">Fetch a known location when you are in the neighbourhood.</string>
+
+    <string name="pref_title_track_location">Track location</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>12 hours</item>
+        <item>Every morning</item>
+        <item>Every afternoon</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>180</item>
+        <item>360</item>
+        <item>720</item>
+        <item>-1440</item>
+        <item>1440</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+    <string name="pref_title_key_1">Meteors</string>
+    <string name="pref_description_key_1">Notify when a significant meteor
+        shower is peaking</string>
+    <string name="pref_title_key_2">Moon</string>
+    <string name="pref_description_key_2">Display asterisk on main screen if
+        the Moon is currently above the horizon, day or night</string>
+    <string name="pref_title_key_2_phase">Phase preference</string>
+    <string-array name="pref_title_key_2_phase_titles">
+        <item>Always</item>
+        <item>Crescent</item>
+        <item>Full</item>
+    </string-array>
+    <string-array name="pref_title_key_2_phase_values">
+        <item>Always</item>
+        <item>Crescent</item>
+        <item>Full</item>
+    </string-array>
+    <string name="pref_title_key_3">Planets</string>
+    <string name="pref_description_key_3">Display asterisk on main screen if any
+        planets will be visible in the night sky</string>
+    <string name="pref_title_key_3_planets">Planets to alert</string>
+    <string-array name="pref_title_key_3_planets_titles">
+        <item>All</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    <string-array name="pref_title_key_3_planets_values">
+        <item>All</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    <string name="pref_title_key_3_planets_All">All</string>
+    <string name="pref_title_key_3_planets_Mercury">Mercury</string>
+    <string name="pref_title_key_3_planets_Venus">Venus</string>
+    <string name="pref_title_key_3_planets_Mars">Mars</string>
+    <string name="pref_title_key_3_planets_Jupiter">Jupiter</string>
+    <string name="pref_title_key_3_planets_Saturn">Saturn</string>
+    <string name="pref_title_key_3_planets_Uranus">Uranus</string>
+    <string name="pref_title_key_3_planets_Neptune">Neptune</string>
+    <string name="pref_title_key_3_conjunctions">Conjunctions</string>
+    <string name="pref_description_key_3_conjunctions">Display asterisk on main screen if any
+        planets or the Moon will be near a bright star or planet in the night sky</string>
+    <string name="pref_title_key_3_conjunctions_distance">Alert when it gets closer than</string>
+    <string-array name="pref_title_key_3_conjuctions_titles">
+        <item>1°</item>
+        <item>2°</item>
+        <item>3</item>
+        <item>6°</item>
+        <item>10°</item>
+        <item>15°</item>
+        <item>20°</item>
+    </string-array>
+    <string-array name="pref_title_key_3_conjunctions_values">
+        <item>1°</item>
+        <item>2°</item>
+        <item>3</item>
+        <item>6°</item>
+        <item>10°</item>
+        <item>15°</item>
+        <item>20°</item>
+    </string-array>
+    <string name="pref_title_key_4">Comets</string>
+    <string name="pref_description_key_4">Notify when a comet is visible</string>
+    <string name="pref_title_key_5">Aurora</string>
+    <string name="pref_description_key_5">Notify when the aurora will be visible,
+        based on location, weather, and lighting conditions</string>
+    <string name="pref_title_key_6">Satellites</string>
+    <string name="pref_description_key_6">Notify when satellites are about to
+        pass overhead, based on location and weather</string>
+    <string name="pref_title_key_6_satellite_iss">Alert for International Space Station (ISS)</string>
+    <string name="pref_title_key_6_satellite_iridium">Alert for Iridium Flare Satellites</string>
+    <string name="pref_title_key_6_satellite_other">Alert for all Other Satellites</string>
+    <string name="pref_title_key_7">Constellations</string>
+    <string name="pref_description_key_7">Display asterisk on main screen if any
+        of your favourite constellations will be visible in the night sky</string>
+    <string name="pref_title_key_7_constellations">Constellations to alert</string>
+    <string-array name="pref_title_key_7_constellations_titles">
+        <item>Aries</item>
+        <item>Taurus</item>
+        <item>Gemini</item>
+        <item>Cancer</item>
+        <item>Leo</item>
+        <item>Virgo</item>
+        <item>Libra</item>
+        <item>Scorpius</item>
+        <item>Sagittarius</item>
+        <item>Capricorn</item>
+        <item>Aquarius</item>
+        <item>Pisces</item>
+        <item>Aquila</item>
+        <item>Andromeda</item>
+        <item>Antlia</item>
+        <item>Apus</item>
+        <item>Ara</item>
+        <item>Auriga</item>
+        <item>Boötes</item>
+        <item>Caelum</item>
+        <item>Camelopardus</item>
+        <item>Canes Venatici</item>
+        <item>Canis Major</item>
+        <item>Canis Minor</item>
+        <item>Carina</item>
+        <item>Cassiopeia</item>
+        <item>Centaurus</item>
+        <item>Cepheus</item>
+        <item>Cetus</item>
+        <item>Chamaeleon</item>
+        <item>Circinus</item>
+        <item>Columba</item>
+        <item>Coma Berenices</item>
+        <item>Corona Australis</item>
+        <item>Corona Borealis</item>
+        <item>Corvus</item>
+        <item>Crater</item>
+        <item>Crux</item>
+        <item>Cygnus</item>
+        <item>Delphinus</item>
+        <item>Dorado</item>
+        <item>Draco</item>
+        <item>Equuleus</item>
+        <item>Eridanus</item>
+        <item>Fornax</item>
+        <item>Grus</item>
+        <item>Hercules</item>
+        <item>Horologium</item>
+        <item>Hydra</item>
+        <item>Hydrus</item>
+        <item>Indus</item>
+        <item>Lacerta</item>
+        <item>Leo Minor</item>
+        <item>Lepus</item>
+        <item>Lupus</item>
+        <item>Lynx</item>
+        <item>Lyra</item>
+        <item>Mensa</item>
+        <item>Microscopium</item>
+        <item>Monoceros</item>
+        <item>Musca</item>
+        <item>Norma</item>
+        <item>Octans</item>
+        <item>Ophiuchus</item>
+        <item>Orion</item>
+        <item>Pavo</item>
+        <item>Pegasus</item>
+        <item>Perseus</item>
+        <item>Phoenix</item>
+        <item>Pictor</item>
+        <item>Piscis Australis</item>
+        <item>Puppis</item>
+        <item>Pyxis</item>
+        <item>Reticulum</item>
+        <item>Sagitta</item>
+        <item>Sculptor</item>
+        <item>Scutum</item>
+        <item>Serpens Caput</item>
+        <item>Serpens Cauda</item>
+        <item>Sextans</item>
+        <item>Telescopium</item>
+        <item>Triangulum</item>
+        <item>Triangulum Australe</item>
+        <item>Tucana</item>
+        <item>Ursa Major</item>
+        <item>Ursa Minor</item>
+        <item>Vela</item>
+        <item>Volans</item>
+        <item>Vulpecula</item>
+    </string-array>
+    <string name="pref_title_key_8">Variable stars</string>
+    <string name="pref_description_key_8">Notify when a variable star will be nearing maximum
+        or minimum in the night sky</string>
+    <string name="pref_title_key_9">Eclipses</string>
+    <string name="pref_description_key_9">Notify when a solar or lunar eclipse will occur</string>
+
+    <!-- Example Constellation settings -->
+    <string name="pref_header_constellation">Constellations - North to South</string>
+    <string name="pref_header_constellation_alphabetical">Constellations A-Z</string>
+    <string name="pref_title_key_7_constellations_zodiac">Constellations of the Zodiac</string>
+    <string name="pref_title_key_7_constellations_north">Northern Constellations</string>
+    <string name="pref_title_key_7_constellations_equatorial">Mid-latitude Constellations</string>
+    <string name="pref_title_key_7_constellations_south">Southern Constellations</string>
+    <string name="pref_description_key_7_constellations_north">Constellations north of 30° latitude
+        on the celestial sphere</string>
+    <string name="pref_description_key_7_constellations_equatorial">Constellations between 30° N
+        and 30° S on the celestial sphere </string>
+    <string name="pref_description_key_7_constellations_south">Constellations south of 30° latitude
+        on the celestial sphere</string>
+
+    <string name="pref_title_key_7_ursa_minor">Ursa Minor</string>
+    <string name="pref_title_key_7_cepheus">Cepheus</string>
+    <string name="pref_title_key_7_camelopardus">Camelopardus (Camelopardalis)</string>
+    <string name="pref_title_key_7_draco">Draco</string>
+    <string name="pref_title_key_7_cassiopeia">Cassiopeia</string>
+    <string name="pref_title_key_7_ursa_major">Ursa Major</string>
+    <string name="pref_title_key_7_cygnus">Cygnus</string>
+    <string name="pref_title_key_7_lynx">Lynx</string>
+    <string name="pref_title_key_7_lacerta">Lacerta</string>
+    <string name="pref_title_key_7_perseus">Perseus</string>
+    <string name="pref_title_key_7_auriga">Auriga</string>
+    <string name="pref_title_key_7_canes_venatici">Canes Venatici</string>
+    <string name="pref_title_key_7_lyra">Lyra</string>
+    <string name="pref_title_key_7_andromeda">Andromeda</string>
+    <string name="pref_title_key_7_leo_minor">Leo Minor</string>
+    <string name="pref_title_key_7_corona_borealis">Corona Borealis</string>
+    <string name="pref_title_key_7_bootes">Boötes</string>
+    <string name="pref_title_key_7_triangulum">Triangulum</string>
+    <string name="pref_title_key_7_hercules">Hercules</string>
+    <string name="pref_title_key_7_vulpecula">Vulpecula</string>
+    <string name="pref_title_key_7_gemini">Gemini</string>
+    <string name="pref_title_key_7_cancer">Cancer</string>
+    <string name="pref_title_key_7_coma_berenices">Coma Berenices</string>
+    <string name="pref_title_key_7_aries">Aries</string>
+    <string name="pref_title_key_7_pegasus">Pegasus</string>
+    <string name="pref_title_key_7_taurus">Taurus</string>
+    <string name="pref_title_key_7_sagitta">Sagitta</string>
+    <string name="pref_title_key_7_pisces">Pisces</string>
+    <string name="pref_title_key_7_delphinus">Delphinus</string>
+    <string name="pref_title_key_7_equuleus">Equuleus</string>
+    <string name="pref_title_key_7_leo">Leo</string>
+    <string name="pref_title_key_7_canis_minor">Canis Minor</string>
+    <string name="pref_title_key_7_orion">Orion</string>
+    <string name="pref_title_key_7_aquila">Aquila</string>
+    <string name="pref_title_key_7_sextans">Sextans</string>
+    <string name="pref_title_key_7_serpens_cauda">Serpens Cauda</string>
+    <string name="pref_title_key_7_ophiuchus">Ophiuchus</string>
+    <string name="pref_title_key_7_serpens_caput">Serpens Caput</string>
+    <string name="pref_title_key_7_monoceros">Monoceros</string>
+    <string name="pref_title_key_7_virgo">Virgo</string>
+    <string name="pref_title_key_7_cetus">Cetus</string>
+    <string name="pref_title_key_7_aquarius">Aquarius</string>
+    <string name="pref_title_key_7_scutum">Scutum</string>
+    <string name="pref_title_key_7_hydra">Hydra</string>
+    <string name="pref_title_key_7_crater">Crater</string>
+    <string name="pref_title_key_7_libra">Libra</string>
+    <string name="pref_title_key_7_eridanus">Eridanus</string>
+    <string name="pref_title_key_7_corvus">Corvus</string>
+    <string name="pref_title_key_7_capricornus">Capricornus</string>
+    <string name="pref_title_key_7_lepus">Lepus</string>
+    <string name="pref_title_key_7_canis_major">Canis Major</string>
+    <string name="pref_title_key_7_fornax">Fornax</string>
+    <string name="pref_title_key_7_pyxis">Pyxis</string>
+    <string name="pref_title_key_7_sagittarius">Sagittarius</string>
+    <string name="pref_title_key_7_piscis_austrinus">Piscis Austrinus (Australis)</string>
+    <string name="pref_title_key_7_puppis">Puppis</string>
+    <string name="pref_title_key_7_antlia">Antlia</string>
+    <string name="pref_title_key_7_scorpius">Scorpius</string>
+    <string name="pref_title_key_7_microscopium">Microscopium</string>
+    <string name="pref_title_key_7_columba">Columba</string>
+    <string name="pref_title_key_7_caelum">Caelum</string>
+    <string name="pref_title_key_7_sculptor">Sculptor</string>
+    <string name="pref_title_key_7_corona_australis">Corona Australis</string>
+    <string name="pref_title_key_7_lupus">Lupus</string>
+    <string name="pref_title_key_7_centaurus">Centaurus</string>
+    <string name="pref_title_key_7_grus">Grus</string>
+    <string name="pref_title_key_7_vela">Vela</string>
+    <string name="pref_title_key_7_phoenix">Phoenix</string>
+    <string name="pref_title_key_7_ara">Ara</string>
+    <string name="pref_title_key_7_pictor">Pictor</string>
+    <string name="pref_title_key_7_telescopium">Telescopium</string>
+    <string name="pref_title_key_7_horologium">Horologium</string>
+    <string name="pref_title_key_7_indus">Indus</string>
+    <string name="pref_title_key_7_norma">Norma</string>
+    <string name="pref_title_key_7_carina">Carina</string>
+    <string name="pref_title_key_7_crux">Crux</string>
+    <string name="pref_title_key_7_reticulum">Reticulum</string>
+    <string name="pref_title_key_7_dorado">Dorado</string>
+    <string name="pref_title_key_7_tucana">Tucana</string>
+    <string name="pref_title_key_7_triangulum_australe">Triangulum Australe</string>
+    <string name="pref_title_key_7_pavo">Pavo</string>
+    <string name="pref_title_key_7_circinus">Circinus</string>
+    <string name="pref_title_key_7_musca">Musca</string>
+    <string name="pref_title_key_7_volans">Volans</string>
+    <string name="pref_title_key_7_hydrus">Hydrus</string>
+    <string name="pref_title_key_7_apus">Apus</string>
+    <string name="pref_title_key_7_mensa">Mensa</string>
+    <string name="pref_title_key_7_chamaeleon">Chamaeleon</string>
+    <string name="pref_title_key_7_octans">Cctans</string>
+
+    <string name="pref_description_key_7_ursa_minor">Little Bear (Little Dipper)</string>
+    <string name="pref_description_key_7_cepheus">King of Ethiopia</string>
+    <string name="pref_description_key_7_camelopardus">Giraffe</string>
+    <string name="pref_description_key_7_draco">Dragon</string>
+    <string name="pref_description_key_7_cassiopeia">Mother of Andromeda, the Queen on her throne</string>
+    <string name="pref_description_key_7_ursa_major">Great Bear (Big Dipper)</string>
+    <string name="pref_description_key_7_cygnus">Swan or Northern Cross</string>
+    <string name="pref_description_key_7_lynx">Lynx</string>
+    <string name="pref_description_key_7_lacerta">Lizard</string>
+    <string name="pref_description_key_7_perseus">Hero, son of Zeus</string>
+    <string name="pref_description_key_7_auriga">Charioteer</string>
+    <string name="pref_description_key_7_canes_venatici">Hunting Dogs</string>
+    <string name="pref_description_key_7_lyra">Lyre</string>
+    <string name="pref_description_key_7_andromeda">daughter of Cepheus</string>
+    <string name="pref_description_key_7_leo_minor">Lesser Lion</string>
+    <string name="pref_description_key_7_corona_borealis">Northern Crown</string>
+    <string name="pref_description_key_7_bootes">Herdsman</string>
+    <string name="pref_description_key_7_triangulum">Triangle</string>
+    <string name="pref_description_key_7_hercules">Hercules</string>
+    <string name="pref_description_key_7_vulpecula">Fox</string>
+    <string name="pref_description_key_7_gemini">Twins</string>
+    <string name="pref_description_key_7_cancer">Crab</string>
+    <string name="pref_description_key_7_coma_berenices">Berenice\'s Hair</string>
+    <string name="pref_description_key_7_aries">Ram</string>
+    <string name="pref_description_key_7_pegasus">Winged Horse</string>
+    <string name="pref_description_key_7_taurus">Bull</string>
+    <string name="pref_description_key_7_sagitta">Arrow</string>
+    <string name="pref_description_key_7_pisces">Fishes (Northern &amp; Western)</string>
+    <string name="pref_description_key_7_delphinus">Dolphin (or Job\'s Coffin)</string>
+    <string name="pref_description_key_7_serpens_caput">Serpent\'s head</string>
+    <string name="pref_description_key_7_equuleus">Little Horse</string>
+    <string name="pref_description_key_7_leo">Lion</string>
+    <string name="pref_description_key_7_canis_minor">Lesser Dog</string>
+    <string name="pref_description_key_7_orion">Hunter</string>
+    <string name="pref_description_key_7_aquila">Eagle</string>
+    <string name="pref_description_key_7_sextans">Sextant</string>
+    <string name="pref_description_key_7_ophiuchus">Serpent Bearer</string>
+    <string name="pref_description_key_7_monoceros">Unicorn</string>
+    <string name="pref_description_key_7_virgo">Virgin</string>
+    <string name="pref_description_key_7_cetus">Whale</string>
+    <string name="pref_description_key_7_aquarius">Water Bearer</string>
+    <string name="pref_description_key_7_scutum">Shield</string>
+    <string name="pref_description_key_7_hydra">Water Monster</string>
+    <string name="pref_description_key_7_serpens_cauda">Serpent\'s tail</string>
+    <string name="pref_description_key_7_crater">Cup</string>
+    <string name="pref_description_key_7_libra">Balance</string>
+    <string name="pref_description_key_7_eridanus">River (Northern &amp; Southern Streams)</string>
+    <string name="pref_description_key_7_corvus">Crow</string>
+    <string name="pref_description_key_7_capricornus">Sea Goat</string>
+    <string name="pref_description_key_7_lepus">Hare</string>
+    <string name="pref_description_key_7_canis_major">Greater Dog</string>
+    <string name="pref_description_key_7_fornax">Furnace</string>
+    <string name="pref_description_key_7_pyxis">Compass Box</string>
+    <string name="pref_description_key_7_sagittarius">Archer</string>
+    <string name="pref_description_key_7_piscis_austrinus">Southern Fish</string>
+    <string name="pref_description_key_7_puppis">Stern (Poop)</string>
+    <string name="pref_description_key_7_antlia">Air Pump</string>
+    <string name="pref_description_key_7_scorpius">Scorpion</string>
+    <string name="pref_description_key_7_microscopium">Microscope</string>
+    <string name="pref_description_key_7_columba">Dove (Noah\'s Dove)</string>
+    <string name="pref_description_key_7_caelum">Chisel</string>
+    <string name="pref_description_key_7_sculptor">Sculptor\'s Workshop</string>
+    <string name="pref_description_key_7_corona_australis">Southern Crown</string>
+    <string name="pref_description_key_7_lupus">Wolf</string>
+    <string name="pref_description_key_7_centaurus">Centaur</string>
+    <string name="pref_description_key_7_grus">Crane</string>
+    <string name="pref_description_key_7_vela">Sails</string>
+    <string name="pref_description_key_7_phoenix">Phoenix</string>
+    <string name="pref_description_key_7_ara">Altar</string>
+    <string name="pref_description_key_7_pictor">Painter\'s Easel</string>
+    <string name="pref_description_key_7_telescopium">Telescope</string>
+    <string name="pref_description_key_7_horologium">Clock</string>
+    <string name="pref_description_key_7_indus">Indian</string>
+    <string name="pref_description_key_7_norma">Square (and Rule)</string>
+    <string name="pref_description_key_7_carina">Keel</string>
+    <string name="pref_description_key_7_crux">Cross (Southern Cross)</string>
+    <string name="pref_description_key_7_reticulum">Net</string>
+    <string name="pref_description_key_7_dorado">Swordfish</string>
+    <string name="pref_description_key_7_tucana">Toucan</string>
+    <string name="pref_description_key_7_triangulum_australe">Southern Triangle</string>
+    <string name="pref_description_key_7_pavo">Peacock</string>
+    <string name="pref_description_key_7_circinus">Compasses</string>
+    <string name="pref_description_key_7_musca">Fly</string>
+    <string name="pref_description_key_7_volans">Flying Fish</string>
+    <string name="pref_description_key_7_hydrus">Water Snake</string>
+    <string name="pref_description_key_7_apus">Bird of Paradise</string>
+    <string name="pref_description_key_7_mensa">Table</string>
+    <string name="pref_description_key_7_chamaeleon">Chamaeleon</string>
+    <string name="pref_description_key_7_octans">Octant</string>
+
+    <!-- ToDo: Glossary -->
+    <string-array name="glossary_terms">
+        <item>absolute magnitude</item>
+        <item>altitude</item>
+        <item>apparent magnitude</item>
+        <item>asterism</item>
+        <item>asteroid</item>
+        <item>astrology</item>
+        <item>astronomy</item>
+        <item>aurora</item>
+        <item>azimuth</item>
+        <item>black hole</item>
+        <item>blue super-giant</item>
+        <item>celestial sea</item>
+        <item>celestial sphere</item>
+        <item>comet</item>
+        <item>conjunction</item>
+        <item>constellation</item>
+        <item>declination</item>
+        <item>eclipse</item>
+        <item>ecliptic</item>
+        <item>fire ball</item>
+        <item>frost line</item>
+        <item>hour angle</item>
+        <item>Hyades</item>
+        <item>International Space Station (ISS)</item>
+        <item>Iridium flare</item>
+        <item>kp index</item>
+        <item>light-year</item>
+        <item>luminosity</item>
+        <item>magnitude</item>
+        <item>meteor</item>
+        <item>meteor shower</item>
+        <item>meteorite</item>
+        <item>nebula</item>
+        <item>nova</item>
+        <item>occultation</item>
+        <item>open cluster</item>
+        <item>parsec</item>
+        <item>penumbra</item>
+        <item>planet</item>
+        <item>Pleiades</item>
+        <item>precession</item>
+        <item>red giant</item>
+        <item>right ascension</item>
+        <item>sidereal zodiac</item>
+        <item>sun spot</item>
+        <item>transit</item>
+        <item>tropical zodiac</item>
+        <item>umbra</item>
+        <item>variable star</item>
+        <item>zodiac</item>
+    </string-array>
+    <string-array name="glossary_definitions">
+        <item>absolute magnitude</item>
+        <item>altitude</item>
+        <item>apparent magnitude</item>
+        <item>asterism</item>
+        <item>asteroid</item>
+        <item>astrology</item>
+        <item>astronomy</item>
+        <item>aurora</item>
+        <item>azimuth</item>
+        <item>black hole</item>
+        <item>blue super-giant</item>
+        <item>celestial sea</item>
+        <item>celestial sphere</item>
+        <item>comet</item>
+        <item>conjunction</item>
+        <item>constellation</item>
+        <item>declination</item>
+        <item>eclipse</item>
+        <item>The line on the celestial sphere precisely followed by the Sun, and approximately
+            followed by the Moon and planets.  It passes through the twelve signs of the
+            zodiac.</item>
+        <item>fire ball</item>
+        <item>frost line</item>
+        <item>hour angle</item>
+        <item>Hyades</item>
+        <item>International Space Station (ISS)</item>
+        <item>Iridium flare</item>
+        <item>kp index</item>
+        <item>light-year</item>
+        <item>luminosity</item>
+        <item>magnitude</item>
+        <item>meteor</item>
+        <item>meteor shower</item>
+        <item>meteorite</item>
+        <item>nebula</item>
+        <item>nova</item>
+        <item>occultation</item>
+        <item>open cluster</item>
+        <item>parsec</item>
+        <item>penumbra</item>
+        <item>planet</item>
+        <item>Pleiades</item>
+        <item>precession</item>
+        <item>red giant</item>
+        <item>right ascension</item>
+        <item>The set of constellations on the ecliptic used in Eastern and Hindu astrology,
+            beginning with Aquarius.</item>
+        <item>sun spot</item>
+        <item>transit</item>
+        <item>The set of equally spaced regions on the ecliptic used in Western astrology,
+            beginning with Aries.</item>
+        <item>umbra</item>
+        <item>variable star</item>
+        <item>zodiac</item>
+    </string-array>
+
+    <!-- pop up applications -->
+    <string name="safe_launch_not_installed">"Please install "</string>
+    <string name="dialog_pop_up_other_app_disclaimer">This will launch an app by another author who is solely responsible for its content.</string>
+    <string name="dialog_pop_up_other_app_positive">Launch</string>
+    <string name="dialog_pop_up_other_app_negative">Cancel</string>
+    <string name="dialog_pop_up_other_app_neutral">Stop warnings</string>
+    <string name="dialog_pop_up_aurora_title">Aurora</string>
+    <string name="dialog_pop_up_aurora_message">Open the Aurora Notifier to see the current and forecast status of the Northern Lights.</string>
+    <string name="dialog_pop_up_aurora_status">"kp-index: "</string>
+    <string name="dialog_pop_up_aurora_kp_default">Unknown</string>
+    <string name="dialog_pop_up_aurora_hint">Aurora Notifier</string>
+    <string name="dialog_pop_up_aurora_positive">Launch</string>
+    <string name="dialog_pop_up_meteor_title">Meteor Showers</string>
+    <string name="dialog_pop_up_meteor_message">Open the Meteor Shower Calendar to see current and upcoming meteor showers.</string>
+    <string name="dialog_pop_up_meteor_hint">Meteor Shower Calendar</string>
+    <string name="dialog_pop_up_meteor_positive">Launch</string>
+    <string name="dialog_pop_up_meteor_next">"Next meteor shower:\n  "</string>
+    <string name="dialog_pop_up_meteor_current">"Current meteor shower:\n  "</string>
+    <string name="dialog_pop_up_eclipse_title">Eclipses</string>
+    <string name="dialog_pop_up_eclipse_message">Open the Time-and-Date website to see current and upcoming eclipses in your area.</string>
+    <string name="dialog_pop_up_eclipse_hint">Eclipse Calendar</string>
+    <string name="dialog_pop_up_eclipse_positive">Website</string>
+    <string name="dialog_pop_up_eclipse_next">"Next eclipse:\n  "</string>
+    <string name="dialog_pop_up_eclipse_current">"Current eclipse:\n  "</string>
+    <string name="dialog_pop_up_moon_title">Moon and Weather</string>
+    <string name="dialog_pop_up_moon_message"></string>
+    <string name="dialog_pop_up_moon_hint"></string>
+    <string name="dialog_pop_up_moon_positive">Okay</string>
+    <string name="dialog_pop_up_satellite_title">Satellites</string>
+    <string name="dialog_pop_up_satellite_message_normal">Upcoming satellite passes including the International Space Station (ISS):</string>
+    <string name="dialog_pop_up_satellite_message_iss">Upcoming satellite passes of the International Space Station (ISS):</string>
+    <string name="dialog_pop_up_satellite_message_iridium">Upcoming satellite passes of Iridium flares:</string>
+    <string name="dialog_pop_up_satellite_time_format">"%1$tl:%1$tM:%1$tS %1$Tp"</string>
+    <string name="dialog_pop_up_satellite_no_passes">No passes scheduled</string>
+    <string name="dialog_pop_up_satellite_hint">Heavens Above</string>
+    <string name="dialog_pop_up_satellite_positive">Launch</string>
+    <string name="dialog_pop_up_comet_title">Comets</string>
+    <string name="dialog_pop_up_comet_message">Upcoming comet passes:</string>
+    <string name="dialog_pop_up_comet_time_format">"%1$tl:%1$tM %1$Tp"</string>
+    <string name="dialog_pop_up_comet_no_passes">No upcoming comet passes scheduled</string>
+    <string name="dialog_pop_up_comet_positive">Launch</string>
+    <string name="dialog_pop_up_locations_title">Locations</string>
+    <string name="dialog_pop_up_locations_message">Swipe left or right to select a location.</string>
+    <string name="dialog_pop_up_locations_positive">Edit</string>
+    <string name="dialog_pop_up_locations_negative">Delete</string>
+    <string name="dialog_pop_up_locations_neutral">Go Here</string>
+    <string name="dialog_locations_delete_confirm_title">Go Here</string>
+    <string name="dialog_locations_delete_confirm_message">You are about to delete this location.
+        \nYou won\'t be able to recover it once it\'s gone. \nAre you sure?</string>
+    <string name="dialog_locations_delete_confirm_positive">Delete</string>
+    <string name="dialog_locations_delete_confirm_negative">Keep</string>
+    <string name="dialog_pop_up_app_variable_stars_title">Variable Stars</string>
+    <string name="dialog_pop_up_app_variable_stars_message">Open the Variable Stars app to see details of some variable stars or open SkEye to see where they would be in the sky.\n\nVariable Stars and SkEye are apps by other authors who are respectively responsible for the content.</string>
+    <string name="dialog_pop_up_app_variable_stars_hint">Variable Stars</string>
+    <string name="dialog_pop_up_app_variable_stars_positive">Variable Stars app</string>
+    <string name="dialog_pop_up_app_variable_stars_neutral">SkEye</string>
+
+    <!-- Weather information -->
+    <string name="dialog_pop_up_weather_cloud_cover_00">Overcast</string>
+    <string name="dialog_pop_up_weather_cloud_cover_01">90% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_02">80% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_03">70% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_04">60% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_05">50% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_06">40% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_07">30% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_08">20% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_09">10% Cloud cover</string>
+    <string name="dialog_pop_up_weather_cloud_cover_10">Clear</string>
+    <string name="dialog_pop_up_weather_cloud_cover_null">Unknown cloud cover</string>
+    <string name="dialog_pop_up_weather_transparency_0">No transparency</string>
+    <string name="dialog_pop_up_weather_transparency_1">Very hazy</string>
+    <string name="dialog_pop_up_weather_transparency_2">Hazy</string>
+    <string name="dialog_pop_up_weather_transparency_3">Average transparency</string>
+    <string name="dialog_pop_up_weather_transparency_4">Above average transparency</string>
+    <string name="dialog_pop_up_weather_transparency_5">Transparent</string>
+    <string name="dialog_pop_up_weather_transparency_null">Unknown transparency</string>
+    <string name="dialog_pop_up_weather_seeing_0">No seeing</string>
+    <string name="dialog_pop_up_weather_seeing_1">Very twinkley stars</string>
+    <string name="dialog_pop_up_weather_seeing_2">Twinkley stars</string>
+    <string name="dialog_pop_up_weather_seeing_3">Average seeing</string>
+    <string name="dialog_pop_up_weather_seeing_4">Good seeing</string>
+    <string name="dialog_pop_up_weather_seeing_5">Excellent seeing</string>
+    <string name="dialog_pop_up_weather_seeing_null">Unknown seeing</string>
+    <string name="dialog_pop_up_moon_time_format">"%1$tl:%1$tM %1$Tp"</string>
+    <string name="dialog_pop_up_weather_time_format">"%1$tl %1$Tp"</string>
+    <string name="dialog_pop_up_weather_moon_rise">Moon rise</string>
+    <string name="dialog_pop_up_weather_moon_set">Moon set </string>
+
+    <!-- moon phases for display -->
+    <string name="moon_phase_0">New Moon</string>
+    <string name="moon_phase_1">Waxing Crescent</string>
+    <string name="moon_phase_2">First Quarter</string>
+    <string name="moon_phase_3">Waxing Gibbous</string>
+    <string name="moon_phase_4">Full Moon</string>
+    <string name="moon_phase_5">Waning Gibbous</string>
+    <string name="moon_phase_6">Third Quarter</string>
+    <string name="moon_phase_7">Waning Crescent</string>
+    <string name="moon_phase_null">Unknown Moon</string>
+
+    <!-- moon names for display –– source: https://www.almanac.com/content/full-moon-names -->
+    <string name="moon_month_01">Wolf Moon</string>
+    <string name="moon_month_02">Snow Moon</string>
+    <string name="moon_month_03">Worm Moon</string>
+    <string name="moon_month_04">Pink Moon</string>
+    <string name="moon_month_05">Flower Moon</string>
+    <string name="moon_month_06">Strawberry Moon</string>
+    <string name="moon_month_07">Buck Moon</string>
+    <string name="moon_month_08">Sturgeon Moon</string>
+    <string name="moon_month_09">Harvest Moon</string>
+    <string name="moon_month_10">Hunter\'s Moon</string>
+    <string name="moon_month_11">Beaver Moon</string>
+    <string name="moon_month_12">Cold Moon</string>
+    <string name="moon_month_blue">Blue Moon</string>
+    <string name="moon_month_null">Unknown Moon</string>
+
+    <!-- pop up planets -->
+    <string name="dialog_pop_up_return">Continue</string>
+    <string name="dialog_pop_up_planet_title">Planets</string>
+    <string name="dialog_pop_up_planet_message">Select a planet to view in SkEye as it would look right now.</string>
+    <string-array name="star_finder_planets">
+        <item>Sun</item>
+        <item>Moon</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    <string-array name="star_finder_planet_searches">
+        <item>sun</item>
+        <item>moon</item>
+        <item>mercury</item>
+        <item>venus</item>
+        <item>mars</item>
+        <item>jupiter</item>
+        <item>saturn</item>
+        <item>uranus</item>
+        <item>neptune</item>
+    </string-array>
+    <string name="dialog_pop_up_planet_positive">Show Conjunctions</string>
+    <string name="dialog_pop_up_conjunctions_title">Conjunctions</string>
+    <string name="dialog_pop_up_conjunctions_message">Select a conjunction to view in SkEye as it would look right now.</string>
+    <string name="dialog_pop_up_conjunctions_positive">Show Planets</string>
+    <string name="dialog_pop_up_conjunctions_conjunction">" and "</string>
+    <string name="dialog_pop_up_object_title">Objects</string>
+    <string name="dialog_pop_up_object_message">Select a star to view in SkEye as it would look right now.</string>
+    <string-array name="star_finder_objects">
+        <item>Algol</item>
+        <item>Mira</item>
+        <item>Chi Cygni</item>
+        <item>R Leonis</item>
+        <item>R Scuti</item>
+        <item>R Hydrae</item>
+    </string-array>
+    <string-array name="star_finder_object_ras">
+        <item>3.133369861</item>
+        <item>2.316886694</item>
+        <item>19.92</item>
+        <item>9.792636111</item>
+        <item>18.791375</item>
+        <item>13.49521667</item>
+    </string-array>
+    <string-array name="star_finder_object_decs">
+        <item>40.95564722</item>
+        <item>-2.9776375</item>
+        <item>33.33</item>
+        <item>11.42880556</item>
+        <item>5.705138889</item>
+        <item>23.28133333</item>
+    </string-array>
+    <string name="dialog_pop_up_constellations_title">Constellations</string>
+    <string name="dialog_pop_up_constellations_message">Select a constellation to view in SkEye as it would look right now.</string>
+    <string-array name="star_finder_constellations">
+        <item>Aries</item>
+        <item>Taurus</item>
+        <item>Gemini</item>
+        <item>Cancer</item>
+        <item>Leo</item>
+        <item>Virgo</item>
+        <item>Libra</item>
+        <item>Scorpius</item>
+        <item>Sagittarius</item>
+        <item>Capricorn</item>
+        <item>Aquarius</item>
+        <item>Pisces</item>
+        <item>Andromeda</item>
+        <item>Antlia</item>
+        <item>Apus</item>
+        <item>Aquila</item>
+        <item>Ara</item>
+        <item>Auriga</item>
+        <item>Boötes</item>
+        <item>Caelum</item>
+        <item>Camelopardus</item>
+        <item>Canes Venatici</item>
+        <item>Canis Major</item>
+        <item>Canis Minor</item>
+        <item>Carina</item>
+        <item>Cassiopeia</item>
+        <item>Centaurus</item>
+        <item>Cepheus</item>
+        <item>Cetus</item>
+        <item>Chamaeleon</item>
+        <item>Circinus</item>
+        <item>Columba</item>
+        <item>Coma Berenices</item>
+        <item>Corona Australis</item>
+        <item>Corona Borealis</item>
+        <item>Corvus</item>
+        <item>Crater</item>
+        <item>Crux</item>
+        <item>Cygnus</item>
+        <item>Delphinus</item>
+        <item>Dorado</item>
+        <item>Draco</item>
+        <item>Equuleus</item>
+        <item>Eridanus</item>
+        <item>Fornax</item>
+        <item>Grus</item>
+        <item>Hercules</item>
+        <item>Horologium</item>
+        <item>Hydra</item>
+        <item>Hydrus</item>
+        <item>Indus</item>
+        <item>Lacerta</item>
+        <item>Leo Minor</item>
+        <item>Lepus</item>
+        <item>Lupus</item>
+        <item>Lynx</item>
+        <item>Lyra</item>
+        <item>Mensa</item>
+        <item>Microscopium</item>
+        <item>Monoceros</item>
+        <item>Musca</item>
+        <item>Norma</item>
+        <item>Octans</item>
+        <item>Ophiuchus</item>
+        <item>Orion</item>
+        <item>Pavo</item>
+        <item>Pegasus</item>
+        <item>Perseus</item>
+        <item>Phoenix</item>
+        <item>Pictor</item>
+        <item>Piscis Australis</item>
+        <item>Puppis</item>
+        <item>Pyxis</item>
+        <item>Reticulum</item>
+        <item>Sagitta</item>
+        <item>Sculptor</item>
+        <item>Scutum</item>
+        <item>Serpens Caput</item>
+        <item>Serpens Cauda</item>
+        <item>Sextans</item>
+        <item>Telescopium</item>
+        <item>Triangulum</item>
+        <item>Triangulum Australe</item>
+        <item>Tucana</item>
+        <item>Ursa Major</item>
+        <item>Ursa Minor</item>
+        <item>Vela</item>
+        <item>Volans</item>
+        <item>Vulpecula</item>
+    </string-array>
+    <string-array name="star_finder_constellation_ras">
+        <item>2.683333333</item>
+        <item>4.1</item>
+        <item>6.85</item>
+        <item>8.5</item>
+        <item>10.47</item>
+        <item>13.35</item>
+        <item>15.18333333</item>
+        <item>16.86666667</item>
+        <item>18.79</item>
+        <item>21.07</item>
+        <item>22.7</item>
+        <item>1.2</item>
+        <item>0.5666666667</item>
+        <item>10.11666667</item>
+        <item>16.13333333</item>
+        <item>19.68333333</item>
+        <item>17.23333333</item>
+        <item>5.95</item>
+        <item>14.68333333</item>
+        <item>4.716666667</item>
+        <item>6.15</item>
+        <item>13.01666667</item>
+        <item>6.833333333</item>
+        <item>7.616666667</item>
+        <item>9.32</item>
+        <item>0.8666666667</item>
+        <item>12.95</item>
+        <item>22.41666667</item>
+        <item>1.716666667</item>
+        <item>12</item>
+        <item>14.53333333</item>
+        <item>5.7</item>
+        <item>12.75</item>
+        <item>18.65</item>
+        <item>15.88333333</item>
+        <item>12.38333333</item>
+        <item>11.35</item>
+        <item>12.48333333</item>
+        <item>20.17</item>
+        <item>20.66666667</item>
+        <item>5.333333333</item>
+        <item>17.95</item>
+        <item>21.25</item>
+        <item>3.883333333</item>
+        <item>2.766666667</item>
+        <item>22.45</item>
+        <item>17.43333333</item>
+        <item>3.216666667</item>
+        <item>10.27</item>
+        <item>2.22</item>
+        <item>21.13333333</item>
+        <item>22.51666667</item>
+        <item>10.31666667</item>
+        <item>5.433333333</item>
+        <item>15.38333333</item>
+        <item>7.733333333</item>
+        <item>18.81</item>
+        <item>5.42</item>
+        <item>20.95</item>
+        <item>6.966666667</item>
+        <item>12.46666667</item>
+        <item>16.24</item>
+        <item>19.70</item>
+        <item>17.03333333</item>
+        <item>5.566666667</item>
+        <item>19.16666667</item>
+        <item>22.61666667</item>
+        <item>3.516666667</item>
+        <item>23.76</item>
+        <item>6.16</item>
+        <item>22.41666667</item>
+        <item>7.45</item>
+        <item>8.883333333</item>
+        <item>3.9</item>
+        <item>19.66666667</item>
+        <item>0.08</item>
+        <item>18.65</item>
+        <item>15.73333333</item>
+        <item>17.95</item>
+        <item>10.1</item>
+        <item>19.25</item>
+        <item>2.05</item>
+        <item>16.11666667</item>
+        <item>23.83333333</item>
+        <item>10.94</item>
+        <item>14.96666667</item>
+        <item>9.333333333</item>
+        <item>7.666666667</item>
+        <item>19.54</item>
+    </string-array>
+    <string-array name="star_finder_constellation_decs">
+        <item>22.56666667</item>
+        <item>17.33333333</item>
+        <item>24.81666667</item>
+        <item>23.56666667</item>
+        <item>16.89</item>
+        <item>-2.483333333</item>
+        <item>-15.55</item>
+        <item>-35.33333333</item>
+        <item>-31.46</item>
+        <item>-19.27</item>
+        <item>-10.46666667</item>
+        <item>9.6</item>
+        <item>39.25</item>
+        <item>-33.35</item>
+        <item>-76.58333333</item>
+        <item>3.366666667</item>
+        <item>-55.7</item>
+        <item>42.81666667</item>
+        <item>32.33333333</item>
+        <item>-38.16666667</item>
+        <item>66.78</item>
+        <item>42.35</item>
+        <item>-22.31666667</item>
+        <item>6.766666667</item>
+        <item>-61.7</item>
+        <item>60.3</item>
+        <item>-48.52</item>
+        <item>72.56666667</item>
+        <item>-5.633333333</item>
+        <item>-78.77</item>
+        <item>-60.88</item>
+        <item>-37.91666667</item>
+        <item>22.65</item>
+        <item>-41.75</item>
+        <item>27.9</item>
+        <item>-18.63333333</item>
+        <item>-13.75</item>
+        <item>-60.3</item>
+        <item>38.15</item>
+        <item>12.1</item>
+        <item>-63.01666667</item>
+        <item>66.06666667</item>
+        <item>7.933333333</item>
+        <item>-23.94</item>
+        <item>-30.03</item>
+        <item>-45.13333333</item>
+        <item>31.23333333</item>
+        <item>-52</item>
+        <item>-10.09</item>
+        <item>-69.98</item>
+        <item>-52.31666667</item>
+        <item>46.66666667</item>
+        <item>33.23333333</item>
+        <item>-17.05</item>
+        <item>-42.71666667</item>
+        <item>47.83333333</item>
+        <item>35.91</item>
+        <item>-74.53</item>
+        <item>-36.8</item>
+        <item>-2.733333333</item>
+        <item>-69.13333333</item>
+        <item>-47.69</item>
+        <item>-80.6</item>
+        <item>-1.65</item>
+        <item>3.583333333</item>
+        <item>-65.86666667</item>
+        <item>19.65</item>
+        <item>44.88333333</item>
+        <item>-47.45</item>
+        <item>-56.08</item>
+        <item>-31.56666667</item>
+        <item>-38.24</item>
+        <item>-29.78333333</item>
+        <item>-60.51666667</item>
+        <item>17</item>
+        <item>-32.08</item>
+        <item>-10.88333333</item>
+        <item>10.85</item>
+        <item>-13.48333333</item>
+        <item>-0.8666666667</item>
+        <item>-51.46666667</item>
+        <item>32.33333333</item>
+        <item>-65.1</item>
+        <item>-64.93333333</item>
+        <item>50.64</item>
+        <item>75.03333333</item>
+        <item>-48.48333333</item>
+        <item>-69.61666667</item>
+        <item>23.56</item>
+    </string-array>
+
+</resources>

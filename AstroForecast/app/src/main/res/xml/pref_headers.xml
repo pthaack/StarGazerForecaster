@@ -1,0 +1,30 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- These settings headers are only used on tablets. -->
+
+    <header
+        android:fragment="ca.philipyoung.astroforecast.ActivitySettings$GeneralPreferenceFragment"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/pref_header_general" />
+
+    <header
+        android:fragment="ca.philipyoung.astroforecast.ActivitySettings$NotificationPreferenceFragment"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/pref_header_notifications" />
+
+    <header
+        android:fragment="ca.philipyoung.astroforecast.ActivitySettings$ConstellationAlphaPreferenceFragment"
+        android:icon="@drawable/ic_constellation_24dp"
+        android:title="@string/pref_header_constellation_alphabetical" />
+
+    <header
+        android:fragment="ca.philipyoung.astroforecast.ActivitySettings$DataSyncPreferenceFragment"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:title="@string/pref_header_data_sync" />
+
+    <!-- header
+        android:fragment="ca.philipyoung.astroforecast.ActivitySettings$ConstellationPreferenceFragment"
+        android:icon="@drawable/ic_constellation_24dp"
+        android:title="@string/pref_header_constellation" /-->
+
+</preference-headers>

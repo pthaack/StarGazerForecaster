@@ -1,0 +1,131 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- A 'parent' preference, which enables/disables child preferences (below)
+         when checked/unchecked. -->
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="notifications_new_message"
+        android:title="@string/pref_title_new_message_notifications" />
+
+    <!-- Allows the user to choose a ringtone in the 'notification' category. -->
+    <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+    <!-- NOTE: RingtonePreference's summary should be set to its value by the activity code. -->
+    <RingtonePreference
+        android:defaultValue="content://settings/system/notification_sound"
+        android:dependency="notifications_new_message"
+        android:key="notifications_new_message_ringtone"
+        android:ringtoneType="notification"
+        android:title="@string/pref_title_ringtone" />
+
+    <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+    <SwitchPreference
+        android:defaultValue="true"
+        android:dependency="notifications_new_message"
+        android:key="notifications_new_message_vibrate"
+        android:title="@string/pref_title_vibrate" />
+
+    <!-- NOTE: The following preferences will be activate the check boxes on the main screen. -->
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_1"
+        android:summary="@string/pref_description_key_1"
+        android:title="@string/pref_title_key_1" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_2"
+        android:summary="@string/pref_description_key_2"
+        android:title="@string/pref_title_key_2" />
+    <ListPreference
+        android:defaultValue="Full"
+        android:dependency="notifications_key_2"
+        android:entries="@array/pref_title_key_2_phase_titles"
+        android:entryValues="@array/pref_title_key_2_phase_values"
+        android:key="notifications_key_2_phase"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_key_2_phase" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_3"
+        android:summary="@string/pref_description_key_3"
+        android:title="@string/pref_title_key_3" />
+    <ListPreference
+        android:defaultValue="All"
+        android:dependency="notifications_key_3"
+        android:entries="@array/pref_title_key_3_planets_titles"
+        android:entryValues="@array/pref_title_key_3_planets_values"
+        android:key="notifications_key_3_planets"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_key_3_planets" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:dependency="notifications_key_3"
+        android:key="notifications_key_3_conjuctions"
+        android:summary="@string/pref_description_key_3_conjunctions"
+        android:title="@string/pref_title_key_3_conjunctions" />
+    <ListPreference
+        android:defaultValue="20"
+        android:dependency="notifications_key_3"
+        android:entries="@array/pref_title_key_3_conjuctions_titles"
+        android:entryValues="@array/pref_title_key_3_conjunctions_values"
+        android:key="notifications_key_3_conjunctions_distance"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_key_3_conjunctions_distance" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_4"
+        android:summary="@string/pref_description_key_4"
+        android:title="@string/pref_title_key_4" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_5"
+        android:summary="@string/pref_description_key_5"
+        android:title="@string/pref_title_key_5" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_6"
+        android:summary="@string/pref_description_key_6"
+        android:title="@string/pref_title_key_6" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:dependency="notifications_key_6"
+        android:key="notifications_key_6_satellite_iss"
+        android:title="@string/pref_title_key_6_satellite_iss" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:dependency="notifications_key_6"
+        android:key="notifications_key_6_satellite_iridium"
+        android:title="@string/pref_title_key_6_satellite_iridium" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:dependency="notifications_key_6"
+        android:key="notifications_key_6_satellite_other"
+        android:title="@string/pref_title_key_6_satellite_other" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_7"
+        android:summary="@string/pref_description_key_7"
+        android:title="@string/pref_title_key_7" />
+    <ListPreference
+        android:defaultValue="Aries"
+        android:dependency="notifications_key_7"
+        android:entries="@array/pref_title_key_7_constellations_titles"
+        android:entryValues="@array/pref_title_key_7_constellations_titles"
+        android:key="notifications_key_7_constellations"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/pref_title_key_7_constellations" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_8"
+        android:summary="@string/pref_description_key_8"
+        android:title="@string/pref_title_key_8" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="notifications_key_9"
+        android:summary="@string/pref_description_key_9"
+        android:title="@string/pref_title_key_9" />
+
+</PreferenceScreen>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- pop up layout dimensions scroll -->
+    <integer name="pop_up_scroll_height">919</integer>
+
+    <!-- motion event custom tap durations – for us old folks -->
+    <integer name="double_tap_duration">300</integer>
+    <integer name="jay_double_tap_duration">1200</integer>
+
+</resources>
