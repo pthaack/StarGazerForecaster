@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_location"
+            android:icon="@drawable/ic_location_library_black_24dp"
+            android:title="@string/nav_location" />
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_event_calendar_black_24dp"
+            android:title="@string/nav_calendar" />
+    </group>
+
+    <item android:title="@string/nav_group_communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/nav_share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/nav_send" />
+            <item
+                android:id="@+id/nav_sync"
+                android:icon="@android:drawable/ic_popup_sync"
+                android:title="@string/nav_sync" />
+        </menu>
+    </item>
+
+    <item android:title=" ">
+        <menu>
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/nav_exit" />
+        </menu>
+    </item>
+
+</menu>

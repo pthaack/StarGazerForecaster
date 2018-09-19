@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#97111a</color>
+    <color name="backgroundColorDefault">#FF0000B6</color>
+    <color name="backgroundSkyZenith">#FF12151A</color>
+    <color name="backgroundSkyHorizon">#FF1F223E</color>
+    <color name="foregroundSkySun">#FFFFFFFF</color>
+    <color name="foregroundSkyDeneb">#FFCCCCFF</color>
+    <color name="foregroundSkyAntares">#FFFFCCCC</color>
+</resources>

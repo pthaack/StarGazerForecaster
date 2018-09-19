@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="astroforecastCSS.css"?>
+<astroforecast>
+<comment><![CDATA[Array
+(
+    [results] => Array
+        (
+            [0] => Array
+                (
+                    [elevation] => 145.12217712402
+                    [location] => Array
+                        (
+                            [lat] => 43.6515952
+                            [lng] => -79.5692296
+                        )
+
+                    [resolution] => 19.08790397644
+                )
+
+        )
+
+    [status] => OK
+)
+ ]]></comment> <observatory>
+  <comment>For the night starting at 8:55pm on Monday 4th June 2018</comment>
+  <observatory>Phil's Balcony Observatory</observatory>
+  <latitude>43.6515952</latitude>
+  <longitude>-79.5692296</longitude>
+  <comment>Elevation:</comment>  <elevation>145.12217712402</elevation>
+  <x-map1-coordinate>367</x-map1-coordinate>
+  <y-map1-coordinate>450</y-map1-coordinate>
+  <x-map2-coordinate>500</x-map2-coordinate>
+  <y-map2-coordinate>315</y-map2-coordinate>
+  <timezone>-4</timezone>
+  <sunrise>5</sunrise>
+  <sunset>20</sunset>
+  <suntimes>
+   <comment>Sun times</comment>
+   <transit atomic="1528132605">20180604 13h16</transit>
+   <sunset atomic="1528160141">20180604 20h55</sunset>
+   <civiltwilightends atomic="1528162258">20180604 21h30</civiltwilightends>
+   <nauticaltwilightends atomic="1528165012">20180604 22h16</nauticaltwilightends>
+   <astrotwilightends atomic="1528168408">20180604 23h13</astrotwilightends>
+   <opposition atomic="1528175810">20180605 01h16</opposition>
+   <astrotwilightbegins atomic="1528183148">20180605 03h19</astrotwilightbegins>
+   <nauticaltwilightbegins atomic="1528186565">20180605 04h16</nauticaltwilightbegins>
+   <civiltwilightbegins atomic="1528189327">20180605 05h02</civiltwilightbegins>
+   <sunrise atomic="1528191449">20180605 05h37</sunrise>
+  </suntimes>
+  <moontimes>
+   <comment>Moon times</comment>
+   <moonrise atomic="1528176310">20180605 01h25</moonrise>
+   <ra radian="5.7736163117278">22.053589812659</ra>
+   <dec radian="-0.24597343214307">-14.093239534145</dec>
+   <phase>0.70414268859795</phase>
+   <illum>0.64207989798302</illum>
+   <phasename>Third Quarter</phasename>
+   <ra radian="5.6669414234402">21.646121754065</ra>
+   <dec radian="-0.27237196189988">-15.605763874561</dec>
+   <moonset atomic="1528214288">20180605 11h58</moonset>
+   <ra radian="5.865737773478">22.405467876717</ra>
+   <dec radian="-0.22056048078219">-12.637184676196</dec>
+  </moontimes>
+ </observatory>
+ <night>
+  <date>2018060400</date>
+  <hour img="017">13h00</hour><atom>1528131600</atom>
+  <hour img="018">14h00</hour><atom>1528135200</atom>
+  <hour img="019">15h00</hour><atom>1528138800</atom>
+  <hour img="020">16h00</hour><atom>1528142400</atom>
+  <hour img="021">17h00</hour><atom>1528146000</atom>
+  <hour img="022">18h00</hour><atom>1528149600</atom>
+  <hour img="023">19h00</hour><atom>1528153200</atom>
+  <hour img="024">20h00</hour><atom>1528156800</atom>
+  <hour img="025">21h00</hour><atom>1528160400</atom>
+  <hour img="026">22h00</hour><atom>1528164000</atom>
+  <hour img="027">23h00</hour><atom>1528167600</atom>
+  <hour img="028">00h00</hour><atom>1528171200</atom>
+  <hour img="029">01h00</hour><atom>1528174800</atom>
+  <hour img="030">02h00</hour><atom>1528178400</atom>
+  <hour img="031">03h00</hour><atom>1528182000</atom>
+  <hour img="032">04h00</hour><atom>1528185600</atom>
+  <hour img="033">05h00</hour><atom>1528189200</atom>
+  <hour img="034">06h00</hour><atom>1528192800</atom>
+  <hour img="035">07h00</hour><atom>1528196400</atom>
+  <hour img="036">08h00</hour><atom>1528200000</atom>
+  <hour img="037">09h00</hour><atom>1528203600</atom>
+  <hour img="038">10h00</hour><atom>1528207200</atom>
+  <hour img="039">11h00</hour><atom>1528210800</atom>
+  <hour img="040">12h00</hour><atom>1528214400</atom>
+  <hour img="041">13h00</hour><atom>1528218000</atom>
+  <hour img="042">14h00</hour><atom>1528221600</atom>
+  <hour img="043">15h00</hour><atom>1528225200</atom>
+  <hour img="044">16h00</hour><atom>1528228800</atom>
+  <hour img="045">17h00</hour><atom>1528232400</atom>
+ </night>
+ <comment>
+  $location->get_astrotwilightends()="1528168408"
+  $location->get_astrotwilightbegins()="1528176310"
+  $intDarknessExtension="0"
+ </comment>
+ <hour time="21h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_025.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_025.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#003F7F</colour>
+   <text>Clear</text>
+   <rating>10</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_025.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_025.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#2C6CAC</colour>
+   <text>Above average</text>
+   <rating>4</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_024.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_024.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_025.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_025.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#95D5D5</colour>
+   <text>28 to 45 km/hr</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_025.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_025.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#94FE6A</colour>
+   <text>60% to 65%</text>
+   <rating>7</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_025.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_025.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#FE9E00</colour>
+   <text>15C to 20C</text>
+   <rating>20</rating>
+  </weather>
+  <viewing>
+   <clock>21h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="22h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_026.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_026.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#003F7F</colour>
+   <text>Clear</text>
+   <rating>10</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_026.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_026.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#63A3E3</colour>
+   <text>Average</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_027.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_026.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_026.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#95D5D5</colour>
+   <text>28 to 45 km/hr</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_026.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_026.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#94FE6A</colour>
+   <text>60% to 65%</text>
+   <rating>7</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_026.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_026.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#FEDE00</colour>
+   <text>10C to 15C</text>
+   <rating>15</rating>
+  </weather>
+  <viewing>
+   <clock>22h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="23h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_027.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#003F7F</colour>
+   <text>Clear</text>
+   <rating>10</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_027.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#2C6CAC</colour>
+   <text>Above average</text>
+   <rating>4</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_027.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_027.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#63A3E3</colour>
+   <text>19 to 27 km/hr</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_027.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#94FE6A</colour>
+   <text>60% to 65%</text>
+   <rating>7</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_027.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#FEDE00</colour>
+   <text>10C to 15C</text>
+   <rating>15</rating>
+  </weather>
+  <viewing>
+   <clock>23h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="00h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_028.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_028.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#2767A7</colour>
+   <text>20% covered</text>
+   <rating>8</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_028.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_028.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#63A3E3</colour>
+   <text>Average</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_027.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_027.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_028.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_028.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#2C6CAC</colour>
+   <text>9 to 18 km/hr</text>
+   <rating>4</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_028.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_028.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#EAFB16</colour>
+   <text>65% to 70%</text>
+   <rating>6</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_028.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_028.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#FEDE00</colour>
+   <text>10C to 15C</text>
+   <rating>15</rating>
+  </weather>
+  <viewing>
+   <clock>00h00</clock>
+   <skies>Cloudy, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="01h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_029.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_029.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#FBFBFB</colour>
+   <text>Overcast</text>
+   <rating>0</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_029.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_029.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#F9F9F9</colour>
+   <text>Too cloudy to forecast</text>
+   <rating>0</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_030.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_029.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_029.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#63A3E3</colour>
+   <text>19 to 27 km/hr</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_029.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_029.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#FE3401</colour>
+   <text>80% to 85%</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_029.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_029.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#FEDE00</colour>
+   <text>10C to 15C</text>
+   <rating>15</rating>
+  </weather>
+  <viewing>
+   <clock>01h00</clock>
+   <skies>Overcast</skies>
+  </viewing>
+ </hour>
+ <hour time="02h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_030.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#135393</colour>
+   <text>10% covered</text>
+   <rating>9</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_030.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#63A3E3</colour>
+   <text>Average</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_030.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_030.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#2C6CAC</colour>
+   <text>9 to 18 km/hr</text>
+   <rating>4</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_030.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#EA0000</colour>
+   <text>85% to 90%</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_030.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#FEDE00</colour>
+   <text>10C to 15C</text>
+   <rating>15</rating>
+  </weather>
+  <viewing>
+   <clock>02h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="03h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_031.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_031.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#003F7F</colour>
+   <text>Clear</text>
+   <rating>10</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_031.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_031.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#63A3E3</colour>
+   <text>Average</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_030.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_030.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_031.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_031.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#63A3E3</colour>
+   <text>19 to 27 km/hr</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_031.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_031.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#EA0000</colour>
+   <text>85% to 90%</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_031.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_031.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#FEDE00</colour>
+   <text>10C to 15C</text>
+   <rating>15</rating>
+  </weather>
+  <viewing>
+   <clock>03h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="04h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_032.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_032.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#003F7F</colour>
+   <text>Clear</text>
+   <rating>10</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_032.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_032.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#63A3E3</colour>
+   <text>Average</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_033.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_032.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_032.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#63A3E3</colour>
+   <text>19 to 27 km/hr</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_032.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_032.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#EA0000</colour>
+   <text>85% to 90%</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_032.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_032.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#A2FE5A</colour>
+   <text>5C to 10C</text>
+   <rating>10</rating>
+  </weather>
+  <viewing>
+   <clock>04h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="05h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_033.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#003F7F</colour>
+   <text>Clear</text>
+   <rating>10</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_033.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#63A3E3</colour>
+   <text>Average</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_033.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_033.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#63A3E3</colour>
+   <text>19 to 27 km/hr</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_033.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#B70000</colour>
+   <text>90% to 95%</text>
+   <rating>1</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_033.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#A2FE5A</colour>
+   <text>5C to 10C</text>
+   <rating>10</rating>
+  </weather>
+  <viewing>
+   <clock>05h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <hour time="06h00">
+  <map mapval="northeast">
+   <local>data/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_034.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@northeast_I_ASTRO_nt_034.png?1</remote>
+  </map>
+  <weather mapval="northeast">
+   <colour>#003F7F</colour>
+   <text>Clear</text>
+   <rating>10</rating>
+  </weather>
+  <map mapval="transparency">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_transp_034.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_transp_034.png?1</remote>
+  </map>
+  <weather mapval="transparency">
+   <colour>#63A3E3</colour>
+   <text>Average</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="seeing">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_033.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_seeing_033.png?1</remote>
+  </map>
+  <weather mapval="seeing">
+   <colour>#95D5D5</colour>
+   <text>Poor 2/5</text>
+   <rating>2</rating>
+  </weather>
+  <map mapval="wind">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_uv_034.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_uv_034.png?1</remote>
+  </map>
+  <weather mapval="wind">
+   <colour>#63A3E3</colour>
+   <text>19 to 27 km/hr</text>
+   <rating>3</rating>
+  </weather>
+  <map mapval="humidity">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_hr_034.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_hr_034.png?1</remote>
+  </map>
+  <weather mapval="humidity">
+   <colour>#B70000</colour>
+   <text>90% to 95%</text>
+   <rating>1</rating>
+  </weather>
+  <map mapval="temperature">
+   <local>data/2018060400_054_R1_north@america@astro_I_ASTRO_tt_034.png</local>
+   <remote>http://weather.gc.ca/data/prog/regional/2018060400/2018060400_054_R1_north@america@astro_I_ASTRO_tt_034.png?1</remote>
+  </map>
+  <weather mapval="temperature">
+   <colour>#A2FE5A</colour>
+   <text>5C to 10C</text>
+   <rating>10</rating>
+  </weather>
+  <viewing>
+   <clock>06h00</clock>
+   <skies>Clear, with unknown transparency.</skies>
+  </viewing>
+ </hour>
+ <viewing>
+  <evening>
+   <clockbegin atomic="1528160141">20180604 20h55</clockbegin>
+   <clockend atomic="1528164000">20180604 22h00</clockend>
+   <view>Clear, with a lot of haze</view>
+  </evening>
+  <darkestnight>
+   <clockbegin atomic="1528168408">20180604 23h13</clockbegin>
+   <clockend atomic="1528176310">20180605 01h25</clockend>
+   <view>Too cloudy</view>
+  </darkestnight>
+  <overnight>
+   <clockbegin atomic="1528164000">20180604 22h00</clockbegin>
+   <clockend atomic="1528185600">20180605 04h00</clockend>
+   <view>Mostly clear</view>
+  </overnight>
+  <morning>
+   <clockbegin atomic="1528185600">20180605 04h00</clockbegin>
+   <clockend atomic="1528191449">20180605 05h37</clockend>
+   <view>Clear, with a lot of haze</view>
+  </morning>
+ </viewing>
+ <credits>
+Big thanks to Allan Rahill of the Canadian Meteorological Center (weather.gc.ca) for providing the maps.
+ </credits>
+ <credits>
+Big thanks to Attila Danko of Clear Sky Chart (cleardarksky.com) for providing the locations (There are charts for 5518 locations.), and inspiration.
+ </credits>
+</astroforecast>

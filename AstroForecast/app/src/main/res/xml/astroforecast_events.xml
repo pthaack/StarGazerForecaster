@@ -1,0 +1,1485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="astroforecastCSS.css"?>
+<astroforecast>
+ <comment>Lat:43.6515952 Lng:-79.5692296 Alt:145.12217712402</comment>
+ <comment>Low</comment>
+ <comment>Low</comment>
+ <comment><![CDATA[Preloaded Algol variable
+AlgolStar Object
+(
+    [fltPeriod:protected] => 247736.7936
+    [dteMinimum:protected] => DateTime Object
+        (
+            [date] => 2018-06-11 05:14:11.000000
+            [timezone_type] => 3
+            [timezone] => UTC
+        )
+
+    [fltJDoffset:AlgolStar:private] => 2440587.5
+    [fltJD2TS:AlgolStar:private] => 86400
+    [tsEpoch:AlgolStar:private] => 436670265.6
+    [_varibilityElements:AlgolStar:private] => Array
+        (
+            [BetPer] => Array
+                (
+                    [starname] => BetPer
+                    [max] => 2.12
+                    [min] => 3.39
+                    [ra] => 3.133369861
+                    [dec] => 40.95564722
+                    [epoch] => 2445641.554
+                    [period] => 2.867324
+                )
+
+            [Algol] => Array
+                (
+                    [starname] => Algol
+                    [max] => 2.12
+                    [min] => 3.39
+                    [ra] => 3.133369861
+                    [dec] => 40.95564722
+                    [epoch] => 2445641.554
+                    [period] => 2.867324
+                )
+
+        )
+
+    [fltMaxMagnitude:protected] => 2.12
+    [fltMinMagnitude:protected] => 3.39
+    [strObjectName:protected] => Algol
+    [arrObjectElements:protected] => Array
+        (
+            [starname] => Algol
+            [max] => 2.12
+            [min] => 3.39
+            [period] => 2.8673
+            [ra] => 3.133369861
+            [dec] => 40.95564722
+        )
+
+    [fltRightAscension:protected] => 3.133369861
+    [fltDeclination:protected] => 40.95564722
+    [fltMagnitude:protected] => 2.12
+    [tsRise:protected] => 
+    [tsSet:protected] => 
+    [tsPeak:protected] => 
+    [tsBttm:protected] => 
+)
+ ]]>
+</comment>
+ <comment><![CDATA[Generated Algol variable
+AlgolStar Object
+(
+    [fltPeriod:protected] => 247736.7936
+    [dteMinimum:protected] => DateTime Object
+        (
+            [date] => 2018-06-14 02:03:08.000000
+            [timezone_type] => 3
+            [timezone] => UTC
+        )
+
+    [fltJDoffset:AlgolStar:private] => 2440587.5
+    [fltJD2TS:AlgolStar:private] => 86400
+    [tsEpoch:AlgolStar:private] => 436670265.6
+    [_varibilityElements:AlgolStar:private] => Array
+        (
+            [BetPer] => Array
+                (
+                    [starname] => BetPer
+                    [max] => 2.12
+                    [min] => 3.39
+                    [ra] => 3.133369861
+                    [dec] => 40.95564722
+                    [epoch] => 2445641.554
+                    [period] => 2.867324
+                )
+
+            [Algol] => Array
+                (
+                    [starname] => Algol
+                    [max] => 2.12
+                    [min] => 3.39
+                    [ra] => 3.133369861
+                    [dec] => 40.95564722
+                    [epoch] => 2445641.554
+                    [period] => 2.867324
+                )
+
+        )
+
+    [fltMaxMagnitude:protected] => 2.12
+    [fltMinMagnitude:protected] => 3.39
+    [strObjectName:protected] => Beta Persei
+    [arrObjectElements:protected] => Array
+        (
+            [starname] => Beta Persei
+            [max] => 2.12
+            [min] => 3.39
+            [date] => 1528701741
+            [epoch] => 2445641.554
+            [period] => 2.867324
+            [ra] => 3.133369861
+            [dec] => 40.95564722
+        )
+
+    [fltRightAscension:protected] => 3.133369861
+    [fltDeclination:protected] => 40.95564722
+    [fltMagnitude:protected] => 2.12
+    [tsRise:protected] => 
+    [tsSet:protected] => 
+    [tsPeak:protected] => 
+    [tsBttm:protected] => 
+)
+ ]]>
+</comment>
+ <comment><![CDATA[MeteorShower Object
+(
+    [_showerElements:MeteorShower:private] => Array
+        (
+            [Perseids] => Array
+                (
+                    [showername] => Perseids
+                    [begin] => Jul 17
+                    [peak] => Aug 11
+                    [end] => Aug 24
+                    [time] => 00h00
+                    [ra] => 3.4
+                    [dec] => 45.4
+                    [mag] => 2
+                    [rate] => 20
+                )
+
+            [Draconids] => Array
+                (
+                    [showername] => Draconids
+                    [begin] => Oct 7
+                    [peak] => Oct 7
+                    [end] => Oct 8
+                    [time] => 22h00
+                    [ra] => 6.4
+                    [dec] => 14.9
+                    [mag] => 2.5
+                    [rate] => 20
+                )
+
+            [Leonids] => Array
+                (
+                    [showername] => Leonids
+                    [begin] => Nov 6
+                    [peak] => Nov 18
+                    [end] => Nov 30
+                    [time] => 02h00
+                    [ra] => 10.5
+                    [dec] => 16.8
+                    [mag] => 2.5
+                    [rate] => 15
+                )
+
+            [Orionids] => Array
+                (
+                    [showername] => Orionids
+                    [begin] => Oct 2
+                    [peak] => Oct 22
+                    [end] => Nov 7
+                    [time] => 02h00
+                    [ra] => 6.4
+                    [dec] => 14.9
+                    [mag] => 2.5
+                    [rate] => 20
+                )
+
+            [Geminids] => Array
+                (
+                    [showername] => Geminids
+                    [begin] => Dec 7
+                    [peak] => Dec 14
+                    [end] => Dec 17
+                    [time] => 22h00
+                    [ra] => 7.1
+                    [dec] => 24.3
+                    [mag] => 2.6
+                    [rate] => 120
+                )
+
+            [Quadrantids] => Array
+                (
+                    [showername] => Quadrantids
+                    [begin] => Dec 28
+                    [peak] => Jan 4
+                    [end] => Jan 12
+                    [time] => 04h00
+                    [ra] => 15.5
+                    [dec] => 50
+                    [mag] => 2.1
+                    [rate] => 120
+                )
+
+            [Lyrids] => Array
+                (
+                    [showername] => Lyrids
+                    [begin] => Apr 16
+                    [peak] => Apr 24
+                    [end] => Apr 25
+                    [time] => 04h00
+                    [ra] => 18.8
+                    [dec] => 35.9
+                    [mag] => 2.1
+                    [rate] => 18
+                )
+
+            [eta-Aquariids] => Array
+                (
+                    [showername] => eta-Aquariids
+                    [begin] => Apr 19
+                    [peak] => May 7
+                    [end] => May 28
+                    [time] => 02h00
+                    [ra] => 22.5
+                    [dec] => -10.8
+                    [mag] => 2.4
+                    [rate] => 55
+                )
+
+            [Arietids] => Array
+                (
+                    [showername] => Arietids
+                    [begin] => May 22
+                    [peak] => Jun 9
+                    [end] => Jul 2
+                    [time] => 02h00
+                    [ra] => 2.4
+                    [dec] => 22.8
+                    [mag] => 2
+                    [rate] => 54
+                )
+
+        )
+
+    [strName:MeteorShower:private] => Arietids
+    [dteBegin:MeteorShower:private] => DateTime Object
+        (
+            [date] => 2018-05-22 02:00:00.000000
+            [timezone_type] => 3
+            [timezone] => America/Toronto
+        )
+
+    [dtePeak:MeteorShower:private] => DateTime Object
+        (
+            [date] => 2018-06-09 02:00:00.000000
+            [timezone_type] => 3
+            [timezone] => America/Toronto
+        )
+
+    [dteEnd:MeteorShower:private] => DateTime Object
+        (
+            [date] => 2018-07-02 02:00:00.000000
+            [timezone_type] => 3
+            [timezone] => America/Toronto
+        )
+
+    [dteTime:MeteorShower:private] => DateTime Object
+        (
+            [date] => 2018-06-08 02:00:00.000000
+            [timezone_type] => 3
+            [timezone] => America/Chicago
+        )
+
+    [fltRA:MeteorShower:private] => 2.4
+    [fltDec:MeteorShower:private] => 22.8
+    [fltMagnitude:MeteorShower:private] => 2
+    [fltRate:MeteorShower:private] => 54
+)
+ ]]>
+</comment>
+ <observatory>
+  <latitude>43.6515952</latitude>
+  <longitude>-79.5692296</longitude>
+  <elevation>145.12217712402</elevation>
+ </observatory>
+ <parameters>
+  <minauroralevel>6</minauroralevel>
+  <maxangdist>20</maxangdist>
+ </parameters>
+ <events>
+  <aurora>
+   <auroranight>Low</auroranight>
+   <aurorahour>0</aurorahour>
+   <start atomic="1533954416">22h26 EDT</start>
+   <stop atomic="1533975670">04h21 EDT</stop>
+  </aurora>
+  <conjunction>
+   <object>
+    <starname>Aldebaran</starname>
+    <ra>4.598333333</ra>
+    <dec>16.50916667</dec>
+    <mag>0.85</mag>
+    <alt>62.783069526466</alt>
+    <az>175.02454650305</az>
+    <rise atomic="1528454199">06h36 EDT</rise>
+    <set atomic="1528504599">20h36 EDT</set>
+    <start atomic="1528506808">21h13 EDT</start>
+    <stop atomic="1528536078">05h21 EDT</stop>
+   </object>
+   <object>
+    <starname>Mercury</starname>
+    <ra>5.3270564388543</ra>
+    <dec>24.226428483652</dec>
+    <mag>0.5</mag>
+    <alt>70.522540195963</alt>
+    <az>184.76111050057</az>
+    <rise atomic="1528454199">06h36 EDT</rise>
+    <set atomic="1528508199">21h36 EDT</set>
+    <start atomic="1528506435">21h07 EDT</start>
+    <stop atomic="1528536452">05h27 EDT</stop>
+   
+   </object>
+   <angdistance value="12.828322535259">12.83</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>El Nath</starname>
+    <ra>5.436666667</ra>
+    <dec>28.6075</dec>
+    <mag>1.68</mag>
+    <alt>74.955712259404</alt>
+    <az>180.32114989007</az>
+    <rise atomic="1528450599">05h36 EDT</rise>
+    <set atomic="1528511799">22h36 EDT</set>
+    <start atomic="1528507694">21h28 EDT</start>
+    <stop atomic="1528535191">05h06 EDT</stop>
+   </object>
+   <begins atomic="1528507694">21h28 EDT</begins>
+   <ends atomic="1528511799">22h36 EDT</ends>
+   <object>
+    <starname>Mercury</starname>
+    <ra>5.3270564388543</ra>
+    <dec>24.226428483652</dec>
+    <mag>0.5</mag>
+    <alt>70.522540195963</alt>
+    <az>184.76111050057</az>
+    <rise atomic="1528454199">06h36 EDT</rise>
+    <set atomic="1528508199">21h36 EDT</set>
+    <start atomic="1528506435">21h07 EDT</start>
+    <stop atomic="1528536452">05h27 EDT</stop>
+   
+   </object>
+   <angdistance value="4.6218998905607">4.62</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Alhena</starname>
+    <ra>6.628333333</ra>
+    <dec>16.39916667</dec>
+    <mag>1.9</mag>
+    <alt>62.648519181047</alt>
+    <az>174.27371123531</az>
+    <rise atomic="1528461399">08h36 EDT</rise>
+    <set atomic="1528511799">22h36 EDT</set>
+    <start atomic="1528507929">21h32 EDT</start>
+    <stop atomic="1528534956">05h02 EDT</stop>
+   </object>
+   <begins atomic="1528507929">21h32 EDT</begins>
+   <ends atomic="1528511799">22h36 EDT</ends>
+   <object>
+    <starname>Mercury</starname>
+    <ra>5.3270564388543</ra>
+    <dec>24.226428483652</dec>
+    <mag>0.5</mag>
+    <alt>70.522540195963</alt>
+    <az>184.76111050057</az>
+    <rise atomic="1528454199">06h36 EDT</rise>
+    <set atomic="1528508199">21h36 EDT</set>
+    <start atomic="1528506435">21h07 EDT</start>
+    <stop atomic="1528536452">05h27 EDT</stop>
+   
+   </object>
+   <angdistance value="19.908527957912">19.91</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Alhena</starname>
+    <ra>6.628333333</ra>
+    <dec>16.39916667</dec>
+    <mag>1.9</mag>
+    <alt>62.648519181047</alt>
+    <az>174.27371123531</az>
+    <rise atomic="1528461399">08h36 EDT</rise>
+    <set atomic="1528511799">22h36 EDT</set>
+    <start atomic="1528507929">21h32 EDT</start>
+    <stop atomic="1528534956">05h02 EDT</stop>
+   </object>
+   <begins atomic="1528507929">21h32 EDT</begins>
+   <ends atomic="1528511799">22h36 EDT</ends>
+   <object>
+    <starname>Venus</starname>
+    <ra>7.732435507712</ra>
+    <dec>23.317223341808</dec>
+    <mag>-3.8</mag>
+    <alt>69.365153982193</alt>
+    <az>168.8403505677</az>
+    <rise atomic="1528461399">08h36 EDT</rise>
+    <set atomic="1528515399">23h36 EDT</set>
+    <start atomic="1528503874">20h24 EDT</start>
+    <stop atomic="1528539017">06h10 EDT</stop>
+   
+   </object>
+   <angdistance value="17.043877466534">17.04</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Pollux</starname>
+    <ra>7.755</ra>
+    <dec>28.026</dec>
+    <mag>1.15</mag>
+    <alt>73.942970778209</alt>
+    <az>165.17696094481</az>
+    <rise atomic="1528461399">08h36 EDT</rise>
+    <set atomic="1528518999">00h36 EDT</set>
+    <start atomic="1528507129">21h18 EDT</start>
+    <stop atomic="1528535758">05h15 EDT</stop>
+   </object>
+   <begins atomic="1528507129">21h18 EDT</begins>
+   <ends atomic="1528518999">00h36 EDT</ends>
+   <object>
+    <starname>Venus</starname>
+    <ra>7.732435507712</ra>
+    <dec>23.317223341808</dec>
+    <mag>-3.8</mag>
+    <alt>69.365153982193</alt>
+    <az>168.8403505677</az>
+    <rise atomic="1528461399">08h36 EDT</rise>
+    <set atomic="1528515399">23h36 EDT</set>
+    <start atomic="1528503874">20h24 EDT</start>
+    <stop atomic="1528539017">06h10 EDT</stop>
+   
+   </object>
+   <angdistance value="4.7186478911526">4.72</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Zubenelgenubi</starname>
+    <ra>14.84666667</ra>
+    <dec>-16.04166667</dec>
+    <mag>2.75</mag>
+    <alt>30.079983126837</alt>
+    <az>173.68313511059</az>
+    <rise atomic="1528497399">18h36 EDT</rise>
+    <set atomic="1528533399">04h36 EDT</set>
+    <start atomic="1528509080">21h51 EDT</start>
+    <stop atomic="1528533802">04h43 EDT</stop>
+   </object>
+   <begins atomic="1528509080">21h51 EDT</begins>
+   <ends atomic="1528533399">04h36 EDT</ends>
+   <object>
+    <starname>Jupiter</starname>
+    <ra>14.849818321912</ra>
+    <dec>-15.150973346344</dec>
+    <mag>-1.6</mag>
+    <alt>30.963757001711</alt>
+    <az>173.54406401601</az>
+    <rise atomic="1528497399">18h36 EDT</rise>
+    <set atomic="1528533399">04h36 EDT</set>
+    <start atomic="1528505048">20h44 EDT</start>
+    <stop atomic="1528537841">05h50 EDT</stop>
+   
+   </object>
+   <angdistance value="0.89185646396072">0.89</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Dschubba</starname>
+    <ra>16.005</ra>
+    <dec>-22.62166667</dec>
+    <mag>2.29</mag>
+    <alt>23.413608275084</alt>
+    <az>187.06326992084</az>
+    <rise atomic="1528504599">20h36 EDT</rise>
+    <set atomic="1528533399">04h36 EDT</set>
+    <start atomic="1528508439">21h40 EDT</start>
+    <stop atomic="1528534445">04h54 EDT</stop>
+   </object>
+   <begins atomic="1528508439">21h40 EDT</begins>
+   <ends atomic="1528533399">04h36 EDT</ends>
+   <object>
+    <starname>Jupiter</starname>
+    <ra>14.849818321912</ra>
+    <dec>-15.150973346344</dec>
+    <mag>-1.6</mag>
+    <alt>30.963757001711</alt>
+    <az>173.54406401601</az>
+    <rise atomic="1528497399">18h36 EDT</rise>
+    <set atomic="1528533399">04h36 EDT</set>
+    <start atomic="1528505048">20h44 EDT</start>
+    <stop atomic="1528537841">05h50 EDT</stop>
+   
+   </object>
+   <angdistance value="18.016721618145">18.02</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Nunki</starname>
+    <ra>18.921</ra>
+    <dec>-29.29671667</dec>
+    <mag>2.06</mag>
+    <alt>16.798490384659</alt>
+    <az>173.95696220976</az>
+    <rise atomic="1528515399">23h36 EDT</rise>
+    <set atomic="1528457799">07h36 EDT</set>
+    <start atomic="1528508119">21h35 EDT</start>
+    <stop atomic="1528534766">04h59 EDT</stop>
+   </object>
+   <begins atomic="1528515399">23h36 EDT</begins>
+   <ends atomic="1528534766">04h59 EDT</ends>
+   <object>
+    <starname>Saturn</starname>
+    <ra>18.529772619639</ra>
+    <dec>-22.364969363819</dec>
+    <mag>0.4</mag>
+    <alt>23.979668476167</alt>
+    <az>179.22293501538</az>
+    <rise atomic="1528511799">22h36 EDT</rise>
+    <set atomic="1528457799">07h36 EDT</set>
+    <start atomic="1528506328">21h05 EDT</start>
+    <stop atomic="1528536559">05h29 EDT</stop>
+   
+   </object>
+   <angdistance value="8.714891139619">8.71</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Mira</starname>
+    <ra>2.316886694</ra>
+    <dec>-2.9776375</dec>
+    <mag>7.4170296069396</mag>
+    <alt>43.343647213975</alt>
+    <az>182.42874529136</az>
+    <rise atomic="1528450599">05h36 EDT</rise>
+    <set atomic="1528490199">16h36 EDT</set>
+    <start atomic="1528514295">23h18 EDT</start>
+    <stop atomic="1528528568">03h16 EDT</stop>
+   </object>
+   <object>
+    <starname>Moon</starname>
+    <ra>1.2451878745599</ra>
+    <dec>2.5315589875521</dec>
+    <mag>-3.7942789593605</mag>
+    <alt>48.298009136936</alt>
+    <az>168.21333350621</az>
+    <rise atomic="1528440640">02h50 EDT</rise>
+    <set atomic="1528484817">15h06 EDT</set>
+    <start atomic="1528503877">20h24 EDT</start>
+    <stop atomic="1528539014">06h10 EDT</stop>
+   
+   </object>
+   <angdistance value="16.993188660212">16.99</angdistance><statement> deg</statement>
+  </conjunction>
+  <satellite>
+   <vehicle>Mayak</vehicle>
+   <mag>1.1</mag>
+   <rise atomic="1528514659">23h24 EDT</rise>
+   <peak atomic="1528514717">23h25 EDT</peak>
+   <set atomic="1528514717">23h25 EDT</set>
+   <link>http://heavens-above.com/passdetails.aspx?lat=43.6515952&amp;lng=-79.5692296&amp;loc=Unspecified&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en&amp;satid=42830&amp;mjd=58278.1425644292</link>
+  </satellite>
+  <satellite>
+   <vehicle>ISS</vehicle>
+   <mag>-1.2</mag>
+   <rise atomic="1528596162">22h02 EDT</rise>
+   <peak atomic="1528596241">20180609 22h04 EDT</peak>
+   <set atomic="1528596320">22h05 EDT</set>
+   <link>http://heavens-above.com/passdetails.aspx?lat=43.6515952&amp;lng=-79.5692296&amp;loc=Unspecified&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en&amp;satid=25544&amp;mjd=58279.0861275653&amp;type=V</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 83</vehicle>
+   <mag>-6.4</mag>
+   <peak atomic="1528512806">20180608 22h53 EDT</peak>
+   <distance>7 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=0&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 67</vehicle>
+   <mag>-7.4</mag>
+   <peak atomic="1528517525">20180609 00h12 EDT</peak>
+   <distance>4 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=1&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 80</vehicle>
+   <mag>0.0</mag>
+   <peak atomic="1528517963">20180609 00h19 EDT</peak>
+   <distance>50 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=2&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 56</vehicle>
+   <mag>-0.9</mag>
+   <peak atomic="1528598846">20180609 22h47 EDT</peak>
+   <distance>78 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=3&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 12</vehicle>
+   <mag>-0.6</mag>
+   <peak atomic="1528599172">20180609 22h52 EDT</peak>
+   <distance>85 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=4&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 52</vehicle>
+   <mag>0.2</mag>
+   <peak atomic="1528599396">20180609 22h56 EDT</peak>
+   <distance>112 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=5&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 66</vehicle>
+   <mag>-0.7</mag>
+   <peak atomic="1528602161">20180609 23h42 EDT</peak>
+   <distance>52 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=6&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 84</vehicle>
+   <mag>0.6</mag>
+   <peak atomic="1528684890">20180610 22h41 EDT</peak>
+   <distance>131 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=7&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 10</vehicle>
+   <mag>-2.4</mag>
+   <peak atomic="1528685441">20180610 22h50 EDT</peak>
+   <distance>50 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=8&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 83</vehicle>
+   <mag>0.8</mag>
+   <peak atomic="1528772033">20180611 22h53 EDT</peak>
+   <distance>153 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=9&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 50</vehicle>
+   <mag>0.2</mag>
+   <peak atomic="1528857523">20180612 22h38 EDT</peak>
+   <distance>125 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=10&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 12</vehicle>
+   <mag>-3.2</mag>
+   <peak atomic="1528857606">20180612 22h40 EDT</peak>
+   <distance>45 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=11&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 56</vehicle>
+   <mag>-2.4</mag>
+   <peak atomic="1528858073">20180612 22h47 EDT</peak>
+   <distance>55 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=12&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 66</vehicle>
+   <mag>-2.1</mag>
+   <peak atomic="1528860616">20180612 23h30 EDT</peak>
+   <distance>31 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=13&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 91</vehicle>
+   <mag>0.9</mag>
+   <peak atomic="1528880412">20180613 05h00 EDT</peak>
+   <distance>49 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=14&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 12</vehicle>
+   <mag>-2.7</mag>
+   <peak atomic="1528942017">20180613 22h06 EDT</peak>
+   <distance>37 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=15&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 50</vehicle>
+   <mag>-1.5</mag>
+   <peak atomic="1528942203">20180613 22h10 EDT</peak>
+   <distance>58 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=16&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 84</vehicle>
+   <mag>-5.1</mag>
+   <peak atomic="1528944120">20180613 22h42 EDT</peak>
+   <distance>34 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=17&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 10</vehicle>
+   <mag>0.3</mag>
+   <peak atomic="1528944675">20180613 22h51 EDT</peak>
+   <distance>149 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=18&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 65</vehicle>
+   <mag>-0.6</mag>
+   <peak atomic="1528947052">20180613 23h30 EDT</peak>
+   <distance>52 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=19&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 47</vehicle>
+   <mag>0.1</mag>
+   <peak atomic="1528960452">20180614 03h14 EDT</peak>
+   <distance>60 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=20&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 59</vehicle>
+   <mag>-4.9</mag>
+   <peak atomic="1528966443">20180614 04h54 EDT</peak>
+   <distance>7 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=21&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 53</vehicle>
+   <mag>-2.3</mag>
+   <peak atomic="1529028229">20180614 22h03 EDT</peak>
+   <distance>37 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=22&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 62</vehicle>
+   <mag>-1.5</mag>
+   <peak atomic="1529033290">20180614 23h28 EDT</peak>
+   <distance>39 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=23&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 95</vehicle>
+   <mag>-4.6</mag>
+   <peak atomic="1529052479">20180615 04h47 EDT</peak>
+   <distance>10 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=24&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <variable>
+   <starname>Algol</starname>
+   <ra>3.133369861</ra>
+   <dec>40.95564722</dec>
+   <alt>-0.77790954774643</alt>
+   <az>23.22680312829</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>2.12</mag>
+   <magmax>2.12</magmax>
+   <magmin>3.39</magmin>
+   <minimum atomic="1528694051">20180611 01h14 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>Beta Persei</starname>
+   <ra>3.133369861</ra>
+   <dec>40.95564722</dec>
+   <alt>-4.5295707955335</alt>
+   <az>349.8434628723</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>2.12</mag>
+   <magmax>2.12</magmax>
+   <magmin>3.39</magmin>
+   <minimum atomic="1528941788">20180613 22h03 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>Mira</starname>
+   <ra>2.316886694</ra>
+   <dec>-2.9776375</dec>
+   <alt>-5.6738142712284</alt>
+   <az>88.702987936178</az>
+   <rise atomic="1528450599">05h36 EDT</rise>
+   <set atomic="1528490199">16h36 EDT</set>
+   <mag>7.4170296069396</mag>
+   <magmax>2</magmax>
+   <magmin>10.1</magmin>
+   <minimum atomic="1534735416">20180819 23h23 EDT</minimum>
+   <maximum atomic="1515787257">20180112 15h00 EST</maximum>
+  </variable>
+  <variable>
+   <starname>Chi Cyg</starname>
+   <ra>32.91405556</ra>
+   <dec>117.5163417</dec>
+   <alt>29.399946174093</alt>
+   <az>330.38554680054</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>13.23110318389</mag>
+   <magmax>3.3</magmax>
+   <magmin>14.2</magmin>
+   <minimum atomic="1530403920">20180630 20h12 EDT</minimum>
+   <maximum atomic="1508525999">20171020 14h59 EDT</maximum>
+  </variable>
+  <variable>
+   <starname>Algol</starname>
+   <ra>3.133369861</ra>
+   <dec>40.95564722</dec>
+   <alt>-0.33865364047496</alt>
+   <az>24.276958429293</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>2.12</mag>
+   <magmax>2.12</magmax>
+   <magmin>3.39</magmin>
+   <minimum atomic="1534639734">20180818 20h48 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>Beta Persei</starname>
+   <ra>3.133369861</ra>
+   <dec>40.95564722</dec>
+   <alt>-4.7113106404105</alt>
+   <az>350.97079625597</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>2.12</mag>
+   <magmax>2.12</magmax>
+   <magmin>3.39</magmin>
+   <minimum atomic="1534887471">20180821 17h37 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>DelLib</starname>
+   <ra>15.01620833</ra>
+   <dec>8.518938889</dec>
+   <alt>39.364162436434</alt>
+   <az>238.81406806969</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>4.91</mag>
+   <magmax>4.91</magmax>
+   <magmin>5.9</magmin>
+   <minimum atomic="1534641465">20180818 21h17 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>uHer</starname>
+   <ra>17.2887778</ra>
+   <dec>33.1</dec>
+   <alt>77.784833248709</alt>
+   <az>212.89788777671</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>4.69</mag>
+   <magmax>4.69</magmax>
+   <magmin>5.37</magmin>
+   <minimum atomic="1534641465">20180818 21h17 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>R CMa</starname>
+   <ra>7.3244944</ra>
+   <dec>-16.39525</dec>
+   <alt>-56.1742012171</alt>
+   <az>316.29467785033</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>5.7</mag>
+   <magmax>5.7</magmax>
+   <magmin>6.34</magmin>
+   <minimum atomic="1534555065">20180817 21h17 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>Mira</starname>
+   <ra>2.316886694</ra>
+   <dec>-2.9776375</dec>
+   <alt>-5.6738142712284</alt>
+   <az>88.702987936178</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>10.002423933487</mag>
+   <magmax>2</magmax>
+   <magmin>10.1</magmin>
+   <minimum atomic="1534735416">20180819 23h23 EDT</minimum>
+   <maximum atomic="1515790713">20180112 15h58 EST</maximum>
+  </variable>
+  <variable>
+   <starname>Chi Cyg</starname>
+   <ra>19.8427555</ra>
+   <dec>32.91405556</dec>
+   <alt>16.754600244014</alt>
+   <az>60.193045956044</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>10.964061945597</mag>
+   <magmax>3.3</magmax>
+   <magmin>14.2</magmin>
+   <minimum atomic="1530403199">20180630 19h59 EDT</minimum>
+   <maximum atomic="1544227200">20181207 19h00 EST</maximum>
+  </variable>
+  <variable>
+   <starname>RR Sco</starname>
+   <ra>16.943844</ra>
+   <dec>-30.58005556</dec>
+   <alt>-13.634190478368</alt>
+   <az>240.52093309081</az>
+   <rise atomic="1534541169">17h26 EDT</rise>
+   <set atomic="1534566369">00h26 EDT</set>
+   <mag>8.1474025974026</mag>
+   <magmax>5</magmax>
+   <magmin>12.4</magmin>
+   <minimum atomic="1542153600">20181113 19h00 EST</minimum>
+   <maximum atomic="1528848000">20180612 20h00 EDT</maximum>
+  </variable>
+  <variable>
+   <starname>R Car</starname>
+   <ra>9.537386111</ra>
+   <dec>-62.78888889</dec>
+   <alt>-70.497355883802</alt>
+   <az>171.11637417079</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>7.0658387130608</mag>
+   <magmax>4.5</magmax>
+   <magmin>9.9</magmin>
+   <minimum atomic="1541808000">20181109 19h00 EST</minimum>
+   <maximum atomic="1527897599">20180601 19h59 EDT</maximum>
+  </variable>
+  <variable>
+   <starname>R Hya</starname>
+   <ra>13.49521389</ra>
+   <dec>-23.28130556</dec>
+   <alt>3.3144253681619</alt>
+   <az>127.04360204732</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>5.5527397260274</mag>
+   <magmax>3.5</magmax>
+   <magmin>10.9</magmin>
+   <minimum atomic="1525392000">20180503 20h00 EDT</minimum>
+   <maximum atomic="1538006400">20180926 20h00 EDT</maximum>
+  </variable>
+  <variable>
+   <starname>R Leo</starname>
+   <ra>9.792636111</ra>
+   <dec>11.42880556</dec>
+   <alt>-21.568863379145</alt>
+   <az>312.19040381455</az>
+   <rise atomic="1534505169">07h26 EDT</rise>
+   <set atomic="1534551969">20h26 EDT</set>
+   <mag>8.7985750209556</mag>
+   <magmax>4.5</magmax>
+   <magmin>9.9</magmin>
+   <minimum atomic="1537660800">20180922 20h00 EDT</minimum>
+   <maximum atomic="1522199520">20180327 21h12 EDT</maximum>
+  </variable>
+  <variable>
+   <starname>S Car</starname>
+   <ra>10.15608056</ra>
+   <dec>-61.54897222</dec>
+   <alt>-44.68651467366</alt>
+   <az>220.04520842516</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>9.5596924628183</mag>
+   <magmax>4.5</magmax>
+   <magmin>9.9</magmin>
+   <minimum atomic="1535587200">20180829 20h00 EDT</minimum>
+   <maximum atomic="1518449760">20180212 10h36 EST</maximum>
+  </variable>
+  <variable>
+   <starname>T Cen</starname>
+   <ra>13.69598611</ra>
+   <dec>-33.59738889</dec>
+   <alt>-12.362248402129</alt>
+   <az>234.98186138232</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>6.3710762331839</mag>
+   <magmax>5.5</magmax>
+   <magmin>9</magmin>
+   <minimum atomic="1537401600">20180919 20h00 EDT</minimum>
+   <maximum atomic="1533548160">20180806 05h36 EDT</maximum>
+  </variable>
+  <shower>
+   <radiantname>Arietids</radiantname>
+   <ra>2.4</ra>
+   <dec>22.8</dec>
+   <begin atomic="1526968800">20180522 02h00 EDT</begin>
+   <peak atomic="1528524000">20180609 02h00 EDT</peak>
+   <end atomic="1530511200">20180702 02h00 EDT</end>
+   <mag>2</mag>
+   <rate>54</rate>
+  </shower>
+ </events>
+ <observatory>
+  <latitude>43.6515952</latitude>
+  <longitude>-79.5692296</longitude>
+  <elevation>145.12217712402</elevation>
+ </observatory>
+ <parameters>
+  <minauroralevel>1</minauroralevel>
+  <maxangdist>20</maxangdist>
+ </parameters>
+ <events>
+  <aurora>
+   <auroranight>Low</auroranight>
+   <aurorahour>Quiet</aurorahour>
+   <start atomic="1529637980">23h26 EDT</start>
+   <stop atomic="1529651672">03h14 EDT</stop>
+  </aurora>
+  <conjunction>
+   <object>
+    <starname>Alhena</starname>
+    <ra>6.628333333</ra>
+    <dec>16.39916667</dec>
+    <mag>1.9</mag>
+    <alt>62.432407722084</alt>
+    <az>169.81070437704</az>
+    <rise atomic="1529581016">07h36 EDT</rise>
+    <set atomic="1529631416">21h36 EDT</set>
+    <start atomic="1529631464">21h37 EDT</start>
+    <stop atomic="1529658184">05h03 EDT</stop>
+   </object>
+   <object>
+    <starname>Mercury</starname>
+    <ra>7.2554249570368</ra>
+    <dec>24.299703638742</dec>
+    <mag>0.5</mag>
+    <alt>70.638624381211</alt>
+    <az>182.03220427806</az>
+    <rise atomic="1529581016">07h36 EDT</rise>
+    <set atomic="1529635016">22h36 EDT</set>
+    <start atomic="1529629955">21h12 EDT</start>
+    <stop atomic="1529659694">05h28 EDT</stop>
+
+   </object>
+   <angdistance value="11.840557821274">11.84</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Pollux</starname>
+    <ra>7.755</ra>
+    <dec>28.026</dec>
+    <mag>1.15</mag>
+    <alt>73.457578276845</alt>
+    <az>158.61422000808</az>
+    <rise atomic="1529581016">07h36 EDT</rise>
+    <set atomic="1529638616">23h36 EDT</set>
+    <start atomic="1529630655">21h24 EDT</start>
+    <stop atomic="1529658993">05h16 EDT</stop>
+   </object>
+   <begins atomic="1529630655">21h24 EDT</begins>
+   <ends atomic="1529638616">23h36 EDT</ends>
+   <object>
+    <starname>Mercury</starname>
+    <ra>7.2554249570368</ra>
+    <dec>24.299703638742</dec>
+    <mag>0.5</mag>
+    <alt>70.638624381211</alt>
+    <az>182.03220427806</az>
+    <rise atomic="1529581016">07h36 EDT</rise>
+    <set atomic="1529635016">22h36 EDT</set>
+    <start atomic="1529629955">21h12 EDT</start>
+    <stop atomic="1529659694">05h28 EDT</stop>
+
+   </object>
+   <angdistance value="7.6891159533515">7.69</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Pollux</starname>
+    <ra>7.755</ra>
+    <dec>28.026</dec>
+    <mag>1.15</mag>
+    <alt>73.457578276845</alt>
+    <az>158.61422000808</az>
+    <rise atomic="1529581016">07h36 EDT</rise>
+    <set atomic="1529638616">23h36 EDT</set>
+    <start atomic="1529630655">21h24 EDT</start>
+    <stop atomic="1529658993">05h16 EDT</stop>
+   </object>
+   <begins atomic="1529630655">21h24 EDT</begins>
+   <ends atomic="1529638616">23h36 EDT</ends>
+   <object>
+    <starname>Venus</starname>
+    <ra>8.7872260093231</ra>
+    <dec>19.956858086271</dec>
+    <mag>-3.8</mag>
+    <alt>65.552569458332</alt>
+    <az>163.46912042437</az>
+    <rise atomic="1529588216">09h36 EDT</rise>
+    <set atomic="1529638616">23h36 EDT</set>
+    <start atomic="1529627367">20h29 EDT</start>
+    <stop atomic="1529662281">06h11 EDT</stop>
+
+   </object>
+   <angdistance value="16.285346802854">16.29</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Spica</starname>
+    <ra>13.41833333</ra>
+    <dec>-11.16133333</dec>
+    <mag>1.04</mag>
+    <alt>35.170958278431</alt>
+    <az>178.24987158046</az>
+    <rise atomic="1529609816">15h36 EDT</rise>
+    <set atomic="1529649416">02h36 EDT</set>
+    <start atomic="1529630537">21h22 EDT</start>
+    <stop atomic="1529659111">05h18 EDT</stop>
+   </object>
+   <begins atomic="1529630537">21h22 EDT</begins>
+   <ends atomic="1529649416">02h36 EDT</ends>
+   <object>
+    <starname>Moon</starname>
+    <ra>13.475114745816</ra>
+    <dec>-4.1584242640619</dec>
+    <mag>-8.0595273691465</mag>
+    <alt>42.158752367494</alt>
+    <az>177.4202263827</az>
+    <rise atomic="1529605358">14h22 EDT</rise>
+    <set atomic="1529560940">02h02 EDT</set>
+    <start atomic="1529629416">21h03 EDT</start>
+    <stop atomic="1529660233">05h37 EDT</stop>
+
+   </object>
+   <angdistance value="7.0536002074962">7.05</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Zubenelgenubi</starname>
+    <ra>14.84666667</ra>
+    <dec>-16.04166667</dec>
+    <mag>2.75</mag>
+    <alt>29.943609763304</alt>
+    <az>187.98934860994</az>
+    <rise atomic="1529617016">17h36 EDT</rise>
+    <set atomic="1529653016">03h36 EDT</set>
+    <start atomic="1529632633">21h57 EDT</start>
+    <stop atomic="1529657016">04h43 EDT</stop>
+   </object>
+   <begins atomic="1529632633">21h57 EDT</begins>
+   <ends atomic="1529653016">03h36 EDT</ends>
+   <object>
+    <starname>Jupiter</starname>
+    <ra>14.785730662402</ra>
+    <dec>-14.916872352199</dec>
+    <mag>-1.6</mag>
+    <alt>31.089359991901</alt>
+    <az>172.17733400133</az>
+    <rise atomic="1529617016">17h36 EDT</rise>
+    <set atomic="1529653016">03h36 EDT</set>
+    <start atomic="1529628553">20h49 EDT</start>
+    <stop atomic="1529661095">05h51 EDT</stop>
+
+   </object>
+   <angdistance value="1.4286780646264">1.43</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Dschubba</starname>
+    <ra>16.005</ra>
+    <dec>-22.62166667</dec>
+    <mag>2.29</mag>
+    <alt>23.576226516195</alt>
+    <az>184.8998540725</az>
+    <rise atomic="1529624216">19h36 EDT</rise>
+    <set atomic="1529656616">04h36 EDT</set>
+    <start atomic="1529631982">21h46 EDT</start>
+    <stop atomic="1529657666">04h54 EDT</stop>
+   </object>
+   <begins atomic="1529631982">21h46 EDT</begins>
+   <ends atomic="1529656616">04h36 EDT</ends>
+   <object>
+    <starname>Jupiter</starname>
+    <ra>14.785730662402</ra>
+    <dec>-14.916872352199</dec>
+    <mag>-1.6</mag>
+    <alt>31.089359991901</alt>
+    <az>172.17733400133</az>
+    <rise atomic="1529617016">17h36 EDT</rise>
+    <set atomic="1529653016">03h36 EDT</set>
+    <start atomic="1529628553">20h49 EDT</start>
+    <stop atomic="1529661095">05h51 EDT</stop>
+
+   </object>
+   <angdistance value="18.953200625726">18.95</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Sabik</starname>
+    <ra>17.17166667</ra>
+    <dec>-15.72466667</dec>
+    <mag>2.43</mag>
+    <alt>30.582861790589</alt>
+    <az>182.69053326693</az>
+    <rise atomic="1529624216">19h36 EDT</rise>
+    <set atomic="1529573816">05h36 EDT</set>
+    <start atomic="1529632180">21h49 EDT</start>
+    <stop atomic="1529657468">04h51 EDT</stop>
+   </object>
+   <begins atomic="1529632180">21h49 EDT</begins>
+   <ends atomic="1529657468">04h51 EDT</ends>
+   <object>
+    <starname>Saturn</starname>
+    <ra>18.464274031679</ra>
+    <dec>-22.425051176206</dec>
+    <mag>0.4</mag>
+    <alt>23.899279584832</alt>
+    <az>178.03659792056</az>
+    <rise atomic="1529631416">21h36 EDT</rise>
+    <set atomic="1529577416">06h36 EDT</set>
+    <start atomic="1529629847">21h10 EDT</start>
+    <stop atomic="1529659801">05h30 EDT</stop>
+
+   </object>
+   <angdistance value="19.511086280156">19.51</angdistance><statement> deg</statement>
+  </conjunction>
+  <conjunction>
+   <object>
+    <starname>Nunki</starname>
+    <ra>18.921</ra>
+    <dec>-29.29671667</dec>
+    <mag>2.06</mag>
+    <alt>16.827178108048</alt>
+    <az>185.69094021752</az>
+    <rise atomic="1529635016">22h36 EDT</rise>
+    <set atomic="1529577416">06h36 EDT</set>
+    <start atomic="1529631656">21h40 EDT</start>
+    <stop atomic="1529657992">04h59 EDT</stop>
+   </object>
+   <begins atomic="1529635016">22h36 EDT</begins>
+   <ends atomic="1529657992">04h59 EDT</ends>
+   <object>
+    <starname>Saturn</starname>
+    <ra>18.464274031679</ra>
+    <dec>-22.425051176206</dec>
+    <mag>0.4</mag>
+    <alt>23.899279584832</alt>
+    <az>178.03659792056</az>
+    <rise atomic="1529631416">21h36 EDT</rise>
+    <set atomic="1529577416">06h36 EDT</set>
+    <start atomic="1529629847">21h10 EDT</start>
+    <stop atomic="1529659801">05h30 EDT</stop>
+
+   </object>
+   <angdistance value="9.2317224784037">9.23</angdistance><statement> deg</statement>
+  </conjunction>
+  <satellite>
+   <vehicle>Lacrosse 5</vehicle>
+   <mag>1.9</mag>
+   <rise atomic="1529633667">22h14 EDT</rise>
+   <peak atomic="1529633971">22h19 EDT</peak>
+   <set atomic="1529634277">22h24 EDT</set>
+   <link>http://heavens-above.com/passdetails.aspx?lat=43.6515952&amp;lng=-79.5692296&amp;loc=Unspecified&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en&amp;satid=28646&amp;mjd=58291.0968955458</link>
+  </satellite>
+  <satellite>
+   <vehicle>Terra</vehicle>
+   <mag>1.8</mag>
+   <rise atomic="1529637291">23h14 EDT</rise>
+   <peak atomic="1529637436">23h17 EDT</peak>
+   <set atomic="1529637723">23h22 EDT</set>
+   <link>http://heavens-above.com/passdetails.aspx?lat=43.6515952&amp;lng=-79.5692296&amp;loc=Unspecified&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en&amp;satid=25994&amp;mjd=58291.1369914855</link>
+  </satellite>
+  <satellite>
+   <vehicle>Mayak</vehicle>
+   <mag>0.4</mag>
+   <rise atomic="1529639198">23h46 EDT</rise>
+   <peak atomic="1529639379">23h49 EDT</peak>
+   <set atomic="1529639379">23h49 EDT</set>
+   <link>http://heavens-above.com/passdetails.aspx?lat=43.6515952&amp;lng=-79.5692296&amp;loc=Unspecified&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en&amp;satid=42830&amp;mjd=58291.1594864188</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 15</vehicle>
+   <mag>-0.1</mag>
+   <peak atomic="1529638008">20180621 23h26 EDT</peak>
+   <distance>67 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=0&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 95</vehicle>
+   <mag>-0.5</mag>
+   <peak atomic="1529655268">20180622 04h14 EDT</peak>
+   <distance>36 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=1&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 98</vehicle>
+   <mag>-4.5</mag>
+   <peak atomic="1529724145">20180622 23h22 EDT</peak>
+   <distance>16 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=2&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 47</vehicle>
+   <mag>0.5</mag>
+   <peak atomic="1529735641">20180623 02h34 EDT</peak>
+   <distance>86 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=3&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 76</vehicle>
+   <mag>0.4</mag>
+   <peak atomic="1529736174">20180623 02h42 EDT</peak>
+   <distance>83 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=4&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 62</vehicle>
+   <mag>0.6</mag>
+   <peak atomic="1529808593">20180623 22h49 EDT</peak>
+   <distance>59 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=5&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 15</vehicle>
+   <mag>-3.7</mag>
+   <peak atomic="1529896434">20180624 23h13 EDT</peak>
+   <distance>22 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=6&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 31</vehicle>
+   <mag>0.7</mag>
+   <peak atomic="1529913584">20180625 03h59 EDT</peak>
+   <distance>55 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=7&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 80</vehicle>
+   <mag>-1.6</mag>
+   <peak atomic="1529982810">20180625 23h13 EDT</peak>
+   <distance>48 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=8&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 76</vehicle>
+   <mag>-5.9</mag>
+   <peak atomic="1529994556">20180626 02h29 EDT</peak>
+   <distance>16 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=9&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 14</vehicle>
+   <mag>-2.1</mag>
+   <peak atomic="1530067263">20180626 22h41 EDT</peak>
+   <distance>25 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=10&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 91</vehicle>
+   <mag>-3.5</mag>
+   <peak atomic="1530085989">20180627 03h53 EDT</peak>
+   <distance>17 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=11&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 15</vehicle>
+   <mag>-2.3</mag>
+   <peak atomic="1530154861">20180627 23h01 EDT</peak>
+   <distance>43 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=12&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <satellite>
+   <vehicle>Iridium 31</vehicle>
+   <mag>0.5</mag>
+   <peak atomic="1530171991">20180628 03h46 EDT</peak>
+   <distance>55 km</distance>
+   <link>http://heavens-above.com/flaredetails.aspx?fid=13&amp;lat=43.6515952&amp;lng=-79.5692296&amp;loc=Astronomy+Forecast&amp;alt=145.12217712402&amp;tz=EST&amp;cul=en</link>
+  </satellite>
+  <variable>
+   <starname>Algol</starname>
+   <ra>3.133369861</ra>
+   <dec>40.95564722</dec>
+   <alt>66.525214680248</alt>
+   <az>274.44406765464</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>2.12</mag>
+   <magmax>2.12</magmax>
+   <magmin>3.39</magmin>
+   <minimum atomic="1529684998">20180622 12h29 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>Beta Persei</starname>
+   <ra>3.133369861</ra>
+   <dec>40.95564722</dec>
+   <alt>79.877865783829</alt>
+   <az>100.90331245282</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>2.12</mag>
+   <magmax>2.12</magmax>
+   <magmin>3.39</magmin>
+   <minimum atomic="1529932735">20180625 09h18 EDT</minimum>
+  </variable>
+  <variable>
+   <starname>Mira</starname>
+   <ra>2.316886694</ra>
+   <dec>-2.9776375</dec>
+   <alt>-5.6738142712284</alt>
+   <az>88.702987936178</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>7.8971775727658</mag>
+   <magmax>2</magmax>
+   <magmin>10.1</magmin>
+   <minimum atomic="1534735416">20180819 23h23 EDT</minimum>
+   <maximum atomic="1515787257">20180112 15h00 EST</maximum>
+  </variable>
+  <variable>
+   <starname>Chi Cyg</starname>
+   <ra>32.91405556</ra>
+   <dec>117.5163417</dec>
+   <alt>29.399946174093</alt>
+   <az>330.38554680054</az>
+   <rise atomic="">19h00 EST</rise>
+   <set atomic="">19h00 EST</set>
+   <mag>13.790702974017</mag>
+   <magmax>3.3</magmax>
+   <magmin>14.2</magmin>
+   <minimum atomic="1530403920">20180630 20h12 EDT</minimum>
+   <maximum atomic="1508525999">20171020 14h59 EDT</maximum>
+  </variable>
+  <comet>
+   <cometname>21P/Giacobini-Zinner</cometname>
+   <ra>5.97775</ra>
+   <dec>29.363972222222</dec>
+   <mag>7.05</mag>
+  </comet>
+  <comet>
+   <cometname>38P/Stephan-Oterma</cometname>
+   <ra>5.1788611111111</ra>
+   <dec>8.9723888888889</dec>
+   <mag>11.56</mag>
+  </comet>
+  <comet>
+   <cometname>46P/Wirtanen</cometname>
+   <ra>1.7069166666667</ra>
+   <dec>-20.928</dec>
+   <mag>16.01</mag>
+  </comet>
+  <shower>
+   <radiantname>Perseids</radiantname>
+   <ra>3.4</ra>
+   <dec>45.4</dec>
+   <begin atomic="1531800000">20180717 00h00 EDT</begin>
+   <peak atomic="1533960000">20180811 00h00 EDT</peak>
+   <end atomic="1535083200">20180824 00h00 EDT</end>
+   <mag>2</mag>
+   <rate>20</rate>
+  </shower>
+  <shower>
+   <radiantname>Orionids</radiantname>
+   <ra>6.4</ra>
+   <dec>14.9</dec>
+   <begin atomic="1538460000">20181002 02h00 EDT</begin>
+   <peak atomic="1540188000">20181022 02h00 EDT</peak>
+   <end atomic="1541574000">20181107 02h00 EST</end>
+   <mag>2.5</mag>
+   <rate>20</rate>
+  </shower>
+  <eclipse>
+   <eclipsetype>Total Lunar</eclipsetype>
+   <begin atomic="1548045747">20190120 23h42 EST</begin>
+   <peak atomic="1548047607">20190121 00h13 EST</peak>
+   <end atomic="1548049467">20190121 00h44 EST</end>
+  </eclipse>
+ </events>
+</astroforecast>
+

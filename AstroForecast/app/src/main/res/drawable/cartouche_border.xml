@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--  Taken from https://stackoverflow.com/questions/5778187/change-the-look-of-edit-text-box-in-android -->
+    <solid android:color="#00000000" />
+    <stroke android:width="2.5dp"
+        android:color="#80919197" />
+    <corners
+        android:radius="5dp"/>
+</shape>

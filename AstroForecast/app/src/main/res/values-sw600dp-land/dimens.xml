@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- pop up layout dimensions scroll -->
+    <dimen name="pop_up_scroll_height">350dp</dimen>
+
+</resources>

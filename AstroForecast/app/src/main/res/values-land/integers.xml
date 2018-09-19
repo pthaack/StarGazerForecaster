@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- pop up layout dimensions scroll -->
+    <integer name="pop_up_scroll_height">328</integer>
+</resources>
