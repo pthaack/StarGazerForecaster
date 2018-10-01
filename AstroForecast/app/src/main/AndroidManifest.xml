@@ -35,6 +35,7 @@
         <activity
             android:name=".ActivityCalendar"
             android:label="@string/title_activity_main" />
+        <activity android:name=".ActivityComingSoon"></activity>
     </application>
 
 </manifest>
