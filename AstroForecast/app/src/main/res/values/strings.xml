@@ -5,6 +5,8 @@
     <string name="app_name_menu">Star Gazer Forecast</string>
     <string name="app_menu_email">phil@philipyoung.ca</string>
 
+    <string name="preference_true">Yes</string>
+    <string name="preference_false">No</string>
     <string name="action_settings">Settings</string>
     <string name="search_title">Search</string>
 
@@ -49,7 +51,7 @@
     <string name="gps_dialog_update_location_negative">Not yet</string>
 
     <string name="gps_dialog_updating_location_title">Location Updating</string>
-    <string name="gps_dialog_updating_location_message">I am trying to update your location.
+    <string name="gps_dialog_updating_location_message">I am trying to update your location, but GPS satellites are out of range.
         \nCancel that and continue with app, now?</string>
     <string name="gps_dialog_updating_location_neutral">Okay</string>
 
@@ -110,6 +112,58 @@
         <item>0</item>
         <item>-1</item>
     </string-array>
+
+    <!-- Example scripts for sharing stars with friends -->
+    <string name="document_share_subject">Star Gazer Forecast</string>
+    <string name="document_share_positive">next</string>
+    <string name="document_share_negative">skip</string>
+    <string name="document_share_neutral">prev</string>
+    <string name="document_share_done">send</string>
+    <string name="document_share_introduction">Hey there!  You gotta see what\'s up in the sky.</string>
+    <string name="document_share_weather">The weather is going to be %s. %s, and then %s.</string>
+    <string name="document_share_weather_grade_bad">bad</string>
+    <string name="document_share_weather_grade_good">good</string>
+    <string name="document_share_weather_grade_great">great</string>
+    <string name="document_share_weather_grade_unknown">unknown</string>
+    <string name="document_share_moon">The %s is at %s.</string>
+    <string name="document_share_meteor_shower">The %1$s meteor shower %2$s tonight.  It\'s best viewed at %3$tl:%3$tM %3$Tp.</string>
+    <string name="document_share_meteor_shower_peak">peaks</string>
+    <string name="document_share_meteor_shower_begin">begins</string>
+    <string name="document_share_meteor_shower_continue">continues</string>
+    <string name="document_share_conjunction">%s is in close conjunction with %s.</string>
+    <string name="document_share_planets">We\'re going to see %s.</string>
+    <string name="document_share_comet">Comet %s is at magnitude %.2f.</string>
+    <string name="document_share_aurora">The Northern Lights are predicted to have a %d%% chance to be active tonight.</string>
+    <string name="document_share_iss">The ISS will go floating by at %1$tl:%1$tM %1$Tp.</string>
+    <string name="document_share_variable_star_visible">%s is just becoming visible to the unaided eye.</string>
+    <string name="document_share_variable_star_maximum">%s is reaching its maximum luminosity.</string>
+    <string name="document_share_variable_star_eclipse">%1$s is eclipsing starting at %2$tl:%2$tM %2$Tp, reaching minimum brightness at%3$tl:%3$tM %3$Tp.</string>
+    <string name="document_share_eclipse">There is going to be a %1$s eclipse on %2$tB %2$te.</string>
+    <string name="document_share_closing">So, will you meet me at %s at %.2f°%s %.2f°%s in %s?</string>
+    <string name="document_share_too_long">This message may be too long to send to some SMS recipients.</string>
+    <string name="document_share_much_too_long">This message is much too long to send to SMS recipients.</string>
+    <!-- /*
+        Hey there!  You gotta see what's up in the sky.
+        The weather is going to be great. Only 10% cloud cover, and above average transparency.
+        The Harvest Moon is at the first quarter.
+        The Orionid meteor shower peaks tonight.  It's best viewed at 2:00 AM.
+        Jupiter is in close conjunction with Zubenelgenubi.
+        Comet 21P/Giacobini-Zinner is at magnitude 7.05.
+        The Northern Lights are predicted to have a 35% chance to be active tonight.
+        The ISS will go floating by at 10:30 PM.
+        Mira is just becoming visible to the unaided eye.
+        There is going to be a partial solar eclipse on January 5.
+
+        So, will you meet me at Phil's Balcony Observatory at 43.78°N 79.33°W in Toronto?
+    */ -->
+
+    <!-- Example script for sending a contact -->
+    <string name="document_contact_email_address">phil@philipyoung.ca</string>
+    <string name="document_contact_email_subject">Star Gazer Forecast</string>
+    <string name="document_contact_email_body">I really like the Star Gazer Forecast you created, but it would be better if it did this.
+        \n\nYour message here
+        \n\nRegards,\n\nName:\nEmail:\nPhone:\n</string>
+    <string name="document_contact_email_url">mailto:phil@philipyoung.ca?subject=Star%20Gazer%20Forecast%20by%20JCY%20Creative%20Studio&amp;body=I%20really%20like%20the%20Star%20Gazer%20Forecast%20you%20created,%20but%20it%20would%20be%20better%20if%20it%20did%20this.%0A%0AYour%20message%20here%0A%0ARegards,%0A%0AName:%0AEmail:%0APhone:%0A</string>
 
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
@@ -214,20 +268,20 @@
     <string-array name="pref_title_key_3_conjuctions_titles">
         <item>1°</item>
         <item>2°</item>
-        <item>3</item>
+        <item>3°</item>
         <item>6°</item>
         <item>10°</item>
         <item>15°</item>
         <item>20°</item>
     </string-array>
     <string-array name="pref_title_key_3_conjunctions_values">
-        <item>1°</item>
-        <item>2°</item>
+        <item>1</item>
+        <item>2</item>
         <item>3</item>
-        <item>6°</item>
-        <item>10°</item>
-        <item>15°</item>
-        <item>20°</item>
+        <item>6</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
     </string-array>
     <string name="pref_title_key_4">Comets</string>
     <string name="pref_description_key_4">Notify when a comet is visible</string>
@@ -645,6 +699,34 @@
         <item>zodiac</item>
     </string-array>
 
+    <!-- main screen image descriptions -->
+    <string name="main_screen_meteor_image_description">Meteor Shower</string>
+    <string name="main_screen_moon_image_description">Moon and Weather information</string>
+    <string name="main_screen_planet_image_description">Planets and Conjunctions</string>
+    <string name="main_screen_conjunction_alert_description">Close conjunction in progress:</string>
+    <string name="main_screen_comet_image_description">Comet information</string>
+    <string name="main_screen_comet_alert_description">Current comet pass:</string>
+    <string name="main_screen_aurora_image_description">Aurora information</string>
+    <string name="main_screen_aurora_alert_description">Bright aurora alert:</string>
+    <string name="main_screen_satellite_image_description">Satellite information</string>
+    <string name="main_screen_satellite_alert_description_iridium">Iridium satellite alert:</string>
+    <string name="main_screen_satellite_image_description_iss">ISS pass information</string>
+    <string name="main_screen_satellite_image_description_no_pass">No satellite information</string>
+    <string name="main_screen_constellation_image_description">Constellation information</string>
+    <string name="main_screen_constellation_alert_description">Favoured constellation currently visible:</string>
+    <string name="main_screen_variable_stars_image_description">Variable star information</string>
+    <string name="main_screen_variable_stars_alert_description">Variable star alert:</string>
+    <string name="main_screen_eclipse_image_description">Eclipse information</string>
+    <string name="main_screen_eclipse_alert_description">Eclipse alert:</string>
+    <string name="main_screen_reload_fab_description">Internet information</string>
+    <string name="main_screen_reload_fab_description_sync">Refresh weather and events information</string>
+    <string name="main_screen_reload_fab_description_problem">Cannot refresh weather and events information</string>
+    <string name="main_screen_reload_fab_description_disabled">Currently refreshing weather and events information</string>
+    <string name="main_screen_location_fab_description">GPS information</string>
+    <string name="main_screen_location_fab_description_not_fixed">Waiting for GPS information</string>
+    <string name="main_screen_location_fab_description_off">GPS information is turned off</string>
+    <string name="main_screen_location_fab_description_fixed">Found GPS information</string>
+
     <!-- pop up applications -->
     <string name="safe_launch_not_installed">"Please install "</string>
     <string name="dialog_pop_up_other_app_disclaimer">This will launch an app by another author who is solely responsible for its content.</string>
@@ -653,28 +735,31 @@
     <string name="dialog_pop_up_other_app_neutral">Stop warnings</string>
     <string name="dialog_pop_up_aurora_title">Aurora</string>
     <string name="dialog_pop_up_aurora_message">Open the Aurora Notifier to see the current and forecast status of the Northern Lights.</string>
-    <string name="dialog_pop_up_aurora_status">"kp-index: "</string>
+    <string name="dialog_pop_up_aurora_status">"kp-index:"</string>
     <string name="dialog_pop_up_aurora_kp_default">Unknown</string>
+    <string name="dialog_pop_up_aurora_forecast">"probability of aurora:"</string>
+    <string name="dialog_pop_up_aurora_3day_forecast">"3 day forecast:"</string>
     <string name="dialog_pop_up_aurora_hint">Aurora Notifier</string>
     <string name="dialog_pop_up_aurora_positive">Launch</string>
     <string name="dialog_pop_up_meteor_title">Meteor Showers</string>
     <string name="dialog_pop_up_meteor_message">Open the Meteor Shower Calendar to see current and upcoming meteor showers.</string>
     <string name="dialog_pop_up_meteor_hint">Meteor Shower Calendar</string>
     <string name="dialog_pop_up_meteor_positive">Launch</string>
-    <string name="dialog_pop_up_meteor_next">"Next meteor shower:\n  "</string>
-    <string name="dialog_pop_up_meteor_current">"Current meteor shower:\n  "</string>
+    <string name="dialog_pop_up_meteor_next">"  Next prominent meteor shower:\n  %1$s  Begins %2$tb %2$te\n\n"</string>
+    <string name="dialog_pop_up_meteor_current_peak">"  Current meteor shower:\n  %1$s  Peaks %2$tb %2$te\n\n"</string>
+    <string name="dialog_pop_up_meteor_current_ends">"  Current meteor shower:\n  %1$s  Ends %2$tb %2$te\n\n"</string>
     <string name="dialog_pop_up_eclipse_title">Eclipses</string>
-    <string name="dialog_pop_up_eclipse_message">Open the Time-and-Date website to see current and upcoming eclipses in your area.</string>
+    <string name="dialog_pop_up_eclipse_message">Not all eclipses are visible from all points on the globe.\nOpen the Time-and-Date website to see upcoming eclipses in your area.</string>
     <string name="dialog_pop_up_eclipse_hint">Eclipse Calendar</string>
     <string name="dialog_pop_up_eclipse_positive">Website</string>
-    <string name="dialog_pop_up_eclipse_next">"Next eclipse:\n  "</string>
-    <string name="dialog_pop_up_eclipse_current">"Current eclipse:\n  "</string>
+    <string name="dialog_pop_up_eclipse_next">"  Next eclipse:\n  %1$s  %2$tb %2$te\n\n"</string>
+    <string name="dialog_pop_up_eclipse_current">"  Current eclipse:\n  %1$s  %2$tb %2$te\n\n"</string>
     <string name="dialog_pop_up_moon_title">Moon and Weather</string>
-    <string name="dialog_pop_up_moon_message"></string>
-    <string name="dialog_pop_up_moon_hint"></string>
+    <string name="dialog_pop_up_moon_message">Click to see the Moon phase and Weather forecast</string>
+    <string name="dialog_pop_up_moon_hint">Moon phase and Weather forecast</string>
     <string name="dialog_pop_up_moon_positive">Okay</string>
     <string name="dialog_pop_up_satellite_title">Satellites</string>
-    <string name="dialog_pop_up_satellite_message_normal">Upcoming satellite passes including the International Space Station (ISS):</string>
+    <string name="dialog_pop_up_satellite_message_normal">Upcoming satellite passes:</string>
     <string name="dialog_pop_up_satellite_message_iss">Upcoming satellite passes of the International Space Station (ISS):</string>
     <string name="dialog_pop_up_satellite_message_iridium">Upcoming satellite passes of Iridium flares:</string>
     <string name="dialog_pop_up_satellite_time_format">"%1$tl:%1$tM:%1$tS %1$Tp"</string>
@@ -682,7 +767,7 @@
     <string name="dialog_pop_up_satellite_hint">Heavens Above</string>
     <string name="dialog_pop_up_satellite_positive">Launch</string>
     <string name="dialog_pop_up_comet_title">Comets</string>
-    <string name="dialog_pop_up_comet_message">Upcoming comet passes:</string>
+    <string name="dialog_pop_up_comet_message">Current comet passes:</string>
     <string name="dialog_pop_up_comet_time_format">"%1$tl:%1$tM %1$Tp"</string>
     <string name="dialog_pop_up_comet_no_passes">No upcoming comet passes scheduled</string>
     <string name="dialog_pop_up_comet_positive">Launch</string>
@@ -691,7 +776,7 @@
     <string name="dialog_pop_up_locations_positive">Edit</string>
     <string name="dialog_pop_up_locations_negative">Delete</string>
     <string name="dialog_pop_up_locations_neutral">Go Here</string>
-    <string name="dialog_locations_delete_confirm_title">Go Here</string>
+    <string name="dialog_locations_delete_confirm_title">Confirm Delete</string>
     <string name="dialog_locations_delete_confirm_message">You are about to delete this location.
         \nYou won\'t be able to recover it once it\'s gone. \nAre you sure?</string>
     <string name="dialog_locations_delete_confirm_positive">Delete</string>
@@ -762,7 +847,7 @@
     <string name="moon_month_null">Unknown Moon</string>
 
     <!-- pop up planets -->
-    <string name="dialog_pop_up_return">Continue</string>
+    <string name="dialog_pop_up_return">Close pop up</string>
     <string name="dialog_pop_up_planet_title">Planets</string>
     <string name="dialog_pop_up_planet_message">Select a planet to view in SkEye as it would look right now.</string>
     <string-array name="star_finder_planets">
@@ -790,6 +875,7 @@
     <string name="dialog_pop_up_planet_positive">Show Conjunctions</string>
     <string name="dialog_pop_up_conjunctions_title">Conjunctions</string>
     <string name="dialog_pop_up_conjunctions_message">Select a conjunction to view in SkEye as it would look right now.</string>
+    <string name="dialog_pop_up_conjunctions_message_no_list">There are no conjunctions that fit your preferences.\n  Show Moon: %s\n  Favourite planet: %s\n  Maximum separation: %.1f°</string>
     <string name="dialog_pop_up_conjunctions_positive">Show Planets</string>
     <string name="dialog_pop_up_conjunctions_conjunction">" and "</string>
     <string name="dialog_pop_up_object_title">Objects</string>
@@ -1093,5 +1179,40 @@
         <item>-69.61666667</item>
         <item>23.56</item>
     </string-array>
+
+    <string-array name="calendar_days_of_the_week_abbreviation">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+    <string-array name="calendar_days_of_the_week_initial">
+        <item>S</item>
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+    </string-array>
+    <string-array name="calendar_days_of_the_week_full">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+    <string name="calendar_default_message">No events are expected to occur on %1$tB %1$te, %1$tY.</string>
+    <string name="calendar_single_event_message">One event is expected to occur on %1$tB %1$te, %1$tY.</string>
+    <string name="calendar_multiple_event_message">%2$d events are expected to occur on %1$tB %1$te, %1$tY.</string>
+    <string name="calendar_eclipse_event_message">Expect an eclipse to occur at %1$tl:%1$tM %1$Tp %1$tZ.</string>
+    <string name="calendar_iss_event_message">Expect an ISS pass to occur at %1$tl:%1$tM %1$Tp %1$tZ.</string>
+    <string name="calendar_satellite_event_message">Expect a satellite pass to occur at %1$tl:%1$tM %1$Tp %1$tZ.</string>
+    <string name="calendar_meteor_event_message">Expect a meteor shower to occur at %1$tl:%1$tM %1$Tp %1$tZ.</string>
 
 </resources>
