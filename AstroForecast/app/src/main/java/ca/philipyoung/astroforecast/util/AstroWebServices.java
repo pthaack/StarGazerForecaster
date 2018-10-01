@@ -61,6 +61,7 @@ import ca.philipyoung.astroforecast.R;
  *     https://www.aavso.org/
  *     http://www.aphayes.pwp.blueyonder.co.uk/
  *     http://www.gi.alaska.edu/
+ *     https://services.swpc.noaa.gov/
  *
  */
 
@@ -116,6 +117,8 @@ public class AstroWebServices {
     private static final String COORDINATES_ALT_KEY = "coordinate_altitude";
     private static final String AURORA_KEY = "notifications_key_5";
     private static final String AURORA_LEVEL_KEY = "aurora";
+    private static final String AURORA_PERCENTAGE_KEY = "aurora_pct";
+    private static final String AURORA_FORECAST_KEY = "aurora_forecast";
     private static final String TIMESTAMP_KEY = "ts";
     private static final String TIMEHOUR_KEY = "hr";
     private static final String SUNTIMES_KEY = "notifications_key_9";
@@ -531,14 +534,40 @@ public class AstroWebServices {
                         *   <start atomic="1533954416">22h26 EDT</start>
                         *   <stop atomic="1533975670">04h21 EDT</stop>
                         *  </aurora>
+                        *
+                        *  <aurora>
+                        *   <aurorahour level="1">1+</aurorahour>
+                        *   <aurorahourpoa level="90">90%</aurorahourpoa>
+                        *   <aurorahourpoamid level="15">15%</aurorahourpoamid>
+                        *   <aurorahourpoahi level="20">20%</aurorahourpoahi>
+                        *   <auroranight level="3">3-</auroranight>
+                        *   <auroranightpoa level="90">90%</auroranightpoa>
+                        *   <auroranightpoamid level="25">25%</auroranightpoamid>
+                        *   <auroranightpoahi level="30">30%</auroranightpoahi>
+                        *   <auroralong level="4">4-</auroralong>
+                        *   <auroralongpoa level="90">90%</auroralongpoa>
+                        *   <auroralongpoamid level="35">35%</auroralongpoamid>
+                        *   <auroralongpoahi level="30">30%</auroralongpoahi>
+                        *   <start atomic="1537577613">20h53 EDT</start>
+                        *   <stop atomic="1537608632">05h30 EDT</stop>
+                        *  </aurora>
+                        *
                         * */
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
                         if(sharedPreferences!=null && nlAurora.getLength()>0) {
                             String strAurora = ((Element)nlAurora.item(0))
                                     .getElementsByTagName("auroranight").item(0).getAttributes()
                                     .getNamedItem("level").getNodeValue();
+                            Float fltAuroraPct = Float.valueOf(((Element)nlAurora.item(0))
+                                    .getElementsByTagName("auroranightpoamid").item(0).getAttributes()
+                                    .getNamedItem("level").getNodeValue());
+                            Float fltAuroraForecastPct = Float.valueOf(((Element)nlAurora.item(0))
+                                    .getElementsByTagName("auroralongpoamid").item(0).getAttributes()
+                                    .getNamedItem("level").getNodeValue());
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString(AURORA_LEVEL_KEY, strAurora);
+                            editor.putFloat(AURORA_PERCENTAGE_KEY,fltAuroraPct);
+                            editor.putFloat(AURORA_FORECAST_KEY,fltAuroraForecastPct);
                             editor.apply();
                         }
 
@@ -585,7 +614,7 @@ public class AstroWebServices {
                                         NodeList nlDistance = ((Element)nlConjunction.item(i)).getElementsByTagName("angdistance");
                                         if(nlObjects.getLength()==2 && nlDistance.getLength()==1) {
                                             // Get begin and end times
-                                            Long dteBegin, dteEnd;
+                                            Long dteBegin, dteEnd, dteObject1Rise, dteObject1Set, dteObject2Rise, dteObject2Set;
                                             dteBegin = Long.valueOf(nlBegin.item(0).getAttributes().
                                                     getNamedItem("atomic").getNodeValue());
                                             dteEnd = Long.valueOf(nlEnd.item(0).getAttributes().
@@ -604,7 +633,13 @@ public class AstroWebServices {
                                                     .getElementsByTagName("alt").item(0).getTextContent());
                                             fltObject1Azimuth = Float.valueOf(((Element)nlObjects.item(0))
                                                     .getElementsByTagName("az").item(0).getTextContent());
-                                            /*
+                                            dteObject1Rise = Long.valueOf(((Element)nlObjects.item(0))
+                                                    .getElementsByTagName("rise").item(0).getAttributes().
+                                                    getNamedItem("atomic").getNodeValue());
+                                            dteObject1Set = Long.valueOf(((Element)nlObjects.item(0))
+                                                    .getElementsByTagName("set").item(0).getAttributes().
+                                                    getNamedItem("atomic").getNodeValue());
+               /*
                                             strObject1Location = (fltObject1Altitude<30?"Low":
                                                     (fltObject1Altitude>60?"High":""));
                                             * */
@@ -618,7 +653,13 @@ public class AstroWebServices {
                                                     .getElementsByTagName("alt").item(0).getTextContent());
                                             fltObject2Azimuth = Float.valueOf(((Element)nlObjects.item(1))
                                                     .getElementsByTagName("az").item(0).getTextContent());
-                                            /*
+                                            dteObject2Rise = Long.valueOf(((Element)nlObjects.item(1))
+                                                    .getElementsByTagName("rise").item(0).getAttributes().
+                                                    getNamedItem("atomic").getNodeValue());
+                                            dteObject2Set = Long.valueOf(((Element)nlObjects.item(1))
+                                                    .getElementsByTagName("set").item(0).getAttributes().
+                                                    getNamedItem("atomic").getNodeValue());
+                        /*
                                             strObject2Location = (fltObject2Altitude<30?"Low":
                                                     (fltObject2Altitude>60?"High":""));
                                             * */
@@ -627,8 +668,8 @@ public class AstroWebServices {
                                             fltDistance = Float.valueOf(nlDistance.item(0).getAttributes().
                                                     getNamedItem("value").getNodeValue());
                                             astroDatabase.saveConjunction(
-                                                    strObject1Name,fltObject1RightAscension,fltObject1Declination,
-                                                    strObject2Name,fltObject2RightAscension,fltObject2Declination,
+                                                    strObject1Name,fltObject1RightAscension,fltObject1Declination,dteObject1Rise,dteObject1Set,
+                                                    strObject2Name,fltObject2RightAscension,fltObject2Declination,dteObject2Rise,dteObject2Set,
                                                     fltDistance,dteBegin,dteEnd
                                             );
                                         }

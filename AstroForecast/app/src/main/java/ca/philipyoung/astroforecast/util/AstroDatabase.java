@@ -1,9 +1,12 @@
 package ca.philipyoung.astroforecast.util;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -48,6 +51,21 @@ public class AstroDatabase {
     private static final Double GPS_MAXIMUM_SNAP_DISTANCE = 0.025;
 
     // shared preference keys
+    private static final String CONJUNCTION_DISTANCE_KEY = "notifications_key_3_conjunctions_distance";
+    private static final String CONJUNCTION_PLANET_KEY = "notifications_key_3_planets";
+    private static final String AURORA_KEY = "notifications_key_5";
+    private static final String SUNTIMES_KEY = "notifications_key_9";
+    private static final String MOONTIMES_KEY = "notifications_key_2";
+
+    // static ic planet strings
+    private static final String CONJUNCTION_PLANET_MOON_KEY = "Moon";
+    private static final String CONJUNCTION_PLANET_MERCURY_KEY = "Mercury";
+    private static final String CONJUNCTION_PLANET_VENUS_KEY = "Venus";
+    private static final String CONJUNCTION_PLANET_MARS_KEY = "Mars";
+    private static final String CONJUNCTION_PLANET_JUPITER_KEY = "Jupiter";
+    private static final String CONJUNCTION_PLANET_SATURN_KEY = "Saturn";
+    private static final String CONJUNCTION_PLANET_URANUS_KEY = "Uranus";
+    private static final String CONJUNCTION_PLANET_NEPTUNE_KEY = "Neptune";
 
     public AstroDatabase(Context context) {
         // Instantiate and open database
@@ -244,6 +262,50 @@ public class AstroDatabase {
                 while (cursor.moveToNext());
             } else
                 Log.d(TAG, "astroSetupAndClose: astroWeatherSummary" );
+            cursor.close();
+
+            /**
+             * Table astroPlanets
+             *    location_id       - id given to the location by system
+             *    planet_name       - name of the primary planet object in conjunction
+             *    planet_ra         - decimal coordinate, right ascension (in hours)
+             *    planet_decl       - decimal coordinate, declination (in degrees)
+             *    planet_start - date and time when the sky is dark enough to see the conjunction
+             *    planet_rise  - date and time when both objects have risen above the horizon
+             *    planet_set   - date and time when either object approaches the horizon
+             *    planet_stop  - date and time when the sky gets bright enough to extinguish one of the objects
+             */
+            strQuery = "CREATE TABLE IF NOT EXISTS astroPlanets "
+                    +"(id INTEGER primary key, "
+                    +"location_id INTEGER, "
+                    +"planet_name VARCHAR, "
+                    +"planet_ra REAL, "
+                    +"planet_decl REAL, "
+                    +"planet_start LONG, "
+                    +"planet_rise LONG, "
+                    +"planet_set LONG, "
+                    +"planet_stop LONG "
+                    +");";
+            astroDB.execSQL(strQuery);
+            cursor = astroDB.rawQuery("SELECT * FROM astroPlanets", null);
+            cursor.moveToFirst();
+            if(cursor.getCount()>0) {
+                // What's in the file
+                String strDebug;
+                do {
+                    strDebug = "";
+                    for (String strColumn :
+                            cursor.getColumnNames()) {
+                        ndxColumn = cursor.getColumnIndex(strColumn);
+                        strDebug += (strDebug.isEmpty()?"":",") +
+                                "{" + strColumn +
+                                ":" + cursor.getString(ndxColumn) + "}";
+                    }
+                    Log.d(TAG, "astroSetupAndClose: astroPlanets-" + strDebug);
+                }
+                while (cursor.moveToNext());
+            } else
+                Log.d(TAG, "astroSetupAndClose: astroPlanets");
             cursor.close();
 
             /**
@@ -1237,7 +1299,7 @@ public class AstroDatabase {
         String strQuery;
         String[] strsKeyValues;
         Date dteNow = new Date();
-        Long dteMidnight = new Date().getTime()/1000L;
+        Long dteMidnight = dteNow.getTime()/1000L;
         try {
             strsKeyValues = new String[]{
                     Integer.toString(this.idObservatory),
@@ -1531,13 +1593,33 @@ public class AstroDatabase {
         try {
             // Get the code for midnight
             Long dteMidnight = getMidnightFromWeather();
-            strQuery = "SELECT * FROM astroEventsConjunctions " +
-                    "WHERE location_id=? AND conjunction_start>? AND  conjunction_start<?";
-            strsKeyValues = new String[]{
-                    Integer.toString(this.idObservatory),
-                    Long.toString(dteMidnight - ONE_HALF_DAY),
-                    Long.toString(dteMidnight + ONE_HALF_DAY)
-            };
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+            Float fltMaxDistance = Float.valueOf(sharedPreferences.getString(CONJUNCTION_DISTANCE_KEY,"2.5°").replace("°",""));
+            if(sharedPreferences
+                    .getString(CONJUNCTION_PLANET_KEY,mContext.getString(R.string.pref_title_key_3_planets_All))
+                    .equals(mContext.getString(R.string.pref_title_key_3_planets_All))
+                    ) {
+                strQuery = "SELECT * FROM astroEventsConjunctions" +
+                        " WHERE location_id=? AND angular_distance<?" +
+                        " AND conjunction_start>? AND conjunction_start<?";
+                strsKeyValues = new String[]{
+                        Integer.toString(this.idObservatory),
+                        String.format(Locale.US,"%.6f",fltMaxDistance),
+                        String.format(Locale.US, "%d", dteMidnight - ONE_HALF_DAY),
+                        String.format(Locale.US, "%d", dteMidnight + ONE_HALF_DAY)
+                };
+            } else {
+                strQuery = "SELECT * FROM astroEventsConjunctions" +
+                        " WHERE location_id=? AND planet_name=? AND angular_distance<?" +
+                        " AND conjunction_start>? AND conjunction_start<?";
+                strsKeyValues = new String[]{
+                        Integer.toString(this.idObservatory),
+                        sharedPreferences.getString(CONJUNCTION_PLANET_KEY,""),
+                        String.format(Locale.US,"%.6f",fltMaxDistance),
+                        String.format(Locale.US, "%d", dteMidnight - ONE_HALF_DAY),
+                        String.format(Locale.US, "%d", dteMidnight + ONE_HALF_DAY)
+                };
+            }
             cursor = astroDB.rawQuery(strQuery, strsKeyValues);
             cursor.moveToFirst();
             intCount = cursor.getCount();
@@ -1551,22 +1633,39 @@ public class AstroDatabase {
         }
         return intCount;
     }
-    public Integer getConjunctionsCount(Float fltDistance) {
+    public Integer getConjunctionsCount(Float fltMaxDistance) {
         Integer intCount=0;
         Cursor cursor;
         String strQuery;
         String[] strsKeyValues;
         try {
             // Get the code for midnight
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
             Long dteMidnight = getMidnightFromWeather();
-            strQuery = "SELECT * FROM astroEventsConjunctions " +
-                    "WHERE location_id=? AND angular_distance<? AND conjunction_start>? AND conjunction_start<?";
-            strsKeyValues = new String[]{
-                    String.format(Locale.US,"%d",this.idObservatory),
-                    String.format(Locale.US,"%.6f",fltDistance),
-                    String.format(Locale.US,"%d",dteMidnight - ONE_HALF_DAY),
-                    String.format(Locale.US,"%d",dteMidnight + ONE_HALF_DAY)
-            };
+            if(sharedPreferences
+                    .getString(CONJUNCTION_PLANET_KEY,mContext.getString(R.string.pref_title_key_3_planets_All))
+                    .equals(mContext.getString(R.string.pref_title_key_3_planets_All))
+                    ) {
+                strQuery = "SELECT * FROM astroEventsConjunctions " +
+                        "WHERE location_id=? AND angular_distance<? AND conjunction_start>? AND conjunction_start<?";
+                strsKeyValues = new String[]{
+                        String.format(Locale.US, "%d", this.idObservatory),
+                        String.format(Locale.US, "%.6f", fltMaxDistance),
+                        String.format(Locale.US, "%d", dteMidnight - ONE_HALF_DAY),
+                        String.format(Locale.US, "%d", dteMidnight + ONE_HALF_DAY)
+                };
+            } else {
+                strQuery = "SELECT * FROM astroEventsConjunctions" +
+                        " WHERE location_id=? AND planet_name=? AND angular_distance<?" +
+                        " AND conjunction_start>? AND conjunction_start<?";
+                strsKeyValues = new String[]{
+                        Integer.toString(this.idObservatory),
+                        sharedPreferences.getString(CONJUNCTION_PLANET_KEY,""),
+                        String.format(Locale.US,"%.6f",fltMaxDistance),
+                        String.format(Locale.US, "%d", dteMidnight - ONE_HALF_DAY),
+                        String.format(Locale.US, "%d", dteMidnight + ONE_HALF_DAY)
+                };
+            }
             cursor = astroDB.rawQuery(strQuery, strsKeyValues);
             cursor.moveToFirst();
             intCount = cursor.getCount();
@@ -1588,29 +1687,35 @@ public class AstroDatabase {
         try {
             // Get the code for midnight
             Long dteMidnight = getMidnightFromWeather();
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+            Float fltMaxDistance = Float.valueOf(sharedPreferences.getString(CONJUNCTION_DISTANCE_KEY,"2.5°").replace("°",""));
             switch (strPlanet) {
-                case "Moon":
-                case "Mercury":
-                case "Venus":
-                case "Mars":
-                case "Jupiter":
-                case "Saturn":
-                case "Uranus":
-                case "Neptune":
+                case CONJUNCTION_PLANET_MOON_KEY:
+                case CONJUNCTION_PLANET_MERCURY_KEY:
+                case CONJUNCTION_PLANET_VENUS_KEY:
+                case CONJUNCTION_PLANET_MARS_KEY:
+                case CONJUNCTION_PLANET_JUPITER_KEY:
+                case CONJUNCTION_PLANET_SATURN_KEY:
+                case CONJUNCTION_PLANET_URANUS_KEY:
+                case CONJUNCTION_PLANET_NEPTUNE_KEY:
                     strQuery = "SELECT * FROM astroEventsConjunctions " +
-                            "WHERE location_id=? AND (planet_name=? OR conjunction_name=?) AND conjunction_start>? AND  conjunction_start<?";
+                            "WHERE location_id=?1 AND (planet_name=?2 OR conjunction_name=?2) AND" +
+                            " angular_distance<?3 AND conjunction_start>?4 AND conjunction_start<?5";
                     strsKeyValues = new String[]{
                             Integer.toString(this.idObservatory),
-                            strPlanet, strPlanet,
+                            strPlanet,
+                            String.format(Locale.US,"%.6f",fltMaxDistance),
                             Long.toString(dteMidnight - ONE_HALF_DAY),
                             Long.toString(dteMidnight + ONE_HALF_DAY)
                     };
                     break;
                 default:
                     strQuery = "SELECT * FROM astroEventsConjunctions " +
-                            "WHERE location_id=? AND conjunction_start>? AND  conjunction_start<?";
+                            "WHERE location_id=? AND angular_distance<? AND" +
+                            " conjunction_start>? AND conjunction_start<?";
                     strsKeyValues = new String[]{
                             Integer.toString(this.idObservatory),
+                            String.format(Locale.US,"%.6f",fltMaxDistance),
                             Long.toString(dteMidnight - ONE_HALF_DAY),
                             Long.toString(dteMidnight + ONE_HALF_DAY)
                     };
@@ -1633,13 +1738,33 @@ public class AstroDatabase {
         String[] strsConjunctions = new String[0];
         ArrayList<String> listConjunctions = new ArrayList<>();
         Cursor cursor;
-        String strQuery;
+        String strQuery,
+                strFavouritePlanet=".Moon.Mercury.Venus.Mars.Jupiter.Saturn.Uranus.Neptune.";
         String[] strsKeyValues;
-        Integer ndxObject1,ndxObject2,ndxRightAscension1,ndxRightAscension2,ndxDeclination1,ndxDeclination2;
+        Integer ndxObject1,ndxObject2,ndxRightAscension1,ndxRightAscension2,ndxDeclination1,ndxDeclination2,ndxDistance;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         try {
+            if(sharedPreferences
+                    .getString(CONJUNCTION_PLANET_KEY,mContext.getString(R.string.pref_title_key_3_planets_All))
+                    .equals(mContext.getString(R.string.pref_title_key_3_planets_All))
+                    ) {
+                strFavouritePlanet = ".";
+                for (String strPlanet :
+                        mContext.getResources().getStringArray(R.array.pref_title_key_3_planets_values)) {
+                    if (!strPlanet.equals(mContext.getString(R.string.pref_title_key_3_planets_All))) {
+                        strFavouritePlanet += strPlanet +".";
+                    }
+                }
+            } else {
+                strFavouritePlanet = "."+ sharedPreferences.getString(CONJUNCTION_PLANET_KEY,"") +".";
+            }
+            if(sharedPreferences.getBoolean(MOONTIMES_KEY,false)) {
+                strFavouritePlanet += mContext.getString(R.string.pref_title_key_2) + ".";
+            }
+            Float fltDistance,fltMaxDistance = Float.valueOf(sharedPreferences.getString(CONJUNCTION_DISTANCE_KEY,"2.5°").replace("°",""));
             Long dteMidnight = getMidnightFromWeather();
             strQuery = "SELECT * FROM astroEventsConjunctions " +
-                    "WHERE location_id=? AND conjunction_start>? AND  conjunction_start<?";
+                    "WHERE location_id=? AND conjunction_start>? AND conjunction_start<?";
             strsKeyValues = new String[]{
                     Integer.toString(this.idObservatory),
                     Long.toString(dteMidnight - ONE_HALF_DAY),
@@ -1653,6 +1778,7 @@ public class AstroDatabase {
             ndxRightAscension2=cursor.getColumnIndex("conjunction_ra");
             ndxDeclination1=cursor.getColumnIndex("planet_decl");
             ndxDeclination2=cursor.getColumnIndex("conjunction_decl");
+            ndxDistance=cursor.getColumnIndex("angular_distance");
             if(cursor.getCount()>0) {
                 String strObject1,
                         strObject2,
@@ -1685,22 +1811,28 @@ public class AstroDatabase {
                         fltDeclination=(fltDeclination1+fltDeclination2)/2.0f;
                         strDeclination=String.format(Locale.US,"%.6f",fltDeclination);
                     }
+                    if(cursor.isNull(ndxDistance)) {
+                        fltDistance = 180f;
+                    } else {
+                        fltDistance=cursor.getFloat(ndxDistance);
+                    }
                     switch (strObject1) {
-                        case "Moon":
-                        case "Mercury":
-                        case "Venus":
-                        case "Mars":
-                        case "Jupiter":
-                        case "Saturn":
-                        case "Uranus":
-                        case "Neptune":
+                        case CONJUNCTION_PLANET_MOON_KEY:
+                        case CONJUNCTION_PLANET_MERCURY_KEY:
+                        case CONJUNCTION_PLANET_VENUS_KEY:
+                        case CONJUNCTION_PLANET_MARS_KEY:
+                        case CONJUNCTION_PLANET_JUPITER_KEY:
+                        case CONJUNCTION_PLANET_SATURN_KEY:
+                        case CONJUNCTION_PLANET_URANUS_KEY:
+                        case CONJUNCTION_PLANET_NEPTUNE_KEY:
                             strJoin = strObject1+
                                     mContext.getString(R.string.dialog_pop_up_conjunctions_conjunction) +
                                     strObject2 +","+
                                     strObject1 +","+
                                     strObject2 +","+
                                     strRightAscension +","+
-                                    strDeclination;
+                                    strDeclination +","+
+                                    String.format(Locale.US,"%.6f",fltDistance);
                             break;
                         default:
                             strJoin = strObject2+
@@ -1709,10 +1841,16 @@ public class AstroDatabase {
                                     strObject2 +","+
                                     strObject1 +","+
                                     strRightAscension +","+
-                                    strDeclination;
+                                    strDeclination +","+
+                                    String.format(Locale.US,"%.6f",fltDistance);
                             break;
                     }
-                    listConjunctions.add( strJoin );
+                    if( (strFavouritePlanet.contains(strObject1) ||
+                            strFavouritePlanet.contains(strObject2)) &&
+                            fltDistance<fltMaxDistance
+                            ) {
+                        listConjunctions.add(strJoin);
+                    }
                 } while(cursor.moveToNext());
             }
             cursor.close();
@@ -1806,28 +1944,111 @@ public class AstroDatabase {
             }
         }
     }
-    public void saveConjunction(String strPlanet, Float fltPlanetRightAscension, Float fltPlanetDeclination,
-                                String strObject, Float fltObjectRightAscension, Float fltObjectDeclination,
+    public String[] getPlanetStrings(){
+        String[] strsPlanets = new String[0];
+        ArrayList<String> listPlanets = new ArrayList<>();
+        Cursor cursor;
+        String strQuery,
+                strFavouritePlanet=".Mercury.Venus.Mars.Jupiter.Saturn.Uranus.Neptune.";
+        String[] strsKeyValues;
+        Integer ndxPlanet,ndxRightAscension,ndxDeclination;
+        Long dtePeak, dteStart, dteStop, dteRise, dteSet;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        try {
+            dteStart = (new Date()).getTime()/1000L;
+            dteStop = getMidnightFromWeather();
+            strFavouritePlanet = sharedPreferences.getString(CONJUNCTION_PLANET_KEY,mContext.getString(R.string.pref_title_key_3_planets_All));
+            if(strFavouritePlanet.equals(mContext.getString(R.string.pref_title_key_3_planets_All))) {
+                if(dteStart>dteStop) {
+                    strQuery = "SELECT DISTINCT planet_name,planet_ra,planet_decl" +
+                            " FROM astroPlanets WHERE location_id=? AND planet_stop>?";
+                    strsKeyValues = new String[]{
+                            Integer.toString(this.idObservatory),
+                            String.format(Locale.US, "%d", dteStart)
+                    };
+                } else {
+                    strQuery = "SELECT DISTINCT planet_name,planet_ra,planet_decl" +
+                            " FROM astroPlanets WHERE location_id=? AND planet_stop>? AND planet_start<?";
+                    strsKeyValues = new String[]{
+                            Integer.toString(this.idObservatory),
+                            String.format(Locale.US, "%d", dteStart),
+                            String.format(Locale.US, "%d", dteStop)
+                    };
+                }
+            } else {
+                if(dteStart>dteStop) {
+                    strQuery = "SELECT DISTINCT planet_name,planet_ra,planet_decl" +
+                            " FROM astroPlanets WHERE location_id=? AND planet_stop>? AND planet_name=?";
+                    strsKeyValues = new String[]{
+                            Integer.toString(this.idObservatory),
+                            String.format(Locale.US,"%d",dteStart),
+                            strFavouritePlanet
+                    };
+                } else {
+                    strQuery = "SELECT DISTINCT planet_name,planet_ra,planet_decl" +
+                            " FROM astroPlanets" +
+                            " WHERE location_id=? AND planet_stop>? AND planet_start<? AND planet_name=?";
+                    strsKeyValues = new String[]{
+                            Integer.toString(this.idObservatory),
+                            String.format(Locale.US,"%d",dteStart),
+                            String.format(Locale.US,"%d",dteStop),
+                            strFavouritePlanet
+                    };
+                }
+            }
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxPlanet=cursor.getColumnIndex("planet_name");
+            ndxRightAscension=cursor.getColumnIndex("planet_ra");
+            ndxDeclination=cursor.getColumnIndex("planet_decl");
+            if(cursor.getCount()>0) {
+                String strJoin, strPlanet, strRightAscension, strDeclination;
+                Float fltRightAscension, fltDeclination;
+                do {
+                    strPlanet=cursor.getString(ndxPlanet);
+                    if(cursor.isNull(ndxRightAscension)) {
+                        strRightAscension = "";
+                    } else {
+                        fltRightAscension=cursor.getFloat(ndxRightAscension);
+                        strRightAscension=String.format(Locale.US,"%.6f",fltRightAscension);
+                    }
+                    if(cursor.isNull(ndxDeclination)) {
+                        strDeclination = "";
+                    } else {
+                        fltDeclination=cursor.getFloat(ndxDeclination);
+                        strDeclination=String.format(Locale.US,"%.6f",fltDeclination);
+                    }
+                    strJoin = String.format(
+                            Locale.US,
+                            "%s,%s,%s",
+                            strPlanet,
+                            strRightAscension,
+                            strDeclination);
+                    listPlanets.add(strJoin);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            strsPlanets = new String[listPlanets.size()];
+            Integer intI = 0;
+            for (String strPlanet :
+                    listPlanets) {
+                strsPlanets[intI++] = strPlanet;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.e(TAG, "getPlanetStrings: SQL-" +e.getLocalizedMessage() );
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "getPlanetStrings: " +e.getLocalizedMessage() );
+        }
+        return strsPlanets;
+    }
+    public void saveConjunction(String strPlanet, Float fltPlanetRightAscension, Float fltPlanetDeclination, Long dtePlanetRise, Long dtePlanetSet,
+                                String strObject, Float fltObjectRightAscension, Float fltObjectDeclination, Long dteObjectRise, Long dteObjectSet,
                                 Float fltDistance, Long dteStart, Long dteStop) {
         String strQuery, strQryExec, strFieldNames, strFieldReplace, strFieldValues;
-        String[] strsFieldValues = new String[]{
-                String.format(Locale.US,"%d",this.idObservatory),
-                strPlanet,
-                String.format(Locale.US,"%.6f",fltPlanetRightAscension),
-                String.format(Locale.US,"%.6f",fltPlanetDeclination),
-                strObject,
-                String.format(Locale.US,"%.6f",fltObjectRightAscension),
-                String.format(Locale.US,"%.6f",fltObjectDeclination),
-                String.format(Locale.US,"%.6f",fltDistance),
-                String.format(Locale.US,"%d",dteStart),
-                String.format(Locale.US,"%d",dteStop)
-        }, strsKeyValues = new String[]{
-                String.format(Locale.US,"%d",this.idObservatory),
-                strPlanet,
-                strObject,
-                String.format(Locale.US,"%d",dteStart - 1800),
-                String.format(Locale.US,"%d",dteStop + 1800)
-        };
+        String[] strsFieldValues, strsKeyValues;
         /**
          * Table astroEventsConjunctions
          *    location_id       - id given to the location by system
@@ -1843,6 +2064,114 @@ public class AstroDatabase {
          *    conjunction_set   - date and time when either object approaches the horizon
          *    conjunction_stop  - date and time when the sky gets bright enough to extinguish one of the objects
          */
+        /**
+         * Table astroPlanets
+         *    location_id       - id given to the location by system
+         *    planet_name       - name of the primary planet object in conjunction
+         *    planet_ra         - decimal coordinate, right ascension (in hours)
+         *    planet_decl       - decimal coordinate, declination (in degrees)
+         *    planet_start - date and time when the sky is dark enough to see the conjunction
+         *    planet_rise  - date and time when both objects have risen above the horizon
+         *    planet_set   - date and time when either object approaches the horizon
+         *    planet_stop  - date and time when the sky gets bright enough to extinguish one of the objects
+         */
+        strsFieldValues = new String[]{
+                String.format(Locale.US,"%d",this.idObservatory),
+                strPlanet,
+                String.format(Locale.US,"%.6f",fltPlanetRightAscension),
+                String.format(Locale.US,"%.6f",fltPlanetDeclination),
+                String.format(Locale.US,"%d",dtePlanetRise),
+                String.format(Locale.US,"%d",dtePlanetSet),
+                String.format(Locale.US,"%d",dteStart),
+                String.format(Locale.US,"%d",dteStop)
+        };
+        strsKeyValues = new String[]{
+                String.format(Locale.US,"%d",this.idObservatory),
+                strPlanet,
+                String.format(Locale.US,"%d",dteStart - 1800),
+                String.format(Locale.US,"%d",dteStop + 1800)
+        };
+        try {
+            if(strPlanet!=null && !strPlanet.isEmpty() && ".Mercury.Venus.Mars.Jupiter.Saturn.Uranus.Neptune.".contains(strPlanet)) {
+                strQuery = "SELECT id FROM astroPlanets WHERE location_id=? AND planet_name=? AND planet_start>? AND planet_stop<?";
+                if (astroDB.rawQuery(strQuery, strsKeyValues).getCount() == 0) {
+                    strFieldNames = "location_id,planet_name,planet_ra,planet_decl," +
+                            "planet_rise,planet_set," +
+                            "planet_start,planet_stop";
+                    strFieldValues = "?,?,?,?," +
+                            "?,?," +
+                            "?,?";
+                    strQryExec = "INSERT INTO astroPlanets " +
+                            "(" + strFieldNames + ") " +
+                            "VALUES (" + strFieldValues + ")";
+                    astroDB.execSQL(strQryExec, strsFieldValues);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.e(TAG, "saveConjunction: SQL-" + e.getLocalizedMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "saveConjunction: " + e.getLocalizedMessage());
+        }
+        strsFieldValues = new String[]{
+                String.format(Locale.US,"%d",this.idObservatory),
+                strObject,
+                String.format(Locale.US,"%.6f",fltObjectRightAscension),
+                String.format(Locale.US,"%.6f",fltObjectDeclination),
+                String.format(Locale.US,"%d",dteObjectRise),
+                String.format(Locale.US,"%d",dteObjectSet),
+                String.format(Locale.US,"%d",dteStart),
+                String.format(Locale.US,"%d",dteStop)
+        };
+        strsKeyValues = new String[]{
+                String.format(Locale.US,"%d",this.idObservatory),
+                strObject,
+                String.format(Locale.US,"%d",dteStart - 1800),
+                String.format(Locale.US,"%d",dteStop + 1800)
+        };
+        try {
+            if(strObject!=null && !strObject.isEmpty() && ".Mercury.Venus.Mars.Jupiter.Saturn.Uranus.Neptune.".contains(strObject)) {
+                strQuery = "SELECT id FROM astroPlanets WHERE location_id=? AND planet_name=? AND planet_start>? AND planet_stop<?";
+                if (astroDB.rawQuery(strQuery, strsKeyValues).getCount() == 0) {
+                    strFieldNames = "location_id,planet_name,planet_ra,planet_decl," +
+                            "planet_rise,planet_set," +
+                            "planet_start,planet_stop";
+                    strFieldValues = "?,?,?,?," +
+                            "?,?," +
+                            "?,?";
+                    strQryExec = "INSERT INTO astroPlanets " +
+                            "(" + strFieldNames + ") " +
+                            "VALUES (" + strFieldValues + ")";
+                    astroDB.execSQL(strQryExec, strsFieldValues);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.e(TAG, "saveConjunction: SQL-" + e.getLocalizedMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "saveConjunction: " + e.getLocalizedMessage());
+        }
+        strsFieldValues = new String[]{
+                String.format(Locale.US,"%d",this.idObservatory),
+                strPlanet,
+                String.format(Locale.US,"%.6f",fltPlanetRightAscension),
+                String.format(Locale.US,"%.6f",fltPlanetDeclination),
+                strObject,
+                String.format(Locale.US,"%.6f",fltObjectRightAscension),
+                String.format(Locale.US,"%.6f",fltObjectDeclination),
+                String.format(Locale.US,"%.6f",fltDistance),
+                String.format(Locale.US,"%d",dteStart),
+                String.format(Locale.US,"%d",dteStop)
+        };
+        strsKeyValues = new String[]{
+                String.format(Locale.US,"%d",this.idObservatory),
+                strPlanet,
+                strObject,
+                String.format(Locale.US,"%d",dteStart - 1800),
+                String.format(Locale.US,"%d",dteStop + 1800)
+        };
         try {
             strQuery = "SELECT id FROM astroEventsConjunctions WHERE location_id=? AND planet_name=? AND conjunction_name=? AND conjunction_start>? AND conjunction_stop<?";
             strQryExec = "DELETE FROM astroEventsConjunctions WHERE id in(" + strQuery + ")";
@@ -1896,11 +2225,11 @@ public class AstroDatabase {
          *    date_min          - estimated date of minimum
          */
         try {
-            strQuery = "SELECT id FROM astroEventsVariables WHERE location_id=? AND planet_name=? AND conjunction_name=? AND conjunction_start>? AND conjunction_stop<?";
+            strQuery = "SELECT id FROM astroEventsVariables WHERE location_id=? AND variable_name=? AND date_max>? AND date_min<?";
             if (astroDB.rawQuery(strQuery, strsKeyValues).getCount() == 0) {
                 // Data is updated annually. No need to update what already exists.
-                strFieldNames = "location_id,planet_name,conjunction_name,angular_distance,conjunction_start,conjunction_stop";
-                strFieldValues = "?,?,?,?,?,?";
+                strFieldNames = "location_id,variable_name,ra,decl,mag_max,mag_min,date_max,date_min";
+                strFieldValues = "?,?,?,?,?,?,?,?";
                 strQryExec = "INSERT INTO astroEventsVariables " +
                         "(" + strFieldNames + ") " +
                         "VALUES (" + strFieldValues + ")";
@@ -1913,6 +2242,13 @@ public class AstroDatabase {
             e.printStackTrace();
             Log.e(TAG, "saveVariableStar: " + e.getLocalizedMessage());
         }
+    }
+    public HashMap<String,String> getVariableStar() {
+        // return the next or current meteor shower
+        Cursor cursor;
+        HashMap<String, String> map = new HashMap<>();
+
+        return map;
     }
 
     public void saveMeteorShower(String strShowerName, Float fltRightAscension, Float fltDeclination,
@@ -2036,13 +2372,18 @@ public class AstroDatabase {
          *    date_stop         - estimated date the comet is too faint to see
          */
         try {
-            strQuery = "SELECT id FROM astroEventsComets WHERE location_id=? AND comet_name=?";
+            strQuery = "SELECT id FROM astroEventsComets WHERE location_id=?1 AND comet_name=?2";
             if(astroDB.rawQuery(strQuery,strsKeyValues).getCount()==0) {
                 strFieldNames = "location_id,comet_name,ra,decl,time_rise,time_set,mag,date_start,date_peak,date_stop";
                 strFieldValues = "?,?,?,?,?,?,?,?,?,?";
                 strQryExec = "INSERT INTO astroEventsComets " +
                         "(" + strFieldNames + ") " +
                         "VALUES (" + strFieldValues + ")";
+                astroDB.execSQL(strQryExec,strsFieldValues);
+            } else {
+                strFieldReplace = "ra=?3,decl=?4,time_rise=?5,time_set=?6,mag=?7,date_start=?8,date_peak=?9,date_stop=?10";
+                strQryExec = "UPDATE astroEventsComets SET " + strFieldReplace +
+                        " WHERE location_id=?1 AND comet_name=?2";
                 astroDB.execSQL(strQryExec,strsFieldValues);
             }
         } catch (SQLException e) {
@@ -2183,12 +2524,186 @@ public class AstroDatabase {
                     if(ndxColumn>0) map.put(strField,cursor.getString(ndxColumn));
                 }
             }
+            cursor.close();
         } catch (SQLException e) {
             e.printStackTrace();
             Log.e(TAG, "getNextEclipse: SQL-"+e.getLocalizedMessage() );
         } catch (Exception e) {
             e.printStackTrace();
             Log.e(TAG, "getNextEclipse: "+ e.getLocalizedMessage());
+        }
+
+        return map;
+    }
+
+    public ArrayList<String> getEvents(@NonNull Date dteFrom, @NonNull Date dteUntil) {
+        // return the next or current eclipse
+        Cursor cursor;
+        ArrayList<String> map = new ArrayList<>();
+        Long dteStart=dteFrom.getTime()/1000L, dtePeak,
+                dteStop=dteUntil.getTime()/1000L,
+                dteNow = ((Date) new Date()).getTime() / 1000L;
+        Integer ndxName, ndxType, ndxDate;
+        String strQuery, strFieldNames = "location_id,event_name,event_type,date_start";
+        String[] strsKeyValues = new String[]{
+                String.format(Locale.US, "%d", this.idObservatory),
+                String.format(Locale.US, "%d", dteStart - 1800),
+                String.format(Locale.US, "%d", dteStop + 1800)
+        };
+        try {
+            strQuery = "SELECT location_id, vehicle_name AS event_name, vehicle_type AS event_type, pass_peak AS date_start" +
+                    " FROM astroEventsSatellites" +
+                    " WHERE location_id=? AND pass_peak>=? AND pass_peak<?";
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxDate = cursor.getColumnIndexOrThrow("date_start");
+            ndxName = cursor.getColumnIndexOrThrow("event_name");
+            ndxType = cursor.getColumnIndexOrThrow("event_type");
+            if(cursor.getCount()!=0) {
+                do {
+                    map.add(String.format(
+                            Locale.US,
+                            "%d,%s,%s",
+                            cursor.getLong(ndxDate),
+                            cursor.getString(ndxName),
+                            cursor.getString(ndxType)
+                    ));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+
+            strQuery = "SELECT location_id, variable_name AS event_name, 'VARIABLEMAX' AS event_type, date_max AS date_start" +
+                    " FROM astroEventsVariables" +
+                    " WHERE location_id=? AND date_max>=? AND date_max<?";
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxDate = cursor.getColumnIndexOrThrow("date_start");
+            ndxName = cursor.getColumnIndexOrThrow("event_name");
+            ndxType = cursor.getColumnIndexOrThrow("event_type");
+            if(cursor.getCount()!=0) {
+                do {
+                    map.add(String.format(
+                            Locale.US,
+                            "%d,%s,%s",
+                            cursor.getLong(ndxDate),
+                            cursor.getString(ndxName),
+                            cursor.getString(ndxType)
+                    ));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+
+            strQuery = "SELECT location_id, variable_name AS event_name, 'VARIABLEMIN' AS event_type, date_min AS date_start" +
+                    " FROM astroEventsVariables" +
+                    " WHERE location_id=? AND date_min>=? AND date_min<?";
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxDate = cursor.getColumnIndexOrThrow("date_start");
+            ndxName = cursor.getColumnIndexOrThrow("event_name");
+            ndxType = cursor.getColumnIndexOrThrow("event_type");
+            if(cursor.getCount()!=0) {
+                do {
+                    map.add(String.format(
+                            Locale.US,
+                            "%d,%s,%s",
+                            cursor.getLong(ndxDate),
+                            cursor.getString(ndxName),
+                            cursor.getString(ndxType)
+                    ));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+
+            strQuery = "SELECT location_id, radiant_name AS event_name, 'METEORSHOWERBEG' AS event_type, date_start AS date_start" +
+                    " FROM astroEventsMeteorShowers" +
+                    " WHERE location_id=? AND date_start>=? AND date_start<?";
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxDate = cursor.getColumnIndexOrThrow("date_start");
+            ndxName = cursor.getColumnIndexOrThrow("event_name");
+            ndxType = cursor.getColumnIndexOrThrow("event_type");
+            if(cursor.getCount()!=0) {
+                do {
+                    map.add(String.format(
+                            Locale.US,
+                            "%d,%s,%s",
+                            cursor.getLong(ndxDate),
+                            cursor.getString(ndxName),
+                            cursor.getString(ndxType)
+                    ));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+
+            strQuery = "SELECT location_id, radiant_name AS event_name, 'METEORSHOWERPEAK' AS event_type, date_peak AS date_start" +
+                    " FROM astroEventsMeteorShowers" +
+                    " WHERE location_id=? AND date_peak>=? AND date_peak<?";
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxDate = cursor.getColumnIndexOrThrow("date_start");
+            ndxName = cursor.getColumnIndexOrThrow("event_name");
+            ndxType = cursor.getColumnIndexOrThrow("event_type");
+            if(cursor.getCount()!=0) {
+                do {
+                    map.add(String.format(
+                            Locale.US,
+                            "%d,%s,%s",
+                            cursor.getLong(ndxDate),
+                            cursor.getString(ndxName),
+                            cursor.getString(ndxType)
+                    ));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+
+            strQuery = "SELECT location_id, radiant_name AS event_name, 'METEORSHOWERFIN' AS event_type, date_stop AS date_start" +
+                    " FROM astroEventsMeteorShowers" +
+                    " WHERE location_id=? AND date_stop>=? AND date_stop<?";
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxDate = cursor.getColumnIndexOrThrow("date_start");
+            ndxName = cursor.getColumnIndexOrThrow("event_name");
+            ndxType = cursor.getColumnIndexOrThrow("event_type");
+            if(cursor.getCount()!=0) {
+                do {
+                    map.add(String.format(
+                            Locale.US,
+                            "%d,%s,%s",
+                            cursor.getLong(ndxDate),
+                            cursor.getString(ndxName),
+                            cursor.getString(ndxType)
+                    ));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+
+            strQuery = "SELECT location_id, eclipse_name AS event_name, eclipse_type AS event_type, date_start AS date_start" +
+                    " FROM astroEventsEclipses" +
+                    " WHERE location_id=? AND date_start>=? AND date_start<?";
+            cursor = astroDB.rawQuery(strQuery,strsKeyValues);
+            cursor.moveToFirst();
+            ndxDate = cursor.getColumnIndexOrThrow("date_start");
+            ndxName = cursor.getColumnIndexOrThrow("event_name");
+            ndxType = cursor.getColumnIndexOrThrow("event_type");
+            if(cursor.getCount()!=0) {
+                do {
+                    map.add(String.format(
+                            Locale.US,
+                            "%d,%s,%s",
+                            cursor.getLong(ndxDate),
+                            cursor.getString(ndxName),
+                            cursor.getString(ndxType)
+                    ));
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Log.e(TAG, "getEvents: SQL-"+e.getLocalizedMessage() );
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "getEvents: "+ e.getLocalizedMessage());
         }
 
         return map;
@@ -2203,6 +2718,7 @@ public class AstroDatabase {
         * astroWeather              - keep just the most recent. nothing older than yesterday's weather
         * astroWeatherSummary       - keep just the most recent
         * astroEventsConjunctions   - keep just the most recent
+        * astroPlanets              - keep just the most recent
         * astroEventsSatellites     - keep just the most recent
         * astroEventsVariables      - data is for the whole year, keep until new data comes in
         * astroEventsMeteorShowers  - data does not change year-to-year. Move dates up 365¼ days.
@@ -2231,7 +2747,7 @@ public class AstroDatabase {
 
         calLastNewYear = Calendar.getInstance(Locale.US);
         calLastNewYear.setTime(dteYesterday);
-        calLastNewYear.set(calLastNewYear.get(Calendar.YEAR),1,1);
+        calLastNewYear.set(calLastNewYear.get(Calendar.YEAR),0,1);
 
         lngSqlLastWeek = lngLastWeek/1000;
 
