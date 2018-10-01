@@ -83,7 +83,7 @@
     <ScrollView
         android:id="@+id/planet_radio_scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/pop_up_scroll_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_message"
         app:layout_constraintBottom_toTopOf="@id/button_positive">

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/page_margin"
+    android:background="@color/backgroundSkyHorizon"
+    tools:context="ca.philipyoung.astroforecast.ActivityComingSoon">
+    <TableLayout
+        android:id="@+id/viewCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        android:background="@color/backgroundSkyZenith"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <TableRow>
+            <ImageView
+                android:id="@+id/imgPreviousMonth"
+                android:layout_width="@dimen/calendar_image_width"
+                android:layout_height="@dimen/calendar_image_height"
+                app:srcCompat="@drawable/nav_chevron_left_yellow_24dp"
+                android:contentDescription="Previous Month"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_span="5" android:layout_height="match_parent"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:id="@+id/textCalendarMonth"
+                android:textSize="@dimen/calendar_text_size"
+                android:text="September"
+            />
+            <ImageView
+                android:id="@+id/imgNextMonth"
+                android:layout_width="@dimen/calendar_image_width"
+                android:layout_height="@dimen/calendar_image_height"
+                app:srcCompat="@drawable/nav_chevron_right_yellow_24dp"
+                android:contentDescription="Next Month"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/textCalendarDay1"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:textSize="@dimen/calendar_text_size"
+                android:text="S" />
+            <TextView
+                android:id="@+id/textCalendarDay2"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/calendar_text_size"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:text="M" />
+            <TextView
+                android:id="@+id/textCalendarDay3"
+                android:text="T"
+                android:textSize="@dimen/calendar_text_size"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:layout_gravity="center_horizontal" />
+            <TextView
+                android:id="@+id/textCalendarDay4"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/calendar_text_size"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:text="W" />
+            <TextView
+                android:id="@+id/textCalendarDay5"
+                android:text="T"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:textSize="@dimen/calendar_text_size"
+                android:layout_gravity="center_horizontal" />
+            <TextView
+                android:id="@+id/textCalendarDay6"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:textSize="@dimen/calendar_text_size"
+                android:text="F" />
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/textCalendarDay7"
+                android:textColor="@color/foregroundSkyDeneb"
+                android:textSize="@dimen/calendar_text_size"
+                android:text="S" />
+        </TableRow>
+        <TableRow>
+            <LinearLayout android:id="@+id/w1d1" android:orientation="vertical" android:layout_gravity="center_horizontal" >
+                <LinearLayout android:visibility="gone" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                    android:layout_width="@dimen/calendar_text_width"
+                    android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/foregroundSkyAntares"
+                    android:text="26" />
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+                <LinearLayout android:visibility="gone" android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                    android:layout_width="@dimen/calendar_image_width"
+                    android:layout_height="@dimen/calendar_image_height"
+                    android:src="@drawable/ic_astro_eclipse"
+                    android:contentDescription="quiet"/>
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"  android:id="@+id/w1d2" android:layout_gravity="center_horizontal" >
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <TextView
+                    android:layout_width="@dimen/calendar_text_width"
+                    android:layout_height="wrap_content"
+                        android:textColor="@color/foregroundSkyAntares"
+                        android:text="27" />
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView
+                    android:layout_width="@dimen/calendar_image_width"
+                    android:layout_height="@dimen/calendar_image_height"
+                    android:src="@drawable/ic_astro_eclipse"
+                    android:contentDescription="quiet"/>
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"  android:id="@+id/w1d3" android:layout_gravity="center_horizontal" >
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <TextView
+                    android:layout_width="@dimen/calendar_text_width"
+                    android:layout_height="wrap_content"
+                        android:textColor="@color/foregroundSkyAntares"
+                        android:text="28" />
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView
+                    android:layout_width="@dimen/calendar_image_width"
+                    android:layout_height="@dimen/calendar_image_height"
+                    android:src="@drawable/ic_astro_eclipse"
+                    android:contentDescription="quiet"/>
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"  android:id="@+id/w1d4" android:layout_gravity="center_horizontal" >
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <TextView
+                    android:layout_width="@dimen/calendar_text_width"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/foregroundSkySun"
+                    android:text="29" />
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">                <ImageView
+                    android:layout_width="@dimen/calendar_image_width"
+                    android:layout_height="@dimen/calendar_image_height"
+                    android:src="@drawable/ic_astro_variables"
+                    android:contentDescription="quiet"/>
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"  android:id="@+id/w1d5" android:layout_gravity="center_horizontal" >
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <TextView
+                    android:layout_width="@dimen/calendar_text_width"
+                    android:layout_height="wrap_content"
+                        android:textColor="@color/foregroundSkyAntares"
+                        android:text="30" />
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView
+                    android:layout_width="@dimen/calendar_image_width"
+                    android:layout_height="@dimen/calendar_image_height"
+                    android:src="@drawable/ic_astro_eclipse"
+                    android:contentDescription="quiet"/>
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"  android:id="@+id/w1d6" android:layout_gravity="center_horizontal" >
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <TextView
+                    android:layout_width="@dimen/calendar_text_width"
+                    android:layout_height="wrap_content"
+                        android:textColor="@color/foregroundSkyAntares"
+                        android:text="30" />
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView
+                    android:layout_width="@dimen/calendar_image_width"
+                    android:layout_height="@dimen/calendar_image_height"
+                    android:src="@drawable/ic_astro_moon_phase_4"
+                    android:contentDescription="quiet"/>
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"  android:id="@+id/w1d7" android:layout_gravity="center_horizontal" >
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <TextView
+                    android:layout_width="@dimen/calendar_text_width"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/foregroundSkyDeneb"
+                        android:layout_gravity="end"
+                    android:text="1" />
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:visibility="gone">
+                    <ImageView
+                    android:layout_width="@dimen/calendar_image_width"
+                    android:layout_height="@dimen/calendar_image_height"
+                    android:src="@drawable/ic_astro_meteors"
+                    android:contentDescription="quiet"/>
+                    <ImageView
+                        android:layout_width="@dimen/calendar_image_width"
+                        android:layout_height="@dimen/calendar_image_height"
+                        app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+                        android:contentDescription="quiet"/>
+                </LinearLayout>
+            </LinearLayout>
+        </TableRow>
+        <TableRow>
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w2d1" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w2d2" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w2d3" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w2d4" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w2d5" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w2d6" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w2d7" android:layout_gravity="center_horizontal" />
+        </TableRow>
+        <TableRow>
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w3d1" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w3d2" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w3d3" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w3d4" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w3d5" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w3d6" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w3d7" android:layout_gravity="center_horizontal" />
+        </TableRow>
+        <TableRow>
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w4d1" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w4d2" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w4d3" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w4d4" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w4d5" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w4d6" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w4d7" android:layout_gravity="center_horizontal" />
+        </TableRow>
+        <TableRow>
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w5d1" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w5d2" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w5d3" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w5d4" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w5d5" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w5d6" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w5d7" android:layout_gravity="center_horizontal" />
+        </TableRow>
+        <TableRow>
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w6d1" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w6d2" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w6d3" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w6d4" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w6d5" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w6d6" android:layout_gravity="center_horizontal" />
+            <LinearLayout android:orientation="horizontal"  android:id="@+id/w6d7" android:layout_gravity="center_horizontal" />
+        </TableRow>
+    </TableLayout>
+    <TextView
+        android:id="@+id/textCalendarMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/viewCalendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/foregroundSkyDeneb"
+        android:text="Sample text"/>
+
+</android.support.constraint.ConstraintLayout>

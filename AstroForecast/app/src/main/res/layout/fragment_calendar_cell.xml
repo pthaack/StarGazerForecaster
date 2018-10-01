@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="@dimen/calendar_text_width"
+            android:layout_height="wrap_content"
+            android:textColor="@color/foregroundSkyDeneb"
+            android:text="29" />
+        <ImageView
+            android:id="@+id/imageOne"
+            android:layout_width="@dimen/calendar_image_width"
+            android:layout_height="@dimen/calendar_image_height"
+            app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+            android:contentDescription="quiet"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageTwo"
+            android:layout_width="@dimen/calendar_image_width"
+            android:layout_height="@dimen/calendar_image_height"
+            android:src="@drawable/ic_astro_variables"
+            android:contentDescription="quiet"/>
+        <ImageView
+            android:id="@+id/imageThree"
+            android:layout_width="@dimen/calendar_image_width"
+            android:layout_height="@dimen/calendar_image_height"
+            app:srcCompat="@drawable/ic_sun_quiet_alert_yellow_24dp"
+            android:contentDescription="quiet"/>
+    </LinearLayout>
+</LinearLayout>
