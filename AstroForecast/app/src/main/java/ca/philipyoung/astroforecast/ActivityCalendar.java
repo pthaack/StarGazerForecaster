@@ -32,12 +32,14 @@ public class ActivityCalendar extends AppCompatActivity {
                     Calendar calendar = Calendar.getInstance();
                     calendar.set(year,month,dayOfMonth);
                     Date date = calendar.getTime();
-                    ((TextView) vwText).setText(String.format(Locale.US,"%1$tB %1$te, %1$tY",date));
+                    ((TextView) vwText).setText(String.format(Locale.US,getString(R.string.calendar_default_message),date));
 
                     // change the properties of a date once selected
                     // view.setDateTextAppearance();
                 }
             });
+
+            ((TextView) vwText).setText(String.format(Locale.US,getString(R.string.calendar_default_message),new Date()));
         }
     }
 }

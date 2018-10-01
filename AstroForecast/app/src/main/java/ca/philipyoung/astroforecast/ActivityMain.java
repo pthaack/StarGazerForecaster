@@ -42,6 +42,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import ca.philipyoung.astroforecast.ui.MenuSelection;
 import ca.philipyoung.astroforecast.ui.PopUpApps;
 import ca.philipyoung.astroforecast.ui.PopUpObjects;
@@ -82,15 +84,32 @@ public class ActivityMain extends AppCompatActivity
     private static final String COORDINATES_LAT_KEY = "coordinate_latitude";
     private static final String COORDINATES_LON_KEY = "coordinate_longitude";
     private static final String COORDINATES_ALT_KEY = "coordinate_altitude";
-    private static final String AURORA_KEY = "notifications_key_5";
     private static final String AURORA_LEVEL_KEY = "aurora";
+    private static final String AURORA_PERCENTAGE_KEY = "aurora_pct";
+    private static final String AURORA_FORECAST_KEY = "aurora_forecast";
     private static final String MOON_RISE_KEY = "moon_rise";
     private static final String MOON_SET_KEY = "moon_set";
 
-    private static final String TIMESTAMP_KEY = "ts";
-    private static final String TIMEHOUR_KEY = "hr";
+    private static final Long ONE_HOUR = 3600L; // the number of seconds in an hour.
+    private static final Long ONE_FULL_DAY = 86400L; // the number of seconds in one day.
+    private static final Long ONE_HALF_DAY = 43200L; // the number of seconds in half a day.
+    private static final Long ONE_FULL_WEEK = 604800L; // the number of seconds in one week.
+
+    private static final String FIELD_METEOR_NAME_KEY = "radiant_name";
+    private static final String FIELD_METEOR_BEGIN_KEY = "date_start";
+    private static final String FIELD_METEOR_PEAK_KEY = "date_peak";
+    private static final String FIELD_METEOR_END_KEY = "date_stop";
+    private static final String FIELD_ECLIPSE_BEGIN_KEY = "date_start";
+    private static final String FIELD_ECLIPSE_TYPE_KEY = "eclipse_type";
+
+    private static final String CONJUNCTION_DISTANCE_KEY = "notifications_key_3_conjunctions_distance";
+    private static final String CONJUNCTION_PLANET_KEY = "notifications_key_3_planets";
+    private static final String AURORA_KEY = "notifications_key_5";
     private static final String SUNTIMES_KEY = "notifications_key_9";
     private static final String MOONTIMES_KEY = "notifications_key_2";
+
+    private static final String TIMESTAMP_KEY = "ts";
+    private static final String TIMEHOUR_KEY = "hr";
     private static final String MOON_PHASE_KEY = "moon_phase_name";
     private static final String MOON_PHASE_0_KEY = "New Moon";
     private static final String MOON_PHASE_1_KEY = "Waxing Crescent";
@@ -363,7 +382,7 @@ public class ActivityMain extends AppCompatActivity
     }
 
     private void initAllListeners() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         final String sPSyncFrequency;
         View vwButton;
         if( fabReload!=null && fabReload instanceof FloatingActionButton ) {
@@ -383,15 +402,19 @@ public class ActivityMain extends AppCompatActivity
                                         /* downloadReceiver.abortBroadcast();*/
                                         Toast.makeText(mContext, mContext.getString(R.string.ws_downloading_cancelled), Toast.LENGTH_SHORT).show();
                                         fabReload.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sync_problem_antares_24dp));
+                                        fabReload.setContentDescription(mContext.getString(R.string.main_screen_reload_fab_description_problem));
                                     }
                                 }
                             }).show();
                     // TODOne: Connect and get updates
                     startFileService(view,"weather");
+                    if(sharedPreferences!=null) sharedPreferences.edit().remove(AURORA_LEVEL_KEY).apply();
                     fabReload.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sync_disabled_antares_24dp));
+                    fabReload.setContentDescription(mContext.getString(R.string.main_screen_reload_fab_description_disabled));
                 }
             });
             fabReload.setImageDrawable(mContext.getResources().getDrawable(android.R.drawable.ic_popup_sync));
+            fabReload.setContentDescription(mContext.getString(R.string.main_screen_reload_fab_description_sync));
         }
 
         if( fabGeoLocation!=null && fabGeoLocation instanceof FloatingActionButton ) {
@@ -403,21 +426,32 @@ public class ActivityMain extends AppCompatActivity
                     SharedPreferences.Editor editor = spGeoLocation.edit();
                     editor.putBoolean(GPS_SWITCH_KEY,blnGPSisOn);
                     editor.apply();
-                    fabGeoLocation.setImageDrawable(mContext.getResources().getDrawable(
-                            blnGPSisOn ? R.drawable.ic_gps_not_fixed_antares_24dp : R.drawable.ic_gps_off_antares_24dp
-                    ));
                     if(blnGPSisOn) {
+                        fabGeoLocation.setImageDrawable(mContext.getResources().getDrawable(
+                                R.drawable.ic_gps_not_fixed_antares_24dp
+                        ));
+                        fabGeoLocation.setContentDescription(mContext.getString(R.string.main_screen_location_fab_description_not_fixed));
                         astroGeoLocation.goFetch();
                     } else {
+                        fabGeoLocation.setImageDrawable(mContext.getResources().getDrawable(
+                                R.drawable.ic_gps_off_antares_24dp
+                        ));
+                        fabGeoLocation.setContentDescription(mContext.getString(R.string.main_screen_location_fab_description_off));
                         astroGeoLocation.stopThat();
                     }
                 }
             });
-            fabGeoLocation.setImageDrawable(mContext.getResources().getDrawable(
-                    sharedPreferences.getBoolean(GPS_SWITCH_KEY,true) ?
-                            R.drawable.ic_gps_not_fixed_antares_24dp :
-                            R.drawable.ic_gps_off_antares_24dp
-            ));
+            if(sharedPreferences.getBoolean(GPS_SWITCH_KEY, true)) {
+                fabGeoLocation.setImageDrawable(mContext.getResources().getDrawable(
+                        R.drawable.ic_gps_not_fixed_antares_24dp
+                ));
+                fabGeoLocation.setContentDescription(mContext.getString(R.string.main_screen_location_fab_description_not_fixed));
+            } else {
+                fabGeoLocation.setImageDrawable(mContext.getResources().getDrawable(
+                        R.drawable.ic_gps_off_antares_24dp
+                ));
+                fabGeoLocation.setContentDescription(mContext.getString(R.string.main_screen_location_fab_description_off));
+            }
 
         }
         astroGeoLocation = new AstroGeoLocation(mContext);
@@ -433,16 +467,33 @@ public class ActivityMain extends AppCompatActivity
                     AstroDatabase astroDatabase = new AstroDatabase(mContext,sharedPreferences.getString(OBSERVATORY_KEY,null));
                     HashMap<String,String> mapMeteor = astroDatabase.getMeteorShower();
                     astroDatabase.astroDBclose();
-                    String strMessage = mContext.getString(R.string.dialog_pop_up_meteor_message);
+                    String strMessage = "";
                     if(mapMeteor.size()>=1) {
-                        Date dteNextMeteor = new Date(Long.valueOf(mapMeteor.get("date_start"))*1000L);
-                        strMessage += String.format(Locale.US,
-                                "\n  %1$s%2$s  %3$tb %3$te",
-                                mContext.getString(R.string.dialog_pop_up_meteor_next),
-                                mapMeteor.get("radiant_name"),
-                                dteNextMeteor
-                        );
+                        Date dteNextMeteor = new Date(Long.valueOf(mapMeteor.get(FIELD_METEOR_BEGIN_KEY))*1000L),
+                                dtePeakMeteor = new Date(Long.valueOf(mapMeteor.get(FIELD_METEOR_PEAK_KEY))*1000L),
+                                dteEndMeteor = new Date(Long.valueOf(mapMeteor.get(FIELD_METEOR_END_KEY))*1000L),
+                                dteNow = new Date();
+                        if(dteNextMeteor.after(dteNow)) {
+                            strMessage += String.format(Locale.US,
+                                    mContext.getString(R.string.dialog_pop_up_meteor_next),
+                                    mapMeteor.get(FIELD_METEOR_NAME_KEY),
+                                    dteNextMeteor
+                            );
+                        } else if(dtePeakMeteor.after(dteNow)) {
+                            strMessage += String.format(Locale.US,
+                                    mContext.getString(R.string.dialog_pop_up_meteor_current_peak),
+                                    mapMeteor.get(FIELD_METEOR_NAME_KEY),
+                                    dtePeakMeteor
+                            );
+                        } else {
+                            strMessage += String.format(Locale.US,
+                                    mContext.getString(R.string.dialog_pop_up_meteor_current_ends),
+                                    mapMeteor.get(FIELD_METEOR_NAME_KEY),
+                                    dteEndMeteor
+                            );
+                        }
                     }
+                    strMessage += mContext.getString(R.string.dialog_pop_up_meteor_message);
                     final PopUpApps popUp = new PopUpApps(mContext,METEOR_LAUNCH_KEY);
                     popUp.setCancelable(true);
                     popUp.show();
@@ -454,6 +505,7 @@ public class ActivityMain extends AppCompatActivity
                     popUp.setCancelClick(DIALOG_DISMISS);
                 }
             });
+            vwButton.setContentDescription(mContext.getString(R.string.main_screen_meteor_image_description));
         }
 
         vwButton = findViewById(R.id.imageViewMoon);
@@ -462,7 +514,7 @@ public class ActivityMain extends AppCompatActivity
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(mContext,"View moon and weather details",Toast.LENGTH_LONG).show();
-                    String strMessage = getMoonPhase()+getMoonTimes()+getWeather();
+                    String strMessage = getMoonMonthName(new Date())+"\n"+getMoonPhase()+getMoonTimes()+getWeather();
                     final PopUpApps popUp = new PopUpApps(mContext,MOON_LAUNCH_KEY);
                     popUp.setCancelable(true);
                     popUp.show();
@@ -484,7 +536,14 @@ public class ActivityMain extends AppCompatActivity
                     Toast.makeText(mContext,"View planet and conjunction details",Toast.LENGTH_LONG).show();
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
                     AstroDatabase astroDatabase = new AstroDatabase(mContext,sharedPreferences.getString(OBSERVATORY_KEY,null));
-                    Integer intCount = astroDatabase.getConjunctionsCount();
+                    Integer intCount = astroDatabase.getConjunctionsCount(
+                            Float.valueOf(
+                                    sharedPreferences
+                                            .getString(CONJUNCTION_DISTANCE_KEY,"2.5°")
+                                            .replace("°","")
+                            )
+                    );
+                    if(sharedPreferences.getBoolean(MOONTIMES_KEY,false)) intCount+=astroDatabase.getConjunctionsCount("Moon");
                     astroDatabase.astroDBclose();
                     if(intCount==0) {
                         showPlanetPopUp();
@@ -493,6 +552,7 @@ public class ActivityMain extends AppCompatActivity
                     }
                 }
             });
+            vwButton.setContentDescription(mContext.getString(R.string.main_screen_planet_image_description));
         }
 
         vwButton = findViewById(R.id.imageViewComet);
@@ -504,6 +564,7 @@ public class ActivityMain extends AppCompatActivity
                     showCometPopUp();
                 }
             });
+            vwButton.setContentDescription(mContext.getString(R.string.main_screen_comet_image_description));
         }
 
         vwButton = findViewById(R.id.imageViewAurora);
@@ -518,11 +579,27 @@ public class ActivityMain extends AppCompatActivity
                     popUp.show();
                     popUp.setDialog(popUp);
                     popUp.setTitle(R.string.dialog_pop_up_aurora_title);
-                    popUp.setMessage(
-                            mContext.getString(R.string.dialog_pop_up_aurora_message)+
-                            "\n"+ mContext.getString(R.string.dialog_pop_up_aurora_status)+
-                            sharedPreferences.getString(AURORA_LEVEL_KEY,getString(R.string.dialog_pop_up_aurora_kp_default))
-                    );
+                    if (sharedPreferences.getString(AURORA_LEVEL_KEY,null) == null) {
+                        popUp.setMessage(String.format(Locale.US,
+                                "  %s %s\n%s",
+                                mContext.getString(R.string.dialog_pop_up_aurora_status),
+                                sharedPreferences.getString(AURORA_LEVEL_KEY, getString(R.string.dialog_pop_up_aurora_kp_default)),
+                                mContext.getString(R.string.dialog_pop_up_aurora_message)
+                                )
+                        );
+                    }else {
+                        popUp.setMessage(String.format(Locale.US,
+                                "  %s %s\n  %s %.0f%%\n  %s %.0f%%\n%s",
+                                mContext.getString(R.string.dialog_pop_up_aurora_status),
+                                sharedPreferences.getString(AURORA_LEVEL_KEY, getString(R.string.dialog_pop_up_aurora_kp_default)),
+                                mContext.getString(R.string.dialog_pop_up_aurora_forecast),
+                                sharedPreferences.getFloat(AURORA_PERCENTAGE_KEY, 0f),
+                                mContext.getString(R.string.dialog_pop_up_aurora_3day_forecast),
+                                sharedPreferences.getFloat(AURORA_FORECAST_KEY, 0f),
+                                mContext.getString(R.string.dialog_pop_up_aurora_message)
+                                )
+                        );
+                    }
                     popUp.setPositiveButtonText(R.string.dialog_pop_up_aurora_positive);
                     popUp.setPositiveClick(AURORA_LAUNCH_KEY);
                     popUp.setCancelClick(DIALOG_DISMISS);
@@ -550,6 +627,7 @@ public class ActivityMain extends AppCompatActivity
                     }
                 }
             });
+            vwButton.setContentDescription(mContext.getString(R.string.main_screen_satellite_image_description));
         }
 
         vwButton = findViewById(R.id.imageViewConstellation);
@@ -567,6 +645,7 @@ public class ActivityMain extends AppCompatActivity
                     popUp.setCancelClick(DIALOG_DISMISS);
                 }
             });
+            vwButton.setContentDescription(mContext.getString(R.string.main_screen_constellation_image_description));
         }
 
         vwButton = findViewById(R.id.imageViewVariableStar);
@@ -588,6 +667,7 @@ public class ActivityMain extends AppCompatActivity
                     popUp.setCancelClick(DIALOG_DISMISS);
                 }
             });
+            vwButton.setContentDescription(mContext.getString(R.string.main_screen_variable_stars_image_description));
         }
 
         vwButton = findViewById(R.id.imageViewEclipse);
@@ -600,16 +680,16 @@ public class ActivityMain extends AppCompatActivity
                     AstroDatabase astroDatabase = new AstroDatabase(mContext,sharedPreferences.getString(OBSERVATORY_KEY,null));
                     HashMap<String,String> mapEclipse = astroDatabase.getNextEclipse();
                     astroDatabase.astroDBclose();
-                    String strMessage = mContext.getString(R.string.dialog_pop_up_eclipse_message);
+                    String strMessage ="";
                     if(mapEclipse.size()>1) {
-                        Date dteNextEclipse = new Date(Long.valueOf(mapEclipse.get("date_start"))*1000L);
+                        Date dteNextEclipse = new Date(Long.valueOf(mapEclipse.get(FIELD_ECLIPSE_BEGIN_KEY))*1000L);
                         strMessage += String.format(Locale.US,
-                                "\n  %1$s%2$s  %3$tb %3$te",
                                 mContext.getString(R.string.dialog_pop_up_eclipse_next),
-                                mapEclipse.get("eclipse_type"),
+                                mapEclipse.get(FIELD_ECLIPSE_TYPE_KEY),
                                 dteNextEclipse
                         );
                     }
+                    strMessage += mContext.getString(R.string.dialog_pop_up_eclipse_message);
                     final PopUpApps popUp = new PopUpApps(mContext,ECLIPSE_LAUNCH_KEY);
                     popUp.setCancelable(true);
                     popUp.show();
@@ -621,6 +701,7 @@ public class ActivityMain extends AppCompatActivity
                     popUp.setCancelClick(DIALOG_DISMISS);
                 }
             });
+            vwButton.setContentDescription(mContext.getString(R.string.main_screen_eclipse_image_description));
         }
 
         // ToDo: Set clock listeners
@@ -675,6 +756,8 @@ public class ActivityMain extends AppCompatActivity
     public void startFileService(View view, String strPackage) {
         Intent intent = new Intent(this, FileService.class);
         fabReload.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sync_disabled_antares_24dp));
+        fabReload.setContentDescription(mContext.getString(R.string.main_screen_reload_fab_description_disabled));
+        findViewById(R.id.overlayViewAurora).setVisibility(View.VISIBLE);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         String strObservatory = "Etobicoke", strCoordinates = "43°N 79°W", urlObservatory, urlLatLon;
         Float fltLat = 43f, fltLng = -79f;
@@ -722,6 +805,7 @@ public class ActivityMain extends AppCompatActivity
         /* intent.putExtra("url", "http://www.newthinktank.com/wordpress/lotr.txt" ); */
         this.startService(intent);
         fabReload.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sync_disabled_antares_24dp));
+        fabReload.setContentDescription(mContext.getString(R.string.main_screen_reload_fab_description_disabled));
     }
 
     private BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
@@ -770,9 +854,11 @@ public class ActivityMain extends AppCompatActivity
                 setMoonPhase();
                 setEvents();
                 fabReload.setImageDrawable(mContext.getResources().getDrawable(android.R.drawable.ic_popup_sync));
+                fabReload.setContentDescription(mContext.getString(R.string.main_screen_reload_fab_description_sync));
             } else {
                 Toast.makeText(mContext,mContext.getString(R.string.ws_no_internet),Toast.LENGTH_LONG).show();
                 fabReload.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sync_problem_antares_24dp));
+                fabReload.setContentDescription(mContext.getString(R.string.main_screen_reload_fab_description_problem));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -809,74 +895,115 @@ public class ActivityMain extends AppCompatActivity
         // set the phase of the Moon
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         String strMoonPhase = sharedPreferences.getString(MOON_PHASE_KEY,"No Moon");
+        View vwMoon = findViewById(R.id.imageViewMoon),
+                vwWeather = findViewById(R.id.overlayViewWeather);
         // findViewById(R.id.overlayViewWeather).setVisibility(View.INVISIBLE);
-        switch (strMoonPhase) {
-            case MOON_PHASE_0_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_0);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_0));
-                }
-                break;
-            case MOON_PHASE_1_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_1);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_1));
-                }
-                break;
-            case MOON_PHASE_2_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_2);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_2));
-                }
-                break;
-            case MOON_PHASE_3_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_3);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_3));
-                }
-                break;
-            case MOON_PHASE_4_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_4);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_4));
-                }
-                break;
-            case MOON_PHASE_5_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_5);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_5));
-                }
-                break;
-            case MOON_PHASE_6_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_6);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_6));
-                }
-                break;
-            case MOON_PHASE_7_KEY:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_7);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_7));
-                }
-                break;
-            default:
-                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageResource(R.drawable.ic_astro_moon_phase_0);
-                    ((ImageView) findViewById(R.id.overlayViewWeather)).setImageResource(R.drawable.ic_no_data_overlay_grey_24dp);
-                } else {
-                    ((ImageView) findViewById(R.id.imageViewMoon)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_0));
-                    ((ImageView) findViewById(R.id.overlayViewWeather)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_no_data_overlay_grey_24dp));
-                }
-                findViewById(R.id.overlayViewWeather).setVisibility(View.VISIBLE);
-                break;
+        if(vwMoon!=null && vwWeather!=null
+                && vwMoon instanceof ImageView
+                && vwWeather instanceof ImageView) {
+            switch (strMoonPhase) {
+                case MOON_PHASE_0_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_0);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_0));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase());
+                    break;
+                case MOON_PHASE_1_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_1);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_1));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase()+ " "+ getMoonMonthName(new Date())+
+                                    " "+getWeather());
+                    break;
+                case MOON_PHASE_2_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_2);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_2));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase()+
+                                    " "+getWeather());
+                    break;
+                case MOON_PHASE_3_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_3);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_3));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase()+
+                                    " "+getWeather());
+                    break;
+                case MOON_PHASE_4_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_4);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_4));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonMonthName(new Date())+
+                                    " "+getWeather());
+                    break;
+                case MOON_PHASE_5_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_5);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_5));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase()+
+                                    " "+getWeather());
+                    break;
+                case MOON_PHASE_6_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_6);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_6));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase()+
+                                    " "+getWeather());
+                    break;
+                case MOON_PHASE_7_KEY:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_7);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_7));
+                    }
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase()+
+                                    " "+getWeather());
+                    break;
+                default:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwMoon).setImageResource(R.drawable.ic_astro_moon_phase_0);
+                        ((ImageView) vwWeather).setImageResource(R.drawable.ic_no_data_overlay_grey_24dp);
+                    } else {
+                        ((ImageView) vwMoon).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_moon_phase_0));
+                        ((ImageView) vwWeather).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_no_data_overlay_grey_24dp));
+                    }
+                    vwWeather.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(
+                            mContext.getString(R.string.main_screen_moon_image_description)+
+                                    " "+getMoonPhase()+
+                                    " "+getWeather());
+                    break;
+            }
         }
     }
     private String getMoonPhase() {
@@ -914,10 +1041,41 @@ public class ActivityMain extends AppCompatActivity
         }
         return strMoonPhaseName;
     }
-    private String getMoonMonthName(Calendar dteMonthNumber) {
+    private String getMoonMonthName(Calendar calMonthNumber) {
         String strMoonMonthName = getString(R.string.moon_month_null);
-        Integer intMonth = dteMonthNumber.get(Calendar.MONTH);
-        Integer intDay = dteMonthNumber.get(Calendar.DAY_OF_MONTH);
+        Integer intMonth,intDay;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        String strMoonPhase = sharedPreferences.getString(MOON_PHASE_KEY,"No Moon");
+        switch (strMoonPhase) {
+            case MOON_PHASE_0_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,1);
+                break;
+            case MOON_PHASE_1_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,-3);
+                break;
+            case MOON_PHASE_2_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,-6);
+                break;
+            case MOON_PHASE_3_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,-10);
+                break;
+            case MOON_PHASE_4_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,-14);
+                break;
+            case MOON_PHASE_5_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,-17);
+                break;
+            case MOON_PHASE_6_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,-21);
+                break;
+            case MOON_PHASE_7_KEY:
+                calMonthNumber.add(Calendar.DAY_OF_MONTH,-25);
+                break;
+            default:
+                break;
+        }
+        intMonth = calMonthNumber.get(Calendar.MONTH);
+        intDay = calMonthNumber.get(Calendar.DAY_OF_MONTH);
         if(intDay<21) {
             switch (intMonth) {
                 case Calendar.JANUARY:
@@ -1063,21 +1221,27 @@ public class ActivityMain extends AppCompatActivity
         String strMoonTimes = "";
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         if(sharedPreferences!=null) {
-            Long lngRise = sharedPreferences.getLong(MOON_RISE_KEY,0L)*1000L;
-            Long lngSet = sharedPreferences.getLong(MOON_SET_KEY,0L)*1000L;
-            if(lngRise>0) {
-                strMoonTimes += "\n" + mContext.getString(R.string.dialog_pop_up_weather_moon_rise) +
+            Long lngRise = sharedPreferences.getLong(MOON_RISE_KEY,0L)*1000L,
+                    lngSet = sharedPreferences.getLong(MOON_SET_KEY,0L)*1000L;
+            String strRise="", strSet="";
+            if(lngRise>((new Date()).getTime()-ONE_HALF_DAY*1000L)) {
+                strRise += "\n" + mContext.getString(R.string.dialog_pop_up_weather_moon_rise) +
                         " : " + String.format(
                                 mContext.getString(R.string.dialog_pop_up_moon_time_format),
                                 new Date(lngRise)
                 );
             }
-            if(lngSet>0) {
-                strMoonTimes += "\n" + mContext.getString(R.string.dialog_pop_up_weather_moon_set) +
+            if(lngSet>((new Date()).getTime()-ONE_HALF_DAY*1000L)) {
+                strSet += "\n" + mContext.getString(R.string.dialog_pop_up_weather_moon_set) +
                         " : " + String.format(
                                 mContext.getString(R.string.dialog_pop_up_moon_time_format),
                                 new Date(lngSet)
                 );
+            }
+            if(lngSet<lngRise) {
+                strMoonTimes += strSet + strRise;
+            } else {
+                strMoonTimes += strRise + strSet;
             }
         }
         return strMoonTimes;
@@ -1176,106 +1340,137 @@ public class ActivityMain extends AppCompatActivity
     }
     private void setWeather() {
         // make the clouds appear if inclement evening
-        ImageView imageView = (ImageView) findViewById(R.id.overlayViewWeather);
+        ImageView vwMoon = findViewById(R.id.imageViewMoon),
+                vwWeather = findViewById(R.id.overlayViewWeather);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-        if(sharedPreferences!=null && imageView!=null) {
+        if(sharedPreferences!=null && vwWeather!=null) {
             AstroDatabase astroDatabase = new AstroDatabase(mContext, sharedPreferences.getString(OBSERVATORY_KEY, null));
             switch (astroDatabase.getEveningWeather()) {
                 case 0:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_astro_cloud_9);
+                        vwWeather.setImageResource(R.drawable.ic_astro_cloud_9);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_9));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_9));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 1:
                 case 2:
                 case 3:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_astro_cloud_5);
+                        vwWeather.setImageResource(R.drawable.ic_astro_cloud_5);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_5));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_5));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 4:
                 case 5:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_astro_cloud_3);
+                        vwWeather.setImageResource(R.drawable.ic_astro_cloud_3);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_3));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_3));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 6:
                 case 7:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_astro_cloud_1);
+                        vwWeather.setImageResource(R.drawable.ic_astro_cloud_1);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_1));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_cloud_1));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 8:
                 case 9:
                 case 10:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_astro_clear);
+                        vwWeather.setImageResource(R.drawable.ic_astro_clear);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_clear));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_clear));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 108:
                 case 109:
                 case 110:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_hazy_1_24dp);
+                        vwWeather.setImageResource(R.drawable.ic_hazy_1_24dp);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_1_24dp));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_1_24dp));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 208:
                 case 209:
                 case 210:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_hazy_2_24dp);
+                        vwWeather.setImageResource(R.drawable.ic_hazy_2_24dp);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_2_24dp));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_2_24dp));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 308:
                 case 309:
                 case 310:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_hazy_3_24dp);
+                        vwWeather.setImageResource(R.drawable.ic_hazy_3_24dp);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_3_24dp));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_3_24dp));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 408:
                 case 409:
                 case 410:
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_hazy_4_24dp);
+                        vwWeather.setImageResource(R.drawable.ic_hazy_4_24dp);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_4_24dp));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_hazy_4_24dp));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 case 508:
                 case 509:
                 case 510:
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_astro_clear);
+                        vwWeather.setImageResource(R.drawable.ic_astro_clear);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_clear));
+                        vwWeather.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_clear));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
+                    vwWeather.setVisibility(View.VISIBLE);
                     break;
                 default:
                     // do nothing
@@ -1284,6 +1479,9 @@ public class ActivityMain extends AppCompatActivity
                     } else {
                         ((ImageView) findViewById(R.id.overlayViewWeather)).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_no_data_overlay_white_24dp));
                     }
+                    vwMoon.setContentDescription(mContext.getString(R.string.main_screen_moon_image_description)+
+                            " "+getMoonPhase()+
+                            " "+mContext.getString(R.string.dialog_pop_up_weather_cloud_cover_null));
                     findViewById(R.id.overlayViewWeather).setVisibility(View.VISIBLE);
                     break;
             }
@@ -1296,20 +1494,27 @@ public class ActivityMain extends AppCompatActivity
         ImageView imageView;
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         if(sharedPreferences!=null) {
-            ((Activity)mContext).setTitle(sharedPreferences.getString(OBSERVATORY_KEY,getString(R.string.title_activity_main)));
+            ((Activity) mContext).setTitle(sharedPreferences.getString(OBSERVATORY_KEY, getString(R.string.title_activity_main)));
             AstroDatabase astroDatabase = new AstroDatabase(mContext, sharedPreferences.getString(OBSERVATORY_KEY, null));
 
             // Update conjunctions
-            Integer intCountConjunctions = astroDatabase.getConjunctionsCount(2.5f);
+            Integer intCountConjunctions = astroDatabase.getConjunctionsCount(
+                    Float.valueOf(
+                            sharedPreferences
+                                    .getString(CONJUNCTION_DISTANCE_KEY, "2.5")
+                                    .replace("°", "")
+                    )
+            );
             if (intCountConjunctions > 0) {
                 imageView = findViewById(R.id.alertViewPlanet);
                 if (imageView != null) {
-                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         imageView.setImageResource(R.drawable.ic_astro_conjunctions);
                     } else {
                         imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_conjunctions));
                     }
                     imageView.setVisibility(View.VISIBLE);
+                    imageView.setContentDescription(getString(R.string.pref_description_key_3_conjunctions));
                 }
             } else {
                 imageView = findViewById(R.id.alertViewPlanet);
@@ -1327,46 +1532,53 @@ public class ActivityMain extends AppCompatActivity
             if (intCountISS > 0) {
                 imageView = findViewById(R.id.imageViewSatellite);
                 if (imageView != null) {
-                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         imageView.setImageResource(R.drawable.ic_satellite_iss);
                     } else {
                         imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_satellite_iss));
                     }
+                    imageView.setContentDescription(mContext.getString(R.string.main_screen_satellite_image_description_iss));
                 }
+                ImageView vwOverlay = findViewById(R.id.overlayViewSatellite);
+                if(vwOverlay != null) vwOverlay.setVisibility(View.INVISIBLE);
             } else {
                 imageView = findViewById(R.id.imageViewSatellite);
-                if (imageView != null) {
-                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                ImageView vwOverlay = findViewById(R.id.overlayViewSatellite);
+                if (imageView != null && vwOverlay != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         imageView.setImageResource(R.drawable.ic_astro_satellites);
                     } else {
                         imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_satellites));
                     }
-                }
-                if(strsTonightsSatellites.length==0) {
-                    // Where did all the satellites go?
-                    imageView = findViewById(R.id.overlayViewSatellite);
-                    if(imageView!=null) {
-                        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                            imageView.setImageResource(R.drawable.ic_no_data_overlay_white_24dp);
-                        } else {
-                            imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_no_data_overlay_white_24dp));
+                    if (strsTonightsSatellites.length == 0 && intCountISS == 0 && intCountIridium == 0) {
+                        // Where did all the satellites go?
+                        if (vwOverlay != null) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                vwOverlay.setImageResource(R.drawable.ic_no_data_overlay_white_24dp);
+                            } else {
+                                vwOverlay.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_no_data_overlay_white_24dp));
+                            }
+                            vwOverlay.setVisibility(View.VISIBLE);
                         }
-                        imageView.setVisibility(View.VISIBLE);
+                        imageView.setContentDescription(mContext.getString(R.string.main_screen_satellite_image_description_no_pass));
+                    } else {
+                        findViewById(R.id.overlayViewSatellite).setVisibility(View.INVISIBLE);
+                        imageView.setContentDescription(mContext.getString(R.string.main_screen_satellite_image_description));
                     }
-                } else {
-                    findViewById(R.id.overlayViewSatellite).setVisibility(View.INVISIBLE);
                 }
             }
             // is there a flare tonight?
             if (intCountIridium > 0) {
-                imageView = findViewById(R.id.alertViewSatellite);
-                if (imageView != null) {
-                    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
-                        imageView.setImageResource(R.drawable.ic_iridium_flare_yellow_24dp);
+                ImageView vwAlert = findViewById(R.id.alertViewSatellite);
+                if (imageView != null && vwAlert != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        vwAlert.setImageResource(R.drawable.ic_iridium_flare_yellow_24dp);
                     } else {
-                        imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_iridium_flare_yellow_24dp));
+                        vwAlert.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_iridium_flare_yellow_24dp));
                     }
-                    imageView.setVisibility(View.VISIBLE);
+                    vwAlert.setVisibility(View.VISIBLE);
+                    imageView.setContentDescription(imageView.getContentDescription() +
+                            " " + mContext.getString(R.string.main_screen_satellite_alert_description_iridium));
                 }
             } else {
                 imageView = findViewById(R.id.alertViewSatellite);
@@ -1380,59 +1592,103 @@ public class ActivityMain extends AppCompatActivity
 
             // Update Aurora
             imageView = findViewById(R.id.imageViewAurora);
-            if(imageView!=null) {
+            if (imageView != null) {
                 findViewById(R.id.overlayViewAurora).setVisibility(View.VISIBLE);
-                switch (sharedPreferences.getString(AURORA_LEVEL_KEY, "0")) {
+                switch (sharedPreferences.getString(AURORA_LEVEL_KEY, "-1")) {
                     case "0":
                     case "1":
-                        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             imageView.setImageResource(R.drawable.ic_astro_aurora_0);
                         } else {
                             imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_aurora_0));
                         }
+                        imageView.setContentDescription(mContext.getString(R.string.dialog_pop_up_aurora_hint) +
+                                " " + mContext.getString(R.string.dialog_pop_up_aurora_status) +
+                                " " + sharedPreferences.getString(AURORA_LEVEL_KEY, mContext.getString(R.string.dialog_pop_up_aurora_kp_default)));
+                        findViewById(R.id.overlayViewAurora).setVisibility(View.INVISIBLE);
                         break;
                     case "2":
                     case "3":
-                        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             imageView.setImageResource(R.drawable.ic_astro_aurora_2);
                         } else {
                             imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_aurora_2));
                         }
+                        imageView.setContentDescription(mContext.getString(R.string.dialog_pop_up_aurora_hint) +
+                                " " + mContext.getString(R.string.dialog_pop_up_aurora_status) +
+                                " " + sharedPreferences.getString(AURORA_LEVEL_KEY, mContext.getString(R.string.dialog_pop_up_aurora_kp_default)));
+                        findViewById(R.id.overlayViewAurora).setVisibility(View.INVISIBLE);
                         break;
                     case "4":
                     case "5":
-                        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             imageView.setImageResource(R.drawable.ic_astro_aurora_4);
                         } else {
                             imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_aurora_4));
                         }
+                        imageView.setContentDescription(mContext.getString(R.string.dialog_pop_up_aurora_hint) +
+                                " " + mContext.getString(R.string.dialog_pop_up_aurora_status) +
+                                " " + sharedPreferences.getString(AURORA_LEVEL_KEY, mContext.getString(R.string.dialog_pop_up_aurora_kp_default)));
+                        findViewById(R.id.overlayViewAurora).setVisibility(View.INVISIBLE);
                         break;
                     case "6":
                     case "7":
-                        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             imageView.setImageResource(R.drawable.ic_astro_aurora_6);
                         } else {
                             imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_aurora_6));
                         }
+                        imageView.setContentDescription(mContext.getString(R.string.dialog_pop_up_aurora_hint) +
+                                " " + mContext.getString(R.string.dialog_pop_up_aurora_status) +
+                                " " + sharedPreferences.getString(AURORA_LEVEL_KEY, mContext.getString(R.string.dialog_pop_up_aurora_kp_default)));
+                        findViewById(R.id.overlayViewAurora).setVisibility(View.INVISIBLE);
                         break;
                     case "8":
                     case "9":
-                        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             imageView.setImageResource(R.drawable.ic_astro_aurora_8);
                         } else {
                             imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_aurora_8));
                         }
+                        imageView.setContentDescription(mContext.getString(R.string.dialog_pop_up_aurora_hint) +
+                                " " + mContext.getString(R.string.dialog_pop_up_aurora_status) +
+                                " " + sharedPreferences.getString(AURORA_LEVEL_KEY, mContext.getString(R.string.dialog_pop_up_aurora_kp_default)));
+                        findViewById(R.id.overlayViewAurora).setVisibility(View.INVISIBLE);
                         break;
                     default:
-                        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             imageView.setImageResource(R.drawable.ic_astro_aurora_0);
                         } else {
                             imageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_astro_aurora_0));
                         }
-                        findViewById(R.id.overlayViewAurora).setVisibility(View.INVISIBLE);
+                        findViewById(R.id.overlayViewAurora).setVisibility(View.VISIBLE);
+                        imageView.setContentDescription(mContext.getString(R.string.dialog_pop_up_aurora_hint) +
+                                " " + mContext.getString(R.string.dialog_pop_up_aurora_status) +
+                                " " + mContext.getString(R.string.dialog_pop_up_aurora_kp_default));
                         break;
                 }
-                findViewById(R.id.overlayViewAurora).setVisibility(View.INVISIBLE);
+            }
+            View vwAlert = findViewById(R.id.alertViewAurora);
+            if (vwAlert != null && vwAlert instanceof ImageView) {
+                if (sharedPreferences.getFloat(AURORA_FORECAST_KEY, 0f) > 50f) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwAlert).setImageResource(R.drawable.ic_sun_watch_alert_yellow_24dp);
+                    } else {
+                        ((ImageView) vwAlert).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sun_watch_alert_yellow_24dp));
+                    }
+                } else if (sharedPreferences.getFloat(AURORA_FORECAST_KEY, 0f) > 25f) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwAlert).setImageResource(R.drawable.ic_sun_active_alert_yellow_24dp);
+                    } else {
+                        ((ImageView) vwAlert).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sun_active_alert_yellow_24dp));
+                    }
+                } else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        ((ImageView) vwAlert).setImageResource(R.drawable.ic_sun_quiet_alert_yellow_24dp);
+                    } else {
+                        ((ImageView) vwAlert).setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_sun_quiet_alert_yellow_24dp));
+                    }
+                }
             }
         }
     }

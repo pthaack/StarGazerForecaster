@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -42,8 +43,10 @@ public class ActivitySplash extends AppCompatActivity {
     private static final Double GPS_MINIMUM_DISTANCE_DEGREES = 0.015;
     private static final Float GPS_MINIMUM_DISTANCE_METRES = 1000.0f;
     private static final Long GPS_MINIMUM_TIME_MILLISECONDS = 60000L;
+    private static final Long GPS_MINIMUM_DISPLAY_TIME = 5000L;
     private Context mContext;
     private Dialog dialog;
+    private Long lngTimeDialogStarted;
     private LocationManager locationManager;
     private LocationListener locationListener;
 
@@ -90,6 +93,7 @@ public class ActivitySplash extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode==GPS_LOCATION_REQUEST_KEY) {
+            // Returned from Android granting or denying permission to use the device GPS
             if(dialog!=null && dialog.isShowing()) dialog.dismiss();
             if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_DENIED &&
                     grantResults[1]==PackageManager.PERMISSION_DENIED) {
@@ -126,6 +130,7 @@ public class ActivitySplash extends AppCompatActivity {
     }
 
     private void initializeGPS() {
+        final Long dteAnchorStart = (new Date()).getTime();  // Get the time that the function started
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         if(sharedPreferences!=null && sharedPreferences.contains(GPS_SWITCH_KEY)) {
             // Check if GPS is on and is desired
@@ -164,9 +169,20 @@ public class ActivitySplash extends AppCompatActivity {
                             }
                             locationListener = new LocationListener() {
                                 @Override
-                                public void onLocationChanged(Location location) {
-                                    trackYourLocaton(location);
-                                    locationManager.removeUpdates(locationListener);
+                                public void onLocationChanged(final Location location) {
+                                    if((new Date()).getTime()>dteAnchorStart+GPS_MINIMUM_DISPLAY_TIME) {
+                                        trackYourLocaton(location);
+                                        locationManager.removeUpdates(locationListener);
+                                    } else {
+                                        Handler handler = new Handler();
+                                        handler.postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                trackYourLocaton(location);
+                                                locationManager.removeUpdates(locationListener);
+                                            }
+                                        }, GPS_MINIMUM_DISPLAY_TIME);
+                                    }
                                 }
 
                                 @Override
