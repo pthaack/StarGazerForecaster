@@ -25,6 +25,9 @@ import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 import ca.philipyoung.astroforecast.R;
 import ca.philipyoung.astroforecast.util.AstroDatabase;
 
@@ -41,6 +44,11 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
     private Integer mChartType=-1;
     private String mExternalApp = null;
     private static final String OBSERVATORY_KEY = "observatory_text";
+
+    private static final String MOONTIMES_KEY = "notifications_key_2";
+    private static final String CONJUNCTION_DISTANCE_KEY = "notifications_key_3_conjunctions_distance";
+    private static final String CONJUNCTION_PLANET_KEY = "notifications_key_3_planets";
+
     private static final Integer PLANET_TYPE_KEY = 4;
     private static final Integer OBJECT_TYPE_KEY = 2;
     private static final Integer CONSTELLATION_TYPE_KEY = 3;
@@ -165,6 +173,7 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
     @Override
     protected void onStart() {
         super.onStart();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
         Float fltTextSize = 18.0f; //mContext.getResources().getFraction(R.fraction.pop_up_dialog_message_text_size,);// ((TextView)findViewById(R.id.text_message)).getTextSize();
         String[] strsPlanets = mContext.getResources().getStringArray(R.array.star_finder_planets);
         String[] strsObjects = mContext.getResources().getStringArray(R.array.star_finder_objects);
@@ -172,7 +181,24 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
         String[] strsSatellites = new String[0];
         String[] strsComets = new String[0];
         if(mChartType==CONSTELLATION_TYPE_KEY) {
+            ArrayList<String> list = new ArrayList<>();
+            Boolean blnIsSelected;
             strsObjects = mContext.getResources().getStringArray(R.array.star_finder_constellations);
+            if(sharedPreferences.getBoolean("notifications_key_7", true)) {
+                for (String strConstellation :
+                        strsObjects) {
+                    blnIsSelected = sharedPreferences.getBoolean("constellations_key_" + strConstellation, true);
+                    blnIsSelected = sharedPreferences.getBoolean(
+                            "constellations_key_" + strConstellation.toLowerCase().replaceAll("ö","o"),
+                            true
+                    ) && blnIsSelected;
+                    if(blnIsSelected) list.add(strConstellation);
+                }
+                strsObjects = new String[list.size()];
+                for (int intI = 0; intI < strsObjects.length; intI++) {
+                    strsObjects[intI] = list.get(intI);
+                }
+            }
         }
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -212,14 +238,14 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
 
             }
         } else if(mChartType==CONJUNCTION_TYPE_KEY) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
             String strObservatory = sharedPreferences.getString(OBSERVATORY_KEY, null);
             AstroDatabase astroDatabase = new AstroDatabase(mContext, strObservatory);
             strsConjunctions = astroDatabase.getConjunctionsStrings(); // get the CSV list of conjunctions
             astroDatabase.astroDBclose();
             for (String strConjunction : strsConjunctions) {
                 String[] strings = strConjunction.split(",");
-                if(strings.length==5) {
+                if(strings.length==6) {
                     radioButtonPlanet = new RadioButton(mContext);
                     radioButtonPlanet.setText(strings[0]);
                     radioButtonPlanet.setTextColor(mContext.getResources().getColor(R.color.foregroundSkyDeneb));
@@ -230,10 +256,15 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
                     radioButtonPlanet.setOnClickListener(this);
                     radioGroupPlanets.addView(radioButtonPlanet, layoutParams);
                 }
-
+            }
+            if(strsConjunctions.length==0) {
+                View vwScroll = findViewById(R.id.planet_radio_scroll);
+                if(vwScroll!=null) {
+                    vwScroll.setVisibility(View.GONE);
+                }
             }
         } else if(mChartType==SATELLITE_TYPE_KEY) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
             String strObservatory = sharedPreferences.getString(OBSERVATORY_KEY, null);
             AstroDatabase astroDatabase = new AstroDatabase(mContext, strObservatory);
             strsSatellites = astroDatabase.getTonightsSatellites(); // get the CSV list of satellites
@@ -248,7 +279,7 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
                 radioGroupPlanets.addView(radioButtonPlanet,layoutParams);
             }
         } else if(mChartType==COMET_TYPE_KEY) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
             String strObservatory = sharedPreferences.getString(OBSERVATORY_KEY, null);
             AstroDatabase astroDatabase = new AstroDatabase(mContext, strObservatory);
             strsComets = astroDatabase.getCometsStrings(); // get the CSV list of comets
@@ -270,6 +301,7 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
             }
         }
         radioGroupPlanets.setVisibility(View.VISIBLE);
+        /*
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -277,6 +309,13 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
                 resizeDialogScroll();
             }
         }, 50);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resizeDialogScroll();
+            }
+        }, 50000);
+        */
     }
 
     public void resizeDialogScroll() {
@@ -311,6 +350,30 @@ public class PopUpObjects extends Dialog implements View.OnClickListener  {
         if(strMessage!=null && vwText!=null && vwText instanceof TextView) {
             ((TextView)vwText).setText(strMessage);
             vwText.setVisibility(View.VISIBLE);
+            if(mChartType==CONJUNCTION_TYPE_KEY) {
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+                AstroDatabase astroDatabase = new AstroDatabase(mContext, sharedPreferences.getString(OBSERVATORY_KEY,null));
+                String[] strsConjunctions = astroDatabase.getConjunctionsStrings(); // get the CSV list of conjunctions
+                astroDatabase.astroDBclose();
+                if(strsConjunctions.length==0) {
+                    String strMoonPreference = mContext.getString(sharedPreferences.getBoolean(MOONTIMES_KEY, false) ?
+                            R.string.preference_true :
+                            R.string.preference_false);
+                    String strPlanetPreference = sharedPreferences.getString(
+                            CONJUNCTION_PLANET_KEY,
+                            mContext.getString(R.string.pref_title_key_3_planets_All)
+                    );
+                    Float fltMaxDistance = Float.valueOf(sharedPreferences.getString(CONJUNCTION_DISTANCE_KEY,"2.5°").replace("°",""));
+                    ((TextView)vwText).setText(
+                            String.format(
+                                    Locale.US,
+                                    mContext.getString(R.string.dialog_pop_up_conjunctions_message_no_list),
+                                    strMoonPreference,
+                                    strPlanetPreference,
+                                    fltMaxDistance)
+                    );
+                }
+            }
         }
     }
 

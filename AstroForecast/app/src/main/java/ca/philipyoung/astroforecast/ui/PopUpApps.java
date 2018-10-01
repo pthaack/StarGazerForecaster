@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -27,6 +29,7 @@ import java.util.Set;
 
 import ca.philipyoung.astroforecast.R;
 import ca.philipyoung.astroforecast.util.AstroDatabase;
+import ca.philipyoung.astroforecast.util.FileService;
 
 /**
  * Created by Philip Young on 2018-07-27.
@@ -137,6 +140,8 @@ public class PopUpApps extends Dialog implements View.OnClickListener  {
     protected void onStart() {
         super.onStart();
 
+        View vwScroll = findViewById(R.id.planet_radio_scroll);
+        if(vwScroll!=null && vwScroll instanceof ScrollView) vwScroll.setVisibility(View.GONE);
         if(this.mChartType==LOCATION_TYPE_KEY) {
             // enable swipe left and right
             View view = findViewById(R.id.text_message);
@@ -622,6 +627,50 @@ public class PopUpApps extends Dialog implements View.OnClickListener  {
                         editor.apply();
                         ((Activity)mContext).setTitle(strsView[LOCATION_ARRAY_OBS_NAME].replaceAll("%2C",","));
                         dismiss();
+                        // Offer to download the updated data
+                        Dialog dialog = new android.app.AlertDialog.Builder(mContext)
+                                .setTitle(R.string.gps_dialog_update_location_title)
+                                .setMessage(R.string.gps_dialog_update_location_message)
+                                .setPositiveButton(R.string.gps_dialog_update_location_positive, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Handler handler = new Handler();
+                                        handler.postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                // Go get the weather
+                                                String strObservatory, urlObservatory, urlLatLon;
+                                                Float fltLat=43f, fltLng=79f;
+                                                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+                                                if(sharedPreferences!=null) {
+                                                    Intent intent = new Intent(mContext,FileService.class);
+                                                    strObservatory = sharedPreferences.getString(OBSERVATORY_KEY, mContext.getString(R.string.pref_default_location_name));
+                                                    fltLat = sharedPreferences.getFloat(COORDINATES_LAT_KEY,fltLat);
+                                                    fltLng = sharedPreferences.getFloat(COORDINATES_LON_KEY,fltLng);
+                                                    urlObservatory = strObservatory.replace(" ","+")        // replace space
+                                                            .replace(",","%2C")                             // replace comma
+                                                            .replace("?","%3F")                             // replace question mark
+                                                            .replace("&","%26")                             // replace ampersand
+                                                            .replace("=","%3D")                             // replace equals
+                                                            .replace("'","%27");                            // replace apostrophe
+                                                    urlLatLon = String.format(Locale.US,"%1$.6f%%2C%2$.6f",fltLat,fltLng);
+                                                    intent.putExtra("url", "http://www.philipyoung.ca/philslab/astroforecastXML.php" +
+                                                            "?obs="+ urlObservatory +"&latlng="+ urlLatLon +"&moon&sun&verbose"
+                                                    );
+                                                    mContext.startService(intent);
+                                                }
+                                            }
+                                        }, 200);
+                                    }
+                                })
+                                .setNegativeButton(R.string.gps_dialog_update_location_negative, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .create();
+                        dialog.show();
                     }
                 });
                 break;
